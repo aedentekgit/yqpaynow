@@ -219,7 +219,7 @@ app.use('/uploads', express.static(VPS_UPLOAD_PATH, {
 // DATABASE CONNECTION (Ultra Optimized)
 // ==============================================
 
-const MONGODB_URI = process.env.MONGODB_URI?.trim();
+let MONGODB_URI = process.env.MONGODB_URI?.trim();
 
 // FIX: Auto-correct mongodb+srv:// with IP address to mongodb://
 if (MONGODB_URI && MONGODB_URI.startsWith('mongodb+srv://')) {
@@ -227,7 +227,8 @@ if (MONGODB_URI && MONGODB_URI.startsWith('mongodb+srv://')) {
   // Check if host part contains an IP address
   if (hostPart && /(\d{1,3}\.){3}\d{1,3}/.test(hostPart)) {
     console.warn('⚠️  Detected IP address with mongodb+srv:// protocol. Auto-correcting to mongodb://');
-    process.env.MONGODB_URI = MONGODB_URI.replace('mongodb+srv://', 'mongodb://');
+    MONGODB_URI = MONGODB_URI.replace('mongodb+srv://', 'mongodb://');
+    process.env.MONGODB_URI = MONGODB_URI;
   }
 }
 
