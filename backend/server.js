@@ -8,8 +8,12 @@ const morgan = require('morgan');
 const path = require('path');
 const os = require('os');
 
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config({ path: path.join(__dirname, ".env") });
+const fs = require('fs');
+const dotenvPath = path.join(__dirname, ".env");
+if (fs.existsSync(dotenvPath)) {
+  require("dotenv").config({ path: dotenvPath });
+} else {
+  console.warn('⚠️  .env file not found, using system environment variables');
 }
 
 // ==============================================
