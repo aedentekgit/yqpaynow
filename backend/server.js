@@ -26,7 +26,7 @@ let generalLimiter, authenticatedLimiter, adminLimiter, strictLimiter;
 // NOTE: Redis cache is DISABLED - removed to prevent caching issues
 try {
   // Check if optimization directory exists
-  const fs = require('fs');
+
   const optPath = path.join(__dirname, 'optimization');
 
   if (fs.existsSync(optPath)) {
@@ -1392,7 +1392,7 @@ app.get('/api', (req, res) => {
 // ------------------------------
 
 const buildPath = path.join(__dirname, "dist");
-const fs = require('fs');
+
 
 // Only serve static files if dist directory exists
 if (fs.existsSync(buildPath)) {
