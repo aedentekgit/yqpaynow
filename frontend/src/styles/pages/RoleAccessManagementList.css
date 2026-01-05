@@ -1,0 +1,22 @@
+/* RoleAccessManagementList Component Styles - Extracted from inline styles */
+
+/* SVG Icon Sizes */
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+}
+
+.svg-icon-lg {
+  width: 48px;
+  height: 48px;
+}
+
+/* SVG Icon Colors */
+.svg-icon-gray {
+  color: var(--text-gray);
+}
+
+.svg-icon-purple {
+  color: #8b5cf6;
+}
+

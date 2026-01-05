@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" id="favicon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#6B0E9B" />
+    <meta
+      name="description"
+      content="Theater Canteen QR Order System - Modern online ordering solution for theater canteens"
+    />
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="Theater Canteen QR Order System" />
+    <meta property="og:description" content="Theater Canteen QR Order System - Modern online ordering solution for theater canteens" />
+    <meta property="og:image" content="/images/logo.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Theater Canteen QR Order System" />
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Theater Canteen QR Order System" />
+    <meta name="twitter:description" content="Theater Canteen QR Order System - Modern online ordering solution for theater canteens" />
+    <meta name="twitter:image" content="/images/logo.jpg" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Dynamic Favicon Loader -->
+    <script>
+      (function() {
+        // Function to update favicon
+        function updateFavicon(logoUrl) {
+          if (!logoUrl) return;
+          
+          const favicon = document.getElementById('favicon');
+          if (favicon) {
+            favicon.href = logoUrl;
+          }
+          
+          // Also update apple touch icon
+          const appleTouchIcon = document.querySelector('link[rel="apple-touch-icon"]');
+          if (appleTouchIcon) {
+            appleTouchIcon.href = logoUrl;
+          }
+        }
+        
+        // Try to load from localStorage cache first for instant update
+        try {
+          const cachedSettings = localStorage.getItem('app_settings_general_cache');
+          if (cachedSettings) {
+            const parsed = JSON.parse(cachedSettings);
+            const cacheTime = parsed.timestamp || 0;
+            const now = Date.now();
+            // Use cache if less than 5 minutes old
+            if (now - cacheTime < 300000 && parsed.data?.logoUrl) {
+              updateFavicon(parsed.data.logoUrl);
+            }
+          }
+        } catch (e) {
+          console.warn('Failed to load favicon from cache:', e);
+        }
+        
+        // Fetch fresh settings from API
+        fetch('/api/settings/general')
+          .then(response => response.json())
+          .then(data => {
+            if (data.success && data.data && data.data.logoUrl) {
+              updateFavicon(data.data.logoUrl);
+              
+              // Cache the settings
+              try {
+                localStorage.setItem('app_settings_general_cache', JSON.stringify({
+                  data: data.data,
+                  timestamp: Date.now()
+                }));
+              } catch (e) {
+                console.warn('Failed to cache settings:', e);
+              }
+            }
+          })
+          .catch(error => {
+            console.warn('Failed to fetch favicon from settings:', error);
+          });
+      })();
+    </script>
+    
+    <!-- Razorpay Checkout SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <title>Theater Canteen QR Order System</title>
+    
+    <!-- Performance optimization for images -->
+    <style>
+      img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+    </style>
+    
+    <!-- Auto-set auth token for testing -->
+    <script>
+      if (!localStorage.getItem('authToken')) {
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDY0ZTliMzE0NWE0NWUzN2ZiMGUyMyIsInVzZXJUeXBlIjoidGhlYXRlcl91c2VyIiwidGhlYXRlciI6IjY4ZDM3ZWE2NzY3NTJiODM5OTUyYWY4MSIsInRoZWF0ZXJJZCI6IjY4ZDM3ZWE2NzY3NTJiODM5OTUyYWY4MSIsInBlcm1pc3Npb25zIjpbXSwiaWF0IjoxNzU5MjE2MDMxLCJleHAiOjE3NTkzMDI0MzF9.-wVOPDJle4aw-UyURVWRn7olXefc0ANZQJ0Wy6yfZPU";
+        localStorage.setItem('authToken', token);
+        console.log('✅ Auth token set automatically for testing');
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

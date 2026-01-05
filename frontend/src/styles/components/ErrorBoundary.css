@@ -1,0 +1,60 @@
+/* ErrorBoundary Component Styles - Extracted from inline styles */
+
+/* Error Boundary Container */
+.error-boundary-container {
+  padding: 40px;
+  text-align: center;
+  background-color: #f8f9fa;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Error Boundary Card */
+.error-boundary-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+/* Error Icon */
+.error-boundary-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+/* Error Title */
+.error-boundary-title {
+  color: #dc3545;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+/* Error Message */
+.error-boundary-message {
+  color: #6c757d;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* Error Button */
+.error-boundary-button {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.error-boundary-button:hover {
+  background-color: #7c3aed;
+}
+

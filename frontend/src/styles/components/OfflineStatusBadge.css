@@ -1,0 +1,20 @@
+/* OfflineStatusBadge Component Styles - Extracted from inline styles */
+
+/* Status Icon Sizes */
+.offline-status-icon-large {
+  font-size: 20px;
+}
+
+.offline-status-icon-medium {
+  font-size: 16px;
+}
+
+.offline-status-icon-small {
+  font-size: 14px;
+}
+
+/* Clickable Elements */
+.offline-status-clickable {
+  cursor: pointer;
+}
+

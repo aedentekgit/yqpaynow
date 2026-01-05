@@ -1,0 +1,117 @@
+{
+  "_comment": "Printer Format Configuration - Adjust alignment, spacing, fonts, and layout",
+  "_lastUpdated": "2025-01-20",
+  
+  "page": {
+    "width": "80mm",
+    "maxWidth": "400px",
+    "bodyWidth": "302px",
+    "margin": "0",
+    "padding": "8px"
+  },
+  
+  "fonts": {
+    "family": "Courier New, monospace",
+    "bodySize": "11px",
+    "headerTitleSize": "16px",
+    "headerSubtitleSize": "10px",
+    "infoSize": "11px",
+    "tableHeaderSize": "10px",
+    "itemSize": "10px",
+    "summarySize": "11px",
+    "totalSize": "13px",
+    "footerSize": "10px",
+    "lineHeight": "1.2"
+  },
+  
+  "colors": {
+    "headerTitle": "#8B5CF6",
+    "headerSubtitle": "#666",
+    "total": "#8B5CF6",
+    "footer": "#666",
+    "text": "#000",
+    "background": "#fff"
+  },
+  
+  "header": {
+    "textAlign": "center",
+    "paddingTop": "5px",
+    "paddingBottom": "6px",
+    "marginBottom": "6px",
+    "borderBottom": "1px dashed #000",
+    "titleMarginBottom": "2px"
+  },
+  
+  "info": {
+    "padding": "6px 0",
+    "marginBottom": "6px",
+    "borderBottom": "1px dashed #000",
+    "rowMarginBottom": "4px"
+  },
+  
+  "table": {
+    "width": "100%",
+    "itemColumnWidth": "58%",
+    "qtyColumnWidth": "14%",
+    "rateColumnWidth": "14%",
+    "totalColumnWidth": "14%",
+    "itemAlign": "left",
+    "qtyAlign": "center",
+    "rateAlign": "right",
+    "totalAlign": "right",
+    "cellPadding": "2px 0",
+    "headerBorderBottom": "1px solid #000",
+    "headerFontWeight": "700"
+  },
+  
+  "gridLayout": {
+    "_comment": "Grid layout for items table (used in agent-service.js and agent-http.js)",
+    "itemColumn": "2fr",
+    "qtyColumn": "0.7fr",
+    "rateColumn": "1fr",
+    "totalColumn": "1fr",
+    "_alternative": "For fixed pixel widths: [140px, 30px, 50px, 60px]"
+  },
+  
+  "fixedWidthLayout": {
+    "_comment": "Fixed pixel widths (used in agent-http.js)",
+    "itemWidth": "140px",
+    "qtyWidth": "30px",
+    "rateWidth": "50px",
+    "totalWidth": "60px"
+  },
+  
+  "items": {
+    "padding": "0 10px",
+    "marginBottom": "1px",
+    "headerPaddingBottom": "2px",
+    "headerMarginBottom": "2px"
+  },
+  
+  "summary": {
+    "borderTop": "1px dashed #000",
+    "paddingTop": "6px",
+    "marginTop": "6px",
+    "rowMarginBottom": "4px",
+    "totalBorderTop": "1px solid #000",
+    "totalPaddingTop": "4px",
+    "totalMarginTop": "4px",
+    "totalFontWeight": "700",
+    "valueMinWidth": "80px"
+  },
+  
+  "footer": {
+    "textAlign": "center",
+    "marginTop": "8px",
+    "paddingTop": "6px",
+    "borderTop": "1px dashed #000",
+    "thanksMargin": "1px 0",
+    "thanksFontWeight": "bold"
+  },
+  
+  "spacing": {
+    "separatorMargin": "4px 0",
+    "sectionMargin": "4px"
+  }
+}
+

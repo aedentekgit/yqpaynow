@@ -1,0 +1,218 @@
+/* Global Button Styles for Theater Canteen QR Order System */
+
+/* Primary Cancel Button Style - Global */
+.cancel-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  background: var(--white);
+  color: var(--text-gray);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  min-height: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cancel-btn:hover {
+  /* ✅ FIX: Removed hover background color - keep original background */
+  /* background: var(--background-light); */
+  border-color: var(--text-gray);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  border-color: var(--primary-color);
+}
+
+.cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  background: var(--gray-100);
+  border-color: var(--gray-200);
+  color: var(--gray-400);
+}
+
+.cancel-btn:disabled:hover {
+  background: var(--gray-100);
+  border-color: var(--gray-200);
+  transform: none;
+  box-shadow: none;
+}
+
+/* Variants */
+.cancel-btn.small {
+  padding: 8px 12px;
+  font-size: 12px;
+  min-height: 36px;
+}
+
+.cancel-btn.large {
+  padding: 16px 24px;
+  font-size: 16px;
+  min-height: 52px;
+}
+
+.cancel-btn.block {
+  width: 100%;
+  flex: none;
+}
+
+.cancel-btn.icon-left {
+  padding-left: 8px;
+}
+
+.cancel-btn.icon-right {
+  padding-right: 8px;
+}
+
+.cancel-btn .icon {
+  width: 16px;
+  height: 16px;
+  margin: 0 4px;
+}
+
+/* Cancel Button with Icon */
+.cancel-btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cancel-btn-with-icon .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Cancel Button in Modal Context */
+.modal-actions .cancel-btn {
+  margin-right: 12px;
+}
+
+.modal-actions .cancel-btn:last-child {
+  margin-right: 0;
+}
+
+/* Loading State for Cancel Button */
+.cancel-btn.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.cancel-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--text-gray);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Secondary Button Style (Alternative Cancel Style) */
+.btn-secondary {
+  background: var(--white);
+  color: var(--text-gray);
+  border: 2px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.btn-secondary:hover {
+  background: var(--background-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  background: var(--gray-100);
+  border-color: var(--gray-200);
+  color: var(--gray-400);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cancel-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+    min-height: 40px;
+  }
+  
+  .cancel-btn.small {
+    padding: 6px 10px;
+    font-size: 11px;
+    min-height: 32px;
+  }
+  
+  .cancel-btn.large {
+    padding: 14px 20px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+  
+  .btn-secondary {
+    padding: 10px 20px;
+    font-size: 13px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cancel-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-height: 36px;
+  }
+  
+  .modal-actions .cancel-btn {
+    margin-right: 8px;
+  }
+}

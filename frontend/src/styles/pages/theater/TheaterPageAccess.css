@@ -1,0 +1,72 @@
+/* TheaterPageAccess Component Styles - Extracted from inline styles */
+
+/* Empty State Icon */
+.theater-page-access-empty-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+
+/* Code Block */
+.theater-page-access-code {
+  background-color: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Toggle Switch - Label */
+.theater-page-access-switch-label {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Toggle Switch - Input */
+.theater-page-access-switch-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Toggle Switch - Slider */
+.theater-page-access-switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+/* Toggle Switch - Slider Inner Circle */
+.theater-page-access-switch-slider-inner {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Toggle Switch - Checked State */
+.theater-page-access-switch-input:checked + .theater-page-access-switch-slider {
+  background-color: #8b5cf6;
+}
+
+.theater-page-access-switch-input:checked + .theater-page-access-switch-slider:before {
+  transform: translateX(26px);
+}
+
+/* Toggle Switch - Focus State */
+.theater-page-access-switch-input:focus + .theater-page-access-switch-slider {
+  box-shadow: 0 0 1px #8b5cf6;
+}
+

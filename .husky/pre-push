@@ -1,0 +1,32 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🚧 Running tests before push..."
+
+# Run Backend Health Check
+echo "🔍 Checking Backend Health..."
+cd backend && npm run test -- tests/health.test.js --silent
+if [ $? -ne 0 ]; then
+  echo "❌ Backend Health Check Failed!"
+  exit 1
+fi
+
+# Run Backend Integration Tests
+echo "🔍 Running Backend Integration Tests..."
+npm run test -- tests/integration/auth.integration.test.js --silent
+if [ $? -ne 0 ]; then
+  echo "❌ Backend Integration Tests Failed!"
+  exit 1
+fi
+cd ..
+
+# Run Frontend Component Tests
+echo "🔍 Running Frontend Tests..."
+cd frontend && npm run test -- --run --silent
+if [ $? -ne 0 ]; then
+  echo "❌ Frontend Tests Failed!"
+  exit 1
+fi
+
+echo "✅ All tests passed! Pushing to repository..."
+exit 0

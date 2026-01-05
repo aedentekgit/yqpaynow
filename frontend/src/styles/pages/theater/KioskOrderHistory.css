@@ -1,0 +1,128 @@
+/* KioskOrderHistory Component Styles - Extracted from inline styles */
+
+/* Loading Container */
+.theater-user-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Excel Download Button - Styles moved to GlobalButtons.css */
+
+.btn-icon-white {
+  color: #ffffff;
+}
+
+/* Table Cell Center */
+.table-cell-center {
+  text-align: center;
+}
+
+/* Action Buttons */
+.action-buttons-flex {
+  gap: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-no-margin {
+  margin: 0;
+}
+
+/* SVG Icons */
+.svg-icon-xs {
+  width: 16px;
+  height: 16px;
+}
+
+.svg-icon-md {
+  width: 20px;
+  height: 20px;
+}
+
+/* Bill Modal Styles - Moved to TheaterGlobalModals.css */
+
+/* Date Filter Button - Styles moved to GlobalButtons.css */
+
+/* Payment Status Badge Styles - Matching OnlineOrderHistory */
+.payment-status-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.badge-success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-pending {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.badge-failed {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Status Badge Styles - Matching OnlineOrderHistory and components.css */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.status-badge.active {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: none;
+}
+
+.status-badge.completed {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: none;
+}
+
+.status-badge.pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: #f59e0b;
+  border: none;
+}
+
+.status-badge.inactive {
+  background: rgba(156, 163, 175, 0.15);
+  color: #6b7280;
+  border: none;
+}
+
+.status-badge.preparing {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border: none;
+}
+

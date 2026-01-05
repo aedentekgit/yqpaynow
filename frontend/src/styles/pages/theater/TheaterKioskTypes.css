@@ -1,0 +1,86 @@
+/* TheaterKioskTypes Component Styles - Extracted from inline styles */
+
+/* Theater Photo Thumbnail */
+.theater-photo-thumb {
+  width: 80px;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+.theater-photo-thumb.no-photo {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+  color: #9ca3af;
+}
+
+/* Required Field Indicator */
+.required-field-indicator {
+  color: red;
+}
+
+/* Form Helper Text */
+.form-helper-text {
+  margin-top: 8px;
+}
+
+/* ImageUpload with helper text spacing */
+.form-group.full-width .form-helper-text {
+  margin-top: 8px;
+}
+
+/* Empty State Center */
+.empty-state-center {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+/* ✅ FIX: Ensure table container only shows horizontal scroll when needed */
+.theater-table-container {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  /* ✅ FIX: Reset any min-width that might force unnecessary scrolling */
+  min-width: 0 !important;
+}
+
+/* ✅ FIX: Ensure table doesn't force horizontal scroll unnecessarily */
+.theater-table-container .theater-table {
+  /* Remove any min-width that might cause unnecessary scrolling */
+  min-width: auto !important;
+  width: 100% !important;
+  table-layout: auto !important;
+}
+
+/* ✅ FIX: On Kiosk Type Management page, ensure no unnecessary horizontal scroll */
+.theater-kiosk-types-page .theater-table-container {
+  overflow-x: auto !important;
+  /* Only show scrollbar when table actually overflows */
+}
+
+.theater-kiosk-types-page .theater-table-container .theater-table {
+  min-width: auto !important;
+  width: 100% !important;
+}
+

@@ -1,0 +1,32 @@
+{
+  "apps": [
+    {
+      "name": "yqpay-backend",
+      "script": "./server.js",
+      "cwd": "./",
+      "instances": 1,
+      "autorestart": true,
+      "watch": false,
+      "max_memory_restart": "1G",
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "error_file": "./logs/backend-error.log",
+      "out_file": "./logs/backend-out.log",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss Z"
+    },
+    {
+      "name": "pos-agent",
+      "script": "./pos-agent/agent.js",
+      "cwd": "./",
+      "instances": 1,
+      "autorestart": true,
+      "watch": false,
+      "max_memory_restart": "512M",
+      "restart_delay": 5000,
+      "error_file": "./logs/pos-agent-error.log",
+      "out_file": "./logs/pos-agent-out.log",
+      "log_date_format": "YYYY-MM-DD HH:mm:ss Z"
+    }
+  ]
+}

@@ -1,0 +1,902 @@
+/* Settings Page Styles - Using Global Design System */
+/* Container styling handled by inline JSX styles for complex layout */
+
+/* Settings Tabs */
+.settings-tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--spacing-sm);
+}
+
+.settings-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-normal);
+}
+
+.settings-tab:hover {
+  background: var(--background-hover);
+  color: var(--text-primary);
+}
+
+.settings-tab.active {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.tab-icon {
+  font-size: var(--font-size-md);
+}
+
+/* Corporate Settings Content - Matching AddTheater Design */
+.settings-content {
+  background: var(--white);
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Corporate Settings Sections - Matching AddTheater Form Sections */
+.settings-section {
+  margin-bottom: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  position: relative;
+}
+
+.settings-section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-color), transparent);
+}
+
+/* Corporate Section Headers - Matching AddTheater Design */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.section-header h3,
+.settings-section h2 {
+  color: var(--text-dark);
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  padding: 0 0 16px 0;
+  position: relative;
+  letter-spacing: -0.025em;
+  border-bottom: none;
+}
+
+.section-header h3::after,
+.settings-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  border-radius: 2px;
+}
+
+/* Corporate Form Grid - Matching AddTheater Design - Two Column Layout */
+.config-grid,
+.settings-section .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+/* Corporate Form Groups - Matching AddTheater Design */
+.config-grid .form-group,
+.settings-section .form-group,
+.settings-section .form-grid .form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.config-grid .form-group.full-width,
+.settings-section .form-group.full-width,
+.settings-section .form-grid .form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Corporate Form Labels - Matching AddTheater Design */
+.config-grid .form-group label,
+.settings-section .form-group label,
+.settings-section .form-grid .form-group label,
+.config-item label {
+  font-weight: 600;
+  color: var(--text-dark, #1e293b);
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+/* Add required asterisk for required fields */
+.config-grid .form-group label[data-required="true"]::after,
+.settings-section .form-group label[data-required="true"]::after,
+.config-grid .form-group label.required::after,
+.settings-section .form-group label.required::after {
+  content: '*';
+  color: var(--error-color);
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+/* Corporate Form Inputs - Matching AddTheater Design */
+.config-grid .form-group input,
+.config-grid .form-group textarea,
+.config-grid .form-group select,
+.settings-section .form-group input,
+.settings-section .form-group textarea,
+.settings-section .form-group select,
+.settings-section .form-grid .form-group input,
+.settings-section .form-grid .form-group textarea,
+.settings-section .form-grid .form-group select,
+.config-item input,
+.config-item select,
+.config-item textarea,
+.form-control {
+  padding: 12px 16px;
+  border: 2px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: var(--white);
+  color: var(--text-dark);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Corporate Form Input Hover - Matching AddTheater Design */
+.config-grid .form-group input:hover,
+.config-grid .form-group textarea:hover,
+.config-grid .form-group select:hover,
+.settings-section .form-group input:hover,
+.settings-section .form-group textarea:hover,
+.settings-section .form-group select:hover,
+.config-item input:hover,
+.config-item select:hover,
+.config-item textarea:hover,
+.form-control:hover {
+  border-color: var(--text-gray);
+}
+
+/* Corporate Form Input Focus - Matching AddTheater Design */
+.config-grid .form-group input:focus,
+.config-grid .form-group textarea:focus,
+.config-grid .form-group select:focus,
+.settings-section .form-group input:focus,
+.settings-section .form-group textarea:focus,
+.settings-section .form-group select:focus,
+.config-item input:focus,
+.config-item select:focus,
+.config-item textarea:focus,
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--shadow-light);
+  background: #fefefe;
+}
+
+/* Status Indicator */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-connected {
+  background: var(--success-light);
+  color: var(--success-dark);
+}
+
+.status-disconnected {
+  background: var(--error-light);
+  color: var(--error-dark);
+}
+
+.status-testing {
+  background: var(--warning-light);
+  color: var(--warning-dark);
+}
+
+/* Corporate Action Buttons - Matching AddTheater Design */
+/* Scoped to settings pages only to prevent CSS leakage to other pages */
+.settings-section .action-buttons,
+.settings-section .form-actions,
+.settings-content .action-buttons,
+.settings-container .action-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Prevent Settings.css styles from affecting table action columns */
+table .action-buttons,
+.theater-table .action-buttons,
+.qr-management-table .action-buttons,
+.data-table .action-buttons,
+.actions-cell .action-buttons,
+.action-cell .action-buttons {
+  border-top: none !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Corporate Primary Button - Matching AddTheater Design */
+/* Scoped to settings pages only */
+.settings-button.primary,
+.settings-section .action-buttons .btn-primary,
+.settings-content .action-buttons .btn-primary,
+.settings-container .action-buttons .btn-primary,
+.settings-section .action-buttons button[variant="primary"],
+.settings-content .action-buttons button[variant="primary"],
+.settings-container .action-buttons button[variant="primary"] {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  border: none;
+  padding: 16px 48px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.settings-button.primary::before,
+.settings-section .action-buttons .btn-primary::before,
+.settings-content .action-buttons .btn-primary::before,
+.settings-container .action-buttons .btn-primary::before,
+.settings-section .action-buttons button[variant="primary"]::before,
+.settings-content .action-buttons button[variant="primary"]::before,
+.settings-container .action-buttons button[variant="primary"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.settings-button.primary:hover:not(:disabled)::before,
+.settings-section .action-buttons .btn-primary:hover:not(:disabled)::before,
+.settings-content .action-buttons .btn-primary:hover:not(:disabled)::before,
+.settings-container .action-buttons .btn-primary:hover:not(:disabled)::before,
+.settings-section .action-buttons button[variant="primary"]:hover:not(:disabled)::before,
+.settings-content .action-buttons button[variant="primary"]:hover:not(:disabled)::before,
+.settings-container .action-buttons button[variant="primary"]:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.settings-button.primary:hover:not(:disabled),
+.settings-section .action-buttons .btn-primary:hover:not(:disabled),
+.settings-content .action-buttons .btn-primary:hover:not(:disabled),
+.settings-container .action-buttons .btn-primary:hover:not(:disabled),
+.settings-section .action-buttons button[variant="primary"]:hover:not(:disabled),
+.settings-content .action-buttons button[variant="primary"]:hover:not(:disabled),
+.settings-container .action-buttons button[variant="primary"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-primary);
+}
+
+/* Corporate Secondary Button - Matching AddTheater Design */
+/* Scoped to settings pages only */
+.settings-button.secondary,
+.settings-section .action-buttons .btn-secondary,
+.settings-content .action-buttons .btn-secondary,
+.settings-container .action-buttons .btn-secondary,
+.settings-section .action-buttons button[variant="secondary"],
+.settings-content .action-buttons button[variant="secondary"],
+.settings-container .action-buttons button[variant="secondary"] {
+  background: var(--white);
+  color: var(--text-dark);
+  border: 1.5px solid var(--border-color);
+  padding: 14px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.settings-button.secondary:hover,
+.settings-section .action-buttons .btn-secondary:hover,
+.settings-content .action-buttons .btn-secondary:hover,
+.settings-container .action-buttons .btn-secondary:hover,
+.settings-section .action-buttons button[variant="secondary"]:hover,
+.settings-content .action-buttons button[variant="secondary"]:hover,
+.settings-container .action-buttons button[variant="secondary"]:hover {
+  background: var(--background-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Generic Settings Button */
+.settings-button {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Corporate Error States - Matching AddTheater Design */
+.form-group input.error,
+.form-group textarea.error,
+.config-item input.error,
+.config-item textarea.error {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 6px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.error-message::before {
+  content: '⚠';
+  margin-right: 6px;
+  font-size: 0.75rem;
+}
+
+/* Corporate File Upload - Matching AddTheater Design */
+.upload-area,
+.file-input {
+  position: relative;
+  cursor: pointer;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background: var(--background-light);
+  transition: all 0.2s ease;
+}
+
+.upload-area:hover,
+.file-input:hover {
+  border-color: var(--primary-color);
+  background: var(--background-light);
+}
+
+.upload-area.dragover {
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+}
+
+.file-input::-webkit-file-upload-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+}
+
+.file-input::-webkit-file-upload-button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+}
+
+.form-group small,
+.config-item small {
+  color: var(--text-gray);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Preview Images */
+.image-preview {
+  max-width: 200px;
+  max-height: 150px;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+  object-fit: cover;
+}
+
+/* Corporate Responsive Design - Matching AddTheater Design */
+@media (max-width: 1024px) {
+  .config-grid,
+  .settings-section .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .settings-content {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .settings-content {
+    padding: 20px 16px;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .settings-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    gap: 8px;
+    /* Enable smooth scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-light);
+  }
+
+  .settings-tabs::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .settings-tabs::-webkit-scrollbar-track {
+    background: var(--background-light);
+  }
+
+  .settings-tabs::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+  }
+
+  .settings-tab {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    min-width: fit-content;
+  }
+
+  .tab-icon {
+    font-size: 16px;
+  }
+  
+  .config-grid,
+  .settings-section .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-header h3,
+  .settings-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+
+  .settings-section {
+    margin-bottom: 32px;
+  }
+
+  .settings-section:not(:last-child)::after {
+    bottom: -16px;
+  }
+  
+  .settings-section .action-buttons,
+  .settings-content .action-buttons,
+  .settings-container .action-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+  
+  .settings-button.primary,
+  .settings-button.secondary,
+  .settings-section .action-buttons .btn-primary,
+  .settings-content .action-buttons .btn-primary,
+  .settings-container .action-buttons .btn-primary,
+  .settings-section .action-buttons .btn-secondary,
+  .settings-content .action-buttons .btn-secondary,
+  .settings-container .action-buttons .btn-secondary,
+  .settings-section .action-buttons button[variant="primary"],
+  .settings-content .action-buttons button[variant="primary"],
+  .settings-container .action-buttons button[variant="primary"],
+  .settings-section .action-buttons button[variant="secondary"],
+  .settings-content .action-buttons button[variant="secondary"],
+  .settings-container .action-buttons button[variant="secondary"] {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 0.9rem;
+  }
+
+  /* Form inputs responsive */
+  .config-grid .form-group input,
+  .settings-section .form-group input,
+  .settings-section .form-grid .form-group input,
+  .config-item input,
+  .form-control {
+    padding: 11px 14px;
+    font-size: 14px;
+  }
+
+  .config-grid .form-group label,
+  .settings-section .form-group label,
+  .config-item label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  /* Provider config responsive */
+  .provider-config,
+  .otp-settings {
+    padding: 1.25rem;
+    margin: 1.25rem 0;
+  }
+
+  .provider-config h3,
+  .otp-settings h3 {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Info grid responsive */
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-container {
+    padding: 0;
+  }
+
+  .settings-content {
+    padding: 16px 12px;
+  }
+
+  .settings-tabs {
+    gap: 6px;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+  }
+
+  .settings-tab {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .tab-icon {
+    font-size: 14px;
+  }
+
+  .config-grid,
+  .settings-section .form-grid {
+    gap: 14px;
+  }
+
+  .section-header {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h3,
+  .settings-section h2 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .settings-section {
+    margin-bottom: 24px;
+  }
+
+  .settings-section:not(:last-child)::after {
+    bottom: -12px;
+  }
+
+  .settings-section .action-buttons,
+  .settings-content .action-buttons,
+  .settings-container .action-buttons {
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+
+  .settings-button.primary,
+  .settings-button.secondary,
+  .settings-section .action-buttons .btn-primary,
+  .settings-content .action-buttons .btn-primary,
+  .settings-container .action-buttons .btn-primary,
+  .settings-section .action-buttons .btn-secondary,
+  .settings-content .action-buttons .btn-secondary,
+  .settings-container .action-buttons .btn-secondary {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+  }
+
+  /* Form inputs small mobile */
+  .config-grid .form-group input,
+  .settings-section .form-group input,
+  .settings-section .form-grid .form-group input,
+  .config-item input,
+  .form-control {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .config-grid .form-group label,
+  .settings-section .form-group label,
+  .config-item label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  /* Provider config small mobile */
+  .provider-config,
+  .otp-settings {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .provider-config h3,
+  .otp-settings h3 {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-section {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .info-section h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .settings-content {
+    padding: 12px 10px;
+  }
+
+  .settings-tabs {
+    gap: 4px;
+    padding-bottom: 8px;
+  }
+
+  .settings-tab {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .tab-icon {
+    font-size: 12px;
+  }
+
+  .section-header h3,
+  .settings-section h2 {
+    font-size: 1.05rem;
+  }
+
+  .settings-button.primary,
+  .settings-button.secondary {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+  }
+
+  .config-grid .form-group input,
+  .settings-section .form-group input,
+  .form-control {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Provider configuration sections */
+.provider-config,
+.otp-settings {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.provider-config h3,
+.otp-settings h3 {
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #8b5cf6;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Checkbox styling */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #374151;
+}
+
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  accent-color: #8b5cf6;
+  cursor: pointer;
+}
+
+.checkbox-text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Info section styling */
+.info-section {
+  background: #fafbfc;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-top: 2rem;
+}
+
+.info-section h4 {
+  color: #2d3748;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item span:first-child {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.info-item span:last-child {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Help text for all sections */
+.help-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* File info text */
+.file-info {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 500;
+}
+
+/* Logo upload container styling */
+.logo-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.current-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Full width form groups */
+.form-group.full-width {
+  grid-column: 1 / -1;
+}

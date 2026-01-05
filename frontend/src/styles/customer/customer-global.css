@@ -1,0 +1,465 @@
+/* ============================================
+   CUSTOMER PAGES - GLOBAL STYLES & SAFE AREA FIXES
+   This ensures ALL customer pages have consistent design
+   and proper iOS safe area support
+   ============================================ */
+
+/* ===== GLOBAL STATUS BAR BACKGROUND ===== */
+/* Purple gradient background for status bar area on ALL customer pages */
+/* SOLUTION: Use CSS custom properties and ensure consistent background across all elements */
+
+/* Root level - set the status bar color globally */
+:root {
+  --status-bar-bg: linear-gradient(135deg, #6B0E9B 0%, #5A0C82 100%);
+  --status-bar-height: env(safe-area-inset-top, 0px);
+}
+
+/* Default body/html should be white - Apply first */
+body {
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global body background - ALWAYS purple for customer pages ONLY */
+/* Use class-based selector for better browser compatibility */
+body.customer-page-active,
+body:has(.customer-landing),
+body:has(.customer-home),
+body:has(.customer-cart),
+body:has(.customer-checkout),
+body:has(.customer-history),
+body:has(.customer-profile),
+body:has([class*="customer-"]) {
+  background: var(--status-bar-bg) !important;
+}
+
+html.customer-page-active,
+html:has(body:has(.customer-landing)),
+html:has(body:has(.customer-home)),
+html:has(body:has(.customer-cart)),
+html:has(body:has(.customer-checkout)),
+html:has(body:has(.customer-history)),
+html:has(body:has(.customer-profile)),
+html:has(body:has([class*="customer-"])) {
+  background: var(--status-bar-bg) !important;
+}
+
+/* Fixed status bar overlay for all customer pages */
+.customer-landing::before,
+.customer-home::before,
+.customer-cart::before,
+.customer-checkout::before,
+.customer-history::before,
+.customer-profile::before,
+.cart-page::before,
+.checkout-page::before,
+.payment-page::before,
+[class*="customer-"]::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--status-bar-height);
+  background: var(--status-bar-bg);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* ===== GLOBAL SAFE AREA SUPPORT ===== */
+/* Apply to all customer pages */
+body:has(.customer-landing),
+body:has(.customer-home),
+body:has(.customer-cart),
+body:has(.customer-checkout),
+body:has(.customer-history),
+body:has(.customer-profile),
+body:has([class*="customer-"]) {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== HIDE VERTICAL SCROLLBAR (CUSTOMER PAGES) =====
+   Keep scrolling enabled, just hide the visible scrollbar on mobile */
+@media (max-width: 768px) {
+  body.customer-page-active,
+  html.customer-page-active,
+  body:has(.customer-landing),
+  body:has(.customer-home),
+  body:has(.customer-cart),
+  body:has(.customer-checkout),
+  body:has(.customer-history),
+  body:has(.customer-profile),
+  body:has([class*="customer-"]),
+  html:has(body:has([class*="customer-"])) {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge legacy */
+  }
+
+  body.customer-page-active::-webkit-scrollbar,
+  html.customer-page-active::-webkit-scrollbar,
+  body:has(.customer-landing)::-webkit-scrollbar,
+  body:has(.customer-home)::-webkit-scrollbar,
+  body:has(.customer-cart)::-webkit-scrollbar,
+  body:has(.customer-checkout)::-webkit-scrollbar,
+  body:has(.customer-history)::-webkit-scrollbar,
+  body:has(.customer-profile)::-webkit-scrollbar,
+  body:has([class*="customer-"])::-webkit-scrollbar,
+  html:has(body:has([class*="customer-"]))::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+/* ===== CUSTOMER PAGE CONTAINERS ===== */
+/* Base styles for all customer page containers */
+.customer-landing,
+.customer-home,
+.customer-cart,
+.customer-checkout,
+.customer-history,
+.customer-profile,
+[class*="customer-page"] {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== PURPLE THEME PAGES (Landing, etc.) ===== */
+/* Pages with dark purple background */
+.customer-landing {
+  background: linear-gradient(145deg, #2D1B52 0%, #1A0B2E 50%, #0F051A 100%);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===== WHITE THEME PAGES (Home, Cart, Checkout, etc.) ===== */
+/* Pages with white background */
+.customer-home,
+.customer-cart,
+.customer-checkout,
+.customer-history,
+.customer-profile {
+  background: #ffffff;
+  /* No safe-area padding here - let fixed header/footer handle it */
+}
+
+/* ===== GLOBAL HEADER STYLES (Except Home) ===== */
+/* Standard header for all pages except Home which has its own custom header */
+.customer-header:not(.customer-home .customer-header) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 20px 20px 10px;
+  padding-top: calc(env(safe-area-inset-top) + 20px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== GLOBAL MAIN CONTENT AREA ===== */
+/* Content area spacing for fixed headers */
+.customer-main {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Main content with fixed header (except Home page) */
+.customer-cart .customer-main,
+.customer-checkout .customer-main,
+.customer-history .customer-main,
+.customer-profile .customer-main {
+  padding-top: 100px; /* Space for standard fixed header */
+  padding-bottom: 120px; /* Space for bottom buttons/nav */
+  padding-bottom: calc(100px + env(safe-area-inset-bottom));
+}
+
+/* ===== GLOBAL BOTTOM NAVIGATION/BUTTONS ===== */
+/* Fixed bottom elements (cart buttons, navigation, etc.) */
+.floating-cart-button,
+.fixed-bottom-button,
+.customer-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  padding: 16px 20px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+/* For transparent bottom buttons (like on Home page) */
+.floating-cart-button.transparent {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+  box-shadow: none;
+}
+
+/* ===== GLOBAL COLOR VARIABLES ===== */
+/* Consistent colors across all customer pages */
+:root {
+  /* Customer Primary Colors - AddTheater Purple Theme */
+  --customer-primary: #6B0E9B;
+  --customer-primary-dark: #5A0C82;
+  --customer-primary-light: #7C1BAB;
+  
+  /* Customer Background Colors */
+  --customer-bg-white: #ffffff;
+  --customer-bg-light: #fafafa;
+  --customer-bg-subtle: #f5f5f5;
+  
+  /* Customer Text Colors */
+  --customer-text-dark: #1f2937;
+  --customer-text-medium: #4b5563;
+  --customer-text-light: #9ca3af;
+  
+  /* Customer Border Colors */
+  --customer-border: #e5e7eb;
+  --customer-border-light: #f3f4f6;
+  
+  /* Customer Shadow Effects */
+  --customer-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --customer-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --customer-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --customer-shadow-primary: 0 4px 16px rgba(107, 14, 155, 0.3);
+  
+  /* Customer Gradients - AddTheater Style */
+  --customer-gradient-primary: linear-gradient(135deg, #6B0E9B 0%, #5A0C82 100%);
+  --customer-gradient-primary-hover: linear-gradient(135deg, #7C1BAB 0%, #6B0E9B 100%);
+}
+
+/* ===== GLOBAL BACK BUTTON STYLES ===== */
+/* Standardized back button for ALL customer pages */
+.back-button {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.back-button:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Standardized SVG icon inside back button - GLOBAL */
+.back-button svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ===== GLOBAL BUTTON STYLES ===== */
+/* Primary buttons across all customer pages */
+.customer-btn-primary,
+.view-cart-btn,
+.checkout-btn,
+.order-button {
+  background: var(--customer-gradient-primary);
+  color: white;
+  border: none;
+  padding: 16px 48px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--customer-shadow-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-btn-primary:hover,
+.view-cart-btn:hover,
+.checkout-btn:hover,
+.order-button:hover {
+  background: var(--customer-gradient-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 14, 155, 0.4);
+}
+
+.customer-btn-primary:active,
+.view-cart-btn:active,
+.checkout-btn:active,
+.order-button:active {
+  transform: translateY(0);
+}
+
+/* ===== GLOBAL QUANTITY BUTTONS ===== */
+/* Plus/Minus buttons for product quantities */
+.quantity-btn.plus,
+.quantity-btn.plus-only,
+.cart-control-btn.plus {
+  background: var(--customer-gradient-primary);
+  color: white;
+  box-shadow: var(--customer-shadow-primary);
+}
+
+.quantity-btn.plus:hover,
+.quantity-btn.plus-only:hover,
+.cart-control-btn.plus:hover {
+  background: var(--customer-gradient-primary-hover);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.4);
+}
+
+/* ===== GLOBAL CARD STYLES ===== */
+/* Product cards, cart items, etc. */
+.product-card,
+.cart-item-card,
+.customer-card {
+  background: white;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: var(--customer-shadow-md);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover,
+.cart-item-card:hover,
+.customer-card:hover {
+  box-shadow: var(--customer-shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ===== GLOBAL LOADING STATES ===== */
+.customer-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.customer-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e5e7eb;
+  border-top-color: var(--customer-primary);
+  border-radius: 50%;
+  animation: customerSpin 0.8s linear infinite;
+}
+
+@keyframes customerSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== GLOBAL ANIMATIONS ===== */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .customer-header:not(.customer-home .customer-header) {
+    padding: 15px 16px 8px;
+    padding-top: calc(env(safe-area-inset-top) + 15px);
+  }
+  
+  .floating-cart-button,
+  .fixed-bottom-button {
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+  
+  .customer-btn-primary,
+  .view-cart-btn,
+  .checkout-btn {
+    padding: 14px 32px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.customer-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.customer-section {
+  padding: 20px 16px;
+}
+
+.customer-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--customer-border-light);
+  margin: 20px 0;
+}
+
+/* ===== TEXT ALIGNMENT ===== */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* ===== SPACING UTILITIES ===== */
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.p-10 { padding: 10px; }
+.p-20 { padding: 20px; }
+

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Printer Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button.secondary {
+            background: #2196F3;
+        }
+        button.secondary:hover {
+            background: #0b7dda;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 100px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .info {
+            color: blue;
+        }
+        input, select {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖨️ POS Printer Test Tool</h1>
+        
+        <div class="test-section">
+            <h2>1. Test Print via Backend API</h2>
+            <p>This triggers a test print through the backend server.</p>
+            
+            <label>Theater ID:</label>
+            <input type="text" id="theaterId" value="69187242a930005bb7b01269" />
+            
+            <label>Order Number:</label>
+            <input type="text" id="orderNumber" value="ORD-TEST-001" />
+            
+            <label>Total Amount:</label>
+            <input type="number" id="totalAmount" value="150.00" step="0.01" />
+            
+            <label>Items (comma separated):</label>
+            <input type="text" id="items" value="COCA COLA x1, POPCORN x2" />
+            
+            <button onclick="testPrintViaAPI()">🖨️ Test Print via API</button>
+            <button class="secondary" onclick="testPrintViaSSE()">📡 Test Print via SSE Broadcast</button>
+        </div>
+
+        <div class="test-section">
+            <h2>2. Direct Browser Print</h2>
+            <p>This uses the browser's print dialog (alternative method).</p>
+            <button class="secondary" onclick="testBrowserPrint()">🖨️ Test Browser Print</button>
+        </div>
+
+        <div class="test-section">
+            <h2>3. Test Order Creation</h2>
+            <p>Creates a real POS order that should trigger auto-print.</p>
+            <button onclick="createTestOrder()">🛒 Create Test POS Order</button>
+        </div>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080';
+        let token = null;
+
+        function log(message, type = 'info') {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : 'info';
+            output.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span>\n`;
+            output.scrollTop = output.scrollHeight;
+        }
+
+        async function login() {
+            try {
+                log('🔐 Logging in...', 'info');
+                const response = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: 'admin@yqpaynow.com',
+                        password: 'admin123'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Login failed: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                token = data.token;
+                log('✅ Logged in successfully', 'success');
+                return token;
+            } catch (error) {
+                log(`❌ Login error: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+
+        async function testPrintViaAPI() {
+            try {
+                log('========================================', 'info');
+                log('🖨️ Starting Print Test via API...', 'info');
+                
+                if (!token) {
+                    await login();
+                }
+
+                const theaterId = document.getElementById('theaterId').value;
+                const orderNumber = document.getElementById('orderNumber').value;
+                const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+                const itemsText = document.getElementById('items').value;
+                
+                const items = itemsText.split(',').map(item => {
+                    const parts = item.trim().split(' x');
+                    return {
+                        productName: parts[0],
+                        quantity: parts[1] ? parseInt(parts[1]) : 1,
+                        unitPrice: totalAmount / itemsText.split(',').length
+                    };
+                });
+
+                const testOrder = {
+                    orderNumber: orderNumber,
+                    theaterId: theaterId,
+                    items: items,
+                    pricing: {
+                        total: totalAmount
+                    },
+                    createdAt: new Date().toISOString()
+                };
+
+                log(`📤 Sending print request for order ${orderNumber}...`, 'info');
+                log(`   Theater: ${theaterId}`, 'info');
+                log(`   Total: ₹${totalAmount}`, 'info');
+
+                // This would be a custom endpoint you'd need to add to trigger printing
+                const response = await fetch(`${API_BASE}/api/pos/test-print`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        theaterId: theaterId,
+                        order: testOrder
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Print request failed: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                log('✅ Print request sent successfully!', 'success');
+                log(`   Response: ${JSON.stringify(result)}`, 'info');
+                
+            } catch (error) {
+                log(`❌ Print test failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testPrintViaSSE() {
+            try {
+                log('========================================', 'info');
+                log('📡 Starting SSE Broadcast Test...', 'info');
+                
+                if (!token) {
+                    await login();
+                }
+
+                const theaterId = document.getElementById('theaterId').value;
+                const orderNumber = document.getElementById('orderNumber').value;
+
+                log(`📤 Broadcasting SSE event to theater ${theaterId}...`, 'info');
+
+                const response = await fetch(`${API_BASE}/api/pos/broadcast-test`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        theaterId: theaterId,
+                        type: 'pos_order',
+                        event: 'created',
+                        orderId: orderNumber
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Broadcast failed: ${response.status} ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                log('✅ SSE broadcast sent!', 'success');
+                log(`   Agents notified: ${result.agentsNotified || 0}`, 'info');
+                
+            } catch (error) {
+                log(`❌ SSE broadcast failed: ${error.message}`, 'error');
+            }
+        }
+
+        function testBrowserPrint() {
+            log('========================================', 'info');
+            log('🖨️ Opening browser print dialog...', 'info');
+            
+            const printWindow = window.open('', '_blank');
+            const orderNumber = document.getElementById('orderNumber').value;
+            const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+            const itemsText = document.getElementById('items').value;
+            
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Print Test - ${orderNumber}</title>
+                    <style>
+                        body { font-family: monospace; padding: 20px; }
+                        h1 { text-align: center; }
+                        hr { border: 1px dashed #000; }
+                        .total { font-size: 18px; font-weight: bold; }
+                    </style>
+                </head>
+                <body>
+                    <h1>YQ PAY - THEATER POS</h1>
+                    <hr>
+                    <p><strong>Order:</strong> ${orderNumber}</p>
+                    <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+                    <hr>
+                    ${itemsText.split(',').map(item => `<p>${item.trim()}</p>`).join('')}
+                    <hr>
+                    <p class="total">TOTAL: ₹${totalAmount.toFixed(2)}</p>
+                    <hr>
+                    <p style="text-align: center;">Thank you!</p>
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            setTimeout(() => {
+                printWindow.print();
+                log('✅ Browser print dialog opened', 'success');
+            }, 500);
+        }
+
+        async function createTestOrder() {
+            try {
+                log('========================================', 'info');
+                log('🛒 Creating test POS order...', 'info');
+                
+                if (!token) {
+                    await login();
+                }
+
+                const theaterId = document.getElementById('theaterId').value;
+                const totalAmount = parseFloat(document.getElementById('totalAmount').value);
+                
+                // First, get a real product from the theater
+                log('📦 Fetching products from theater...', 'info');
+                const productsResponse = await fetch(`${API_BASE}/api/theater-products/${theaterId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!productsResponse.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                
+                const productsData = await productsResponse.json();
+                const products = productsData.data || productsData.products || [];
+                
+                if (products.length === 0) {
+                    throw new Error('No products found in theater. Please add products first.');
+                }
+                
+                // Use the first available product
+                const product = products[0];
+                log(`✅ Using product: ${product.name}`, 'success');
+                
+                const orderData = {
+                    theaterId: theaterId,
+                    customerName: "Test Customer",
+                    items: [
+                        {
+                            productId: product._id,
+                            quantity: 1,
+                            unitPrice: product.sellingPrice || totalAmount,
+                            taxRate: product.taxRate || 0,
+                            gstType: product.gstType || "EXCLUDE",
+                            discountPercentage: 0
+                        }
+                    ],
+                    orderNotes: "Test order for auto-print",
+                    paymentMethod: "cash",
+                    orderType: "pos",
+                    source: "pos",
+                    subtotal: product.sellingPrice || totalAmount,
+                    tax: 0,
+                    totalDiscount: 0,
+                    total: product.sellingPrice || totalAmount
+                };
+
+                log('📤 Sending order to backend...', 'info');
+
+                const response = await fetch(`${API_BASE}/api/orders/theater`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Order creation failed: ${response.status} - ${errorText}`);
+                }
+
+                const result = await response.json();
+                log('✅ Order created successfully!', 'success');
+                log(`   Order ID: ${result.order?._id || 'N/A'}`, 'info');
+                log(`   Order Number: ${result.order?.orderNumber || 'N/A'}`, 'info');
+                log('   📨 POS agent should receive the order now!', 'success');
+                log('   Check the POS agent window for the print notification', 'info');
+                
+            } catch (error) {
+                log(`❌ Order creation failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-login on page load
+        window.addEventListener('load', () => {
+            log('🚀 POS Printer Test Tool Ready', 'success');
+            log('Click any button to test printing', 'info');
+            log('========================================', 'info');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "name": "yqpay-root",
+    "private": true,
+    "scripts": {
+        "prepare": "husky install",
+        "test:backend": "cd backend && npm test",
+        "test:frontend": "cd frontend && npm test"
+    },
+    "devDependencies": {
+        "husky": "^8.0.0"
+    }
+}

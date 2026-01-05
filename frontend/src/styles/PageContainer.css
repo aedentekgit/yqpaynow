@@ -1,0 +1,288 @@
+/* Global Page Container Styles */
+.page-container {
+  padding: 0;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  background: var(--background-light);
+  min-height: calc(100vh - 80px);
+}
+
+/* Main Container */
+.page-main-container {
+  background: var(--white);
+  margin: 0;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+}
+
+/* Header Section */
+.page-header {
+  background: linear-gradient(135deg, var(--primary-color, #673AB7) 0%, var(--primary-dark, #5A0C82) 100%) !important;
+  color: var(--white, #ffffff) !important;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+/* Force dark purple header - Maximum specificity to override any other styles */
+.page-container .page-main-container .page-header,
+div.page-container div.page-main-container div.page-header,
+.page-main-container .page-header,
+body .page-container .page-main-container .page-header,
+html body .page-container .page-main-container .page-header {
+  background: linear-gradient(135deg, #673AB7 0%, #5A0C82 100%) !important;
+  background: linear-gradient(135deg, var(--primary-color, #673AB7) 0%, var(--primary-dark, #5A0C82) 100%) !important;
+  color: #ffffff !important;
+  color: var(--white, #ffffff) !important;
+}
+
+/* Vertical Header Layout - Force vertical structure */
+.vertical-header {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 20px !important;
+}
+
+.vertical-header .header-content {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.vertical-header .header-button {
+  align-self: flex-end !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure back button is separate from title in vertical layout */
+.vertical-header .back-button-container {
+  margin-bottom: 8px !important;
+}
+
+.vertical-header h1 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Custom vertical header styles moved to VerticalPageHeader component */
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.header-content {
+  z-index: 1;
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.025em;
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.header-button {
+  z-index: 1;
+}
+
+/* Back Button Styles */
+.back-button-container {
+  margin-bottom: 16px;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(-2px);
+}
+
+.back-btn:active {
+  transform: translateX(-1px);
+}
+
+/* Header Date Filter Button in Banner */
+.page-header .header-date-filter-btn-in-banner {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.page-header .header-date-filter-btn-in-banner:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.page-header .header-date-filter-btn-in-banner:active {
+  transform: scale(0.98);
+}
+
+/* Header Button Styles */
+.page-header .header-btn {
+  background: var(--white);
+  color: var(--primary-color);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.page-header .header-btn:hover {
+  background: var(--background-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.page-header .btn-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Content Section */
+.page-content {
+  background: transparent;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+  padding-bottom: 40px;
+}
+
+/* Content Filters Section */
+.page-filters {
+  background: transparent;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 30px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Content Main Section */
+.page-main-content {
+  background: transparent;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+/* Form Container */
+.page-form-container {
+  padding: 30px;
+  background: transparent;
+}
+
+/* Table Container */
+.page-table-container {
+  background: transparent;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+/* Extracted Inline Styles */
+.page-header-gradient {
+  background: linear-gradient(135deg, #673AB7 0%, #5A0C82 100%);
+  color: #ffffff;
+}
+
+.svg-icon-back {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .header-content h1 {
+    font-size: 2rem;
+  }
+
+  .page-filters {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .page-form-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .page-header {
+    padding: 20px 15px;
+  }
+}

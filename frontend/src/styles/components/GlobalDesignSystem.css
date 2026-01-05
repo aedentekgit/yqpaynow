@@ -1,0 +1,10 @@
+/* GlobalDesignSystem Component Styles - Extracted from inline styles */
+
+/* Table Header Width (dynamic width remains inline) */
+/* Note: Column width is dynamic based on column.width prop, so it remains inline */
+
+/* Margin Left Auto */
+.global-design-margin-left-auto {
+  margin-left: auto;
+}
+

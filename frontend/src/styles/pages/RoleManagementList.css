@@ -1,0 +1,86 @@
+/* RoleManagementList Component Styles - Extracted from inline styles */
+
+/* SVG Icon Sizes */
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+}
+
+.svg-icon-lg {
+  width: 48px;
+  height: 48px;
+}
+
+/* SVG Icon Colors */
+.svg-icon-gray {
+  color: var(--text-gray);
+}
+
+.svg-icon-purple {
+  color: #8b5cf6;
+}
+
+/* Table Empty Cell */
+.table-empty-center {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .table-empty-center {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+  
+  .svg-icon-md {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .svg-icon-lg {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Small Mobile (640px and below) */
+@media (max-width: 640px) {
+  .table-empty-center {
+    padding: 14px 10px;
+    font-size: 13px;
+  }
+  
+  .svg-icon-md {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .svg-icon-lg {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Extra Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .table-empty-center {
+    padding: 12px 8px;
+    font-size: 12px;
+  }
+  
+  .svg-icon-md {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .svg-icon-lg {
+    width: 36px;
+    height: 36px;
+  }
+}
+

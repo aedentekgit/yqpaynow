@@ -1,0 +1,490 @@
+/* QRGenerate Component Styles - Extracted from inline styles */
+
+/* Loading Select Skeleton */
+.loading-select {
+  height: 40px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Preview Image */
+.preview-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.preview-image-hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.preview-image-visible {
+  display: block;
+  visibility: visible;
+}
+
+/* QR Generate Container */
+.qr-generate-container {
+  display: flex;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 20px 100px 20px;
+}
+
+.qr-generate-form-wrapper {
+  flex: 2;
+  min-width: 0;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.qr-generate-form {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.form-section-mui {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* SVG Icon Small */
+.svg-icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+/* Loading Spinner Inline */
+.loading-spinner-inline {
+  margin-right: 8px;
+}
+
+/* QR Preview Wrapper */
+.qr-preview-wrapper {
+  flex: 0 0 450px;
+  min-width: 450px;
+  max-width: 450px;
+  margin-top: 0;
+  /* padding-top: 0; */
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  height: fit-content;
+}
+
+/* QR Preview Container */
+.qr-preview-container {
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.qr-preview-container-portrait {
+  overflow-y: visible;
+}
+
+/* QR Preview Title */
+.qr-preview-title {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+/* QR Orientation Toggle */
+.qr-orientation-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.orientation-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #6B7280;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.orientation-btn.active {
+  border-color: #8B5CF6;
+  background: #8B5CF6;
+  color: #FFFFFF;
+}
+
+/* QR Preview Card Base */
+.qr-preview-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  will-change: transform;
+  contain: layout style paint;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.qr-preview-card.portrait {
+  border-radius: 20px;
+  padding: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0px;
+  width: 280px;
+  max-width: 280px;
+  max-height: calc(100vh - 200px);
+  overflow: hidden;
+}
+
+.qr-preview-card.landscape {
+  border-radius: 12px;
+  padding: 16px 16px 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* QR Code Container */
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0 6px 0;
+  flex-shrink: 0;
+  contain: layout style;
+}
+
+.qr-code-box {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #F3F4F6;
+  min-height: 150px;
+  max-height: 150px;
+  flex-shrink: 0;
+  contain: layout style paint;
+}
+
+.qr-code-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9FAFB;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.qr-code-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #E5E7EB;
+  border-top: 3px solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.qr-code-loading-spinner-small {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #E5E7EB;
+  border-top: 3px solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.qr-canvas {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  flex-shrink: 0;
+  contain: strict;
+}
+
+.qr-canvas-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Food Icons Container */
+.food-icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2px 20px;
+  flex-shrink: 0;
+  min-height: 150px;
+  position: relative;
+  contain: layout style;
+}
+
+.food-icons-container-landscape {
+  min-height: 120px;
+  max-height: 120px;
+  height: 120px;
+}
+
+.food-icon-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.food-icon-image-hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.food-icon-image-visible {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Theater Name Container */
+.theater-name-container {
+  text-align: center;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+  border-top: 1px solid #F3F4F6;
+  contain: layout style;
+}
+
+/* Theater Name at Top (for portrait layout) */
+.theater-name-container-top {
+  text-align: center;
+  width: 100%;
+  padding: 4px 8px 8px 8px;
+  flex-shrink: 0;
+  margin: 0;
+  contain: layout style;
+}
+
+.theater-name-text-top {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.theater-name-container-landscape {
+  position: absolute;
+  bottom: 8px;
+  left: 0px;
+  right: 0px;
+  padding: 0 16px 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.theater-name-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.theater-name-text-landscape {
+  font-size: 0.85rem;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+/* "ORDER YOUR FOOD HERE" Text - Between QR and Icons */
+.qr-order-text-container {
+  text-align: center;
+  width: 100%;
+  padding: 6px 8px 2px 8px;
+  flex-shrink: 0;
+  margin: 0;
+  contain: layout style;
+}
+
+.qr-order-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* "Scan | Order | Pay" Text - Below Icons */
+.qr-scan-text-container {
+  text-align: center;
+  width: 100%;
+  padding: 8px 8px 4px 8px;
+  flex-shrink: 0;
+  margin: 0;
+  contain: layout style;
+}
+
+.qr-scan-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* QR Preview QR Section */
+.qr-preview-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  contain: layout style;
+}
+
+/* QR Preview Content */
+.qr-preview-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  contain: layout style;
+}
+
+.qr-food-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  contain: layout style;
+}
+
+/* Landscape Layout Row */
+.landscape-layout-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+  padding-top: 12px;
+  padding-bottom: 32px;
+  position: relative;
+  min-height: 180px;
+  contain: layout style;
+}
+
+/* Performance Monitor */
+.performance-monitor {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  z-index: 9999;
+  font-family: monospace;
+}
+
+/* Progress Bar Fill (Dynamic - keep inline) */
+.progress-bar-fill {
+  /* Dynamic width remains inline */
+}
+

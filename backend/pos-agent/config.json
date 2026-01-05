@@ -1,0 +1,106 @@
+{
+  "backendUrl": "https://yqpaynow.com",
+  "agents": [
+    {
+      "label": "Main POS Counter",
+      "username": "admin@yqpaynow.com",
+      "password": "admin123"
+    },
+    {
+      "username": "yq01sabari",
+      "password": "admin123",
+      "theaterId": "691a9fe1326aa3c817167895",
+      "label": "Guru",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01sabari",
+      "password": "admin123",
+      "theaterId": "691cb3848ea0149fb40fd1a3",
+      "label": "YQPayNow Theater",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01sabari",
+      "password": "admin123",
+      "theaterId": "691d4f658fc4586d293276c0",
+      "label": "Sabarish T",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01sabari",
+      "password": "admin123",
+      "theaterId": "691dd49704b9ed2eb0c196fa",
+      "label": "Sabarish",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq03sabari",
+      "password": "admin123",
+      "theaterId": "691e0eba0009a6fe1bb478b8",
+      "label": "Guru Cinemas1",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01sabari",
+      "password": "admin123",
+      "theaterId": "692844b9c97738b102890f6d",
+      "label": "Guru Theater",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01kiosk",
+      "password": "admin123",
+      "theaterId": "692fc01939bd736bdc1d9940",
+      "label": "YQPAY NOW",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq02manager",
+      "password": "admin123",
+      "theaterId": "69310f3a794494cac30bd006",
+      "label": "Yamuna Theater",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq04sales",
+      "password": "admin123",
+      "theaterId": "69313e74c939b0ea1de194e3",
+      "label": "Demo Cinema",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01manager",
+      "password": "admin123",
+      "theaterId": "6942572b1bd289a06389daa3",
+      "label": "Demo Cinema",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq02admin",
+      "password": "admin123",
+      "theaterId": "6942cd492874052010ab4dea",
+      "label": "Vetri Theater",
+      "enabled": true,
+      "pin": "1234"
+    },
+    {
+      "username": "yq01manager",
+      "password": "admin123",
+      "theaterId": "69520683f2ab7a88af926445",
+      "label": "Demo Theater",
+      "enabled": true,
+      "pin": "1234"
+    }
+  ]
+}

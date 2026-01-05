@@ -1,0 +1,180 @@
+/* Alert Dialog Styles - DEPRECATED - Now using ConfirmDialog structure
+ * AlertDialog component now mirrors ConfirmDialog exactly with inline styles
+ * This file is kept for backward compatibility but is no longer actively used
+ */
+
+.alert-dialog {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 450px;
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 75px rgba(0,0,0,0.2);
+  animation: modalAppear 0.3s ease forwards;
+  transform: scale(0.9);
+  position: relative;
+}
+
+/* Alert Header - Corporate Violet Design like ConfirmDialog */
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px;
+  position: relative;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+}
+
+.alert-success .alert-header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.alert-error .alert-header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.alert-warning .alert-header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.alert-info .alert-header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.alert-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  padding: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.alert-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Alert Body - Similar to delete confirmation */
+.alert-body {
+  padding: 32px 32px 24px;
+}
+
+.alert-body p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Alert Actions - Similar to delete confirmation */
+.alert-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 32px 32px;
+}
+
+.alert-actions button {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Corporate Violet Buttons - All types use same corporate styling */
+.btn-success,
+.btn-error,
+.btn-warning,
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.btn-success:hover,
+.btn-error:hover,
+.btn-warning:hover,
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Auto-close indicator */
+.auto-close-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
+}
+
+.auto-close-progress {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.8), rgba(124, 58, 237, 1));
+  animation: progress-animation linear forwards;
+  width: 0;
+  border-radius: 0 2px 2px 0;
+}
+
+@keyframes progress-animation {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Modal appear animation */
+@keyframes modalAppear {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .alert-dialog {
+    min-width: 280px;
+    max-width: 90%;
+  }
+  
+  .alert-header {
+    padding: 20px 24px;
+  }
+  
+  .alert-body {
+    padding: 20px 24px;
+  }
+  
+  .alert-actions {
+    padding: 0 24px 20px;
+  }
+  
+  .alert-actions button {
+    padding: 8px 16px;
+    min-width: 80px;
+  }
+}

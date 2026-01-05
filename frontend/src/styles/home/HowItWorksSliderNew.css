@@ -1,0 +1,589 @@
+/* How It Works - New Modern Grid Design */
+/* Using Lato font from global import */
+
+.how-it-works-new {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Diagonal Background - Subtle */
+.how-it-works-diagonal-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #5A0C82 0%, #4A0A6B 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%);
+  z-index: 1;
+  opacity: 0.05;
+}
+
+.how-it-works-diagonal-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid2)"/></svg>');
+}
+
+/* Particles */
+.how-it-works-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hiw-particle {
+  position: absolute;
+  background: linear-gradient(135deg, #5A0C82, #7c3aed);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+.hiw-particle-1 {
+  width: 120px;
+  height: 120px;
+  top: 15%;
+  right: 10%;
+  animation: floatParticle 10s ease-in-out infinite;
+}
+
+.hiw-particle-2 {
+  width: 80px;
+  height: 80px;
+  top: 60%;
+  left: 5%;
+  animation: floatParticle 12s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.hiw-particle-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  right: 15%;
+  animation: floatParticle 14s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -20px);
+  }
+  50% {
+    transform: translate(-10px, 20px);
+  }
+  75% {
+    transform: translate(-20px, -10px);
+  }
+}
+
+/* Section Header */
+.section-header-new {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, rgba(90, 12, 130, 0.1), rgba(124, 58, 237, 0.1));
+  border: 1px solid rgba(90, 12, 130, 0.2);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5A0C82;
+  margin-bottom: 20px;
+  font-family: 'Lato', sans-serif;
+}
+
+.badge-icon-new {
+  font-size: 18px;
+}
+
+.section-title-new {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 16px;
+  font-family: 'Lato', sans-serif;
+}
+
+.section-subtitle-new {
+  font-size: 18px;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+/* Steps Grid Layout - 2 Columns for 4 Items (2 top, 2 bottom) */
+.steps-grid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Step Card */
+.step-grid-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.step-grid-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(90, 12, 130, 0.3);
+  box-shadow: 0 12px 32px rgba(90, 12, 130, 0.15);
+}
+
+.step-grid-card.active {
+  border-color: #5A0C82;
+  box-shadow: 0 16px 40px rgba(90, 12, 130, 0.25);
+  transform: translateY(-12px);
+}
+
+.step-grid-card.active .step-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Image Wrapper - Unique Hexagon Style */
+.step-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(90, 12, 130, 0.05), rgba(124, 58, 237, 0.05));
+}
+
+.step-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.step-grid-card:hover .step-card-image {
+  transform: scale(1.1);
+}
+
+.step-grid-card.active .step-card-image {
+  transform: scale(1.15);
+}
+
+/* Overlay with Icon */
+.step-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(90, 12, 130, 0.8) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.step-grid-card:hover .step-card-overlay,
+.step-grid-card.active .step-card-overlay {
+  opacity: 1;
+}
+
+.step-card-icon {
+  font-size: 48px;
+  animation: bounceIcon 0.6s ease-out;
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Card Content */
+.step-card-content {
+  padding: 24px;
+  position: relative;
+}
+
+.step-card-number {
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(90, 12, 130, 0.08);
+  line-height: 1;
+  font-family: 'Lato', sans-serif;
+  pointer-events: none;
+}
+
+.step-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  font-family: 'Lato', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.step-grid-card.active .step-card-title {
+  color: #5A0C82;
+}
+
+.step-card-description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Arrow Indicator */
+.step-card-arrow {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #5A0C82, #4A0A6B);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+/* Progress Bar */
+.steps-progress-bar {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5A0C82 0%, #7c3aed 100%);
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Progress Steps */
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-step {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #94a3b8;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.progress-step:hover {
+  border-color: #5A0C82;
+  transform: scale(1.1);
+}
+
+.progress-step.completed {
+  border-color: #5A0C82;
+  background: rgba(90, 12, 130, 0.1);
+  color: #5A0C82;
+}
+
+.progress-step.active {
+  border-color: #5A0C82;
+  background: linear-gradient(135deg, #5A0C82, #4A0A6B);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(90, 12, 130, 0.4);
+  transform: scale(1.15);
+}
+
+.progress-step.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #5A0C82;
+  animation: pulseRing 1.5s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .section-title-new {
+    font-size: 42px;
+  }
+
+  .steps-grid {
+    gap: 24px;
+  }
+
+  .step-card-image-wrapper {
+    height: 200px;
+  }
+
+  .step-card-title {
+    font-size: 20px;
+  }
+
+  .step-card-description {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .how-it-works-new {
+    padding: 80px 0;
+  }
+
+  .section-title-new {
+    font-size: 36px;
+  }
+
+  .section-subtitle-new {
+    font-size: 16px;
+  }
+
+  .section-header-new {
+    margin-bottom: 60px;
+  }
+
+  /* 2 Columns on Tablets */
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+
+  .step-card-image-wrapper {
+    height: 200px;
+  }
+
+  .step-card-number {
+    font-size: 64px;
+  }
+
+  .step-card-title {
+    font-size: 20px;
+  }
+
+  .step-card-description {
+    font-size: 13px;
+  }
+
+  .progress-step {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .hiw-particle {
+    opacity: 0.05;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .how-it-works-new {
+    padding: 60px 0;
+  }
+
+  .section-title-new {
+    font-size: 32px;
+  }
+
+  .section-subtitle-new {
+    font-size: 15px;
+  }
+
+  .section-header-new {
+    margin-bottom: 50px;
+  }
+
+  /* 1 Column on Mobile */
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .step-card-image-wrapper {
+    height: 200px;
+  }
+
+  .step-card-content {
+    padding: 20px;
+  }
+
+  .step-card-number {
+    font-size: 56px;
+    top: -22px;
+    right: 16px;
+  }
+
+  .step-card-title {
+    font-size: 18px;
+  }
+
+  .step-card-description {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .step-card-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .progress-bar-track {
+    height: 6px;
+    margin-bottom: 20px;
+  }
+
+  .progress-step {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+    border-width: 2px;
+  }
+
+  .progress-step.active::after {
+    border-width: 2px;
+  }
+
+  .hiw-particle {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-title-new {
+    font-size: 28px;
+  }
+
+  .section-subtitle-new {
+    font-size: 14px;
+  }
+
+  .section-badge {
+    font-size: 13px;
+  }
+
+  .step-card-number {
+    font-size: 48px;
+    top: -18px;
+  }
+
+  .step-card-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .step-card-description {
+    font-size: 12px;
+  }
+
+  .progress-step {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+  }
+}

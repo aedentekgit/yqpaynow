@@ -1,0 +1,278 @@
+/* LoginPage Component Styles - Extracted from inline styles */
+
+/* SVG Icon Small */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Ensure login container is mobile-friendly */
+.login-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Tablet Styles (640px - 1024px) */
+@media (max-width: 1024px) {
+  .login-container {
+    padding: 18px;
+  }
+  
+  .login-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .login-input {
+    font-size: 15px;
+    padding: 12px 16px;
+    min-height: 48px;
+  }
+  
+  .login-button {
+    padding: 13px 24px;
+    font-size: 16px;
+    min-height: 50px;
+  }
+}
+
+/* Mobile Styles (max 768px) */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .login-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .login-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .login-subtitle {
+    font-size: 14px;
+  }
+  
+  .login-input-group {
+    margin-bottom: 16px;
+  }
+  
+  .login-label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  
+  .login-input {
+    font-size: 16px; /* iOS requirement to prevent zoom */
+    padding: 12px 16px;
+    min-height: 48px;
+    border-radius: 10px;
+  }
+  
+  .login-input:focus {
+    outline: none;
+    border-color: var(--primary-color, #6B0E9B);
+    box-shadow: 0 0 0 3px rgba(107, 14, 155, 0.1);
+  }
+  
+  .login-button {
+    padding: 13px 24px;
+    font-size: 16px;
+    min-height: 50px;
+    border-radius: 10px;
+    width: 100%;
+    touch-action: manipulation;
+  }
+  
+  .login-button:active {
+    transform: scale(0.98);
+  }
+  
+  .login-error {
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .login-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+  }
+  
+  .svg-icon-sm {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Small Mobile Styles (max 640px) */
+@media (max-width: 640px) {
+  .login-container {
+    padding: 14px;
+  }
+  
+  .login-form {
+    padding: 18px;
+  }
+  
+  .login-title {
+    font-size: 22px;
+  }
+  
+  .login-subtitle {
+    font-size: 13px;
+  }
+  
+  .login-input {
+    padding: 11px 14px;
+    min-height: 46px;
+  }
+  
+  .login-button {
+    padding: 12px 22px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+  
+  .svg-icon-sm {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* Extra Small Mobile Styles (max 480px) */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 12px;
+  }
+  
+  .login-form {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  
+  .login-title {
+    font-size: 20px;
+  }
+  
+  .login-subtitle {
+    font-size: 12px;
+  }
+  
+  .login-input-group {
+    margin-bottom: 14px;
+  }
+  
+  .login-label {
+    font-size: 12px;
+  }
+  
+  .login-input {
+    font-size: 16px;
+    padding: 10px 13px;
+    min-height: 44px;
+    border-radius: 8px;
+  }
+  
+  .login-button {
+    padding: 11px 20px;
+    font-size: 14px;
+    min-height: 46px;
+    border-radius: 8px;
+  }
+  
+  .login-error {
+    font-size: 12px;
+    padding: 9px 12px;
+  }
+  
+  .login-footer {
+    font-size: 12px;
+    margin-top: 18px;
+  }
+  
+  .svg-icon-sm {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Very Small Screens (max 375px) */
+@media (max-width: 375px) {
+  .login-title {
+    font-size: 19px;
+  }
+  
+  .login-form {
+    padding: 14px;
+  }
+  
+  .login-input {
+    padding: 9px 12px;
+  }
+  
+  .login-button {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .login-container {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+  
+  .login-form {
+    padding: 14px;
+    margin: 10px auto;
+  }
+  
+  .login-title {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  
+  .login-input-group {
+    margin-bottom: 12px;
+  }
+  
+  .login-input {
+    min-height: 40px;
+    padding: 8px 12px;
+  }
+  
+  .login-button {
+    min-height: 42px;
+    padding: 10px 20px;
+  }
+}
+
+/* Safe Area Support for iOS */
+.login-container {
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}

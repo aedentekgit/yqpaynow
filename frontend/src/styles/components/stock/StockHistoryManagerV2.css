@@ -1,0 +1,77 @@
+/* StockHistoryManagerV2 Component Styles - Extracted from inline styles */
+
+/* Main Container */
+.stock-history-manager-v2 {
+  padding: 20px;
+}
+
+/* Header */
+.stock-history-manager-v2 .header {
+  margin-bottom: 30px;
+}
+
+/* Header Title */
+.stock-history-manager-v2 .header h2 {
+  color: #8B5CF6;
+  margin-bottom: 10px;
+}
+
+/* Header Description */
+.stock-history-manager-v2 .header p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Selectors Container */
+.stock-history-manager-v2 .selectors {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Add Entry Button */
+.stock-history-manager-v2 .btn-add-entry {
+  background-color: #8B5CF6;
+  border-color: #8B5CF6;
+  margin-bottom: 20px;
+}
+
+/* Add Entry Form */
+.stock-history-manager-v2 .add-entry-form {
+  border: 2px solid #8B5CF6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #f8f9fa;
+}
+
+/* Form Section Title */
+.stock-history-manager-v2 h4 {
+  color: #8B5CF6;
+  margin-bottom: 15px;
+}
+
+/* Edit Button Spacing */
+.stock-history-manager-v2 .btn-edit {
+  margin-right: 5px;
+}
+
+/* Modal Overlay */
+.stock-history-manager-v2 .modal {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+}
+
+/* Footer Actions */
+.stock-history-manager-v2 .footer-actions {
+  margin-top: 30px;
+  text-align: center;
+}
+

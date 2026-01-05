@@ -1,0 +1,29 @@
+/* CustomerLanding Component Styles - Extracted from inline styles */
+
+/* QR Code Helper Text */
+.qr-code-helper-text {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Retry Button */
+.retry-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #6B0E9B;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background-color: #5a0b7a;
+}
+
+/* Logo Text Display (Dynamic - keep inline) */
+.logo-text-display {
+  /* Dynamic display based on settings?.logoUrl - keep inline */
+}
+

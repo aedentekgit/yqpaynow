@@ -1,0 +1,24 @@
+/* CustomerCheckout Component Styles - Extracted from inline styles */
+
+/* Delete Indicator */
+.delete-indicator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: #ef4444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+/* Note: Dynamic styles remain inline:
+   - cart-item transform (based on slideDistance)
+   - delete-indicator opacity (based on slideDistance)
+*/
+

@@ -1,0 +1,361 @@
+/* Global Action Button Styles with Icons */
+/* Applied consistently across all pages and components */
+
+.action-buttons {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #f8f9fa;
+  color: #495057;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  min-width: 28px;
+  min-height: 28px;
+  position: relative;
+  font-size: 0; /* Hide any text content */
+}
+
+.action-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.action-btn:active {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.action-btn:focus {
+  outline: 2px solid var(--primary-color, #6B0E9B);
+  outline-offset: 2px;
+}
+
+/* View Button */
+.view-btn {
+  background: #f0fdf4 !important;
+  color: #16a34a !important;
+  border-color: #bbf7d0 !important;
+}
+
+.view-btn:hover {
+  background: #16a34a !important;
+  color: white !important;
+  border-color: #16a34a !important;
+}
+
+.view-btn svg {
+  /* Eye icon - view details */
+  fill: currentColor;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+  border-color: #bbdefb;
+}
+
+.edit-btn:hover {
+  background: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+.edit-btn svg {
+  /* Pencil icon - edit item */
+  fill: currentColor;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #ffebee;
+  color: #d32f2f;
+  border-color: #ffcdd2;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+}
+
+.delete-btn svg {
+  /* Trash icon - delete item */
+  fill: currentColor;
+}
+
+/* Password/Key Button */
+.password-btn {
+  background: #fff3e0;
+  color: #f57c00;
+  border-color: #ffcc02;
+}
+
+.password-btn:hover {
+  background: #f57c00;
+  color: white;
+  border-color: #f57c00;
+}
+
+.password-btn svg {
+  /* Key icon - password/security */
+  fill: currentColor;
+}
+
+/* Settings Button */
+.settings-btn {
+  background: #f5f5f5;
+  color: #424242;
+  border-color: #e0e0e0;
+}
+
+.settings-btn:hover {
+  background: #424242;
+  color: white;
+  border-color: #424242;
+}
+
+.settings-btn svg {
+  /* Gear icon - settings */
+  fill: currentColor;
+}
+
+/* Download Button */
+.download-btn {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border-color: #c8e6c9;
+}
+
+.download-btn:hover {
+  background: #2e7d32;
+  color: white;
+  border-color: #2e7d32;
+}
+
+.download-btn svg {
+  /* Download icon */
+  fill: currentColor;
+}
+
+/* Upload Button */
+.upload-btn {
+  background: #e3f2fd;
+  color: #1565c0;
+  border-color: #90caf9;
+}
+
+.upload-btn:hover {
+  background: #1565c0;
+  color: white;
+  border-color: #1565c0;
+}
+
+.upload-btn svg {
+  /* Upload icon */
+  fill: currentColor;
+}
+
+/* Copy Button */
+.copy-btn {
+  background: #fce4ec;
+  color: #c2185b;
+  border-color: #f8bbd9;
+}
+
+.copy-btn:hover {
+  background: #c2185b;
+  color: white;
+  border-color: #c2185b;
+}
+
+.copy-btn svg {
+  /* Copy icon */
+  fill: currentColor;
+}
+
+/* Activate/Deactivate Buttons */
+.activate-btn {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border-color: #c8e6c9;
+}
+
+.activate-btn:hover {
+  background: #2e7d32;
+  color: white;
+  border-color: #2e7d32;
+}
+
+.deactivate-btn {
+  background: #fff3e0;
+  color: #f57c00;
+  border-color: #ffcc02;
+}
+
+.deactivate-btn:hover {
+  background: #f57c00;
+  color: white;
+  border-color: #f57c00;
+}
+
+/* Status Buttons */
+.status-btn.active-status {
+  background: linear-gradient(135deg, #10B981, #34d399);
+  color: white;
+  border: none;
+}
+
+.status-btn.inactive-status {
+  background: linear-gradient(135deg, #F59E0B, #fbbf24);
+  color: white;
+  border: none;
+}
+
+/* Disabled state */
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  pointer-events: none;
+}
+
+.action-btn:disabled:hover {
+  background: #f8f9fa;
+  transform: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Loading state */
+.action-btn.loading {
+  pointer-events: none;
+}
+
+.action-btn.loading svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Icon definitions as pseudo-elements for buttons without SVG */
+.action-btn.icon-view::before {
+  content: "👁️";
+  font-size: 16px;
+}
+
+.action-btn.icon-edit::before {
+  content: "✏️";
+  font-size: 16px;
+}
+
+.action-btn.icon-delete::before {
+  content: "🗑️";
+  font-size: 16px;
+}
+
+.action-btn.icon-password::before {
+  content: "🔑";
+  font-size: 16px;
+}
+
+.action-btn.icon-settings::before {
+  content: "⚙️";
+  font-size: 16px;
+}
+
+.action-btn.icon-download::before {
+  content: "📥";
+  font-size: 16px;
+}
+
+.action-btn.icon-upload::before {
+  content: "📤";
+  font-size: 16px;
+}
+
+.action-btn.icon-copy::before {
+  content: "📋";
+  font-size: 16px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .action-buttons {
+    gap: 6px;
+  }
+  
+  .action-btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+  
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .action-btn.icon-view::before,
+  .action-btn.icon-edit::before,
+  .action-btn.icon-delete::before,
+  .action-btn.icon-password::before,
+  .action-btn.icon-settings::before,
+  .action-btn.icon-download::before,
+  .action-btn.icon-upload::before,
+  .action-btn.icon-copy::before {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .action-buttons {
+    gap: 4px;
+  }
+  
+  .action-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+  
+  .action-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .action-btn.icon-view::before,
+  .action-btn.icon-edit::before,
+  .action-btn.icon-delete::before,
+  .action-btn.icon-password::before,
+  .action-btn.icon-settings::before,
+  .action-btn.icon-download::before,
+  .action-btn.icon-upload::before,
+  .action-btn.icon-copy::before {
+    font-size: 12px;
+  }
+}

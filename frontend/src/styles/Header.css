@@ -1,0 +1,211 @@
+/* Header Component Styles - Extracted from inline styles */
+
+/* Header Actions Container */
+.header-actions-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+/* Avatar Initials */
+.avatar-initials {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+/* User Avatar Container - Prevent layout shifts */
+.user-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Profile Role Text */
+.profile-role-white {
+  color: white;
+}
+
+/* Header Date Filter Button - Default Button Style */
+.dashboard-header .submit-btn.date-filter-btn,
+.dashboard-header button.submit-btn.date-filter-btn {
+  /* Override purple gradient with default button style */
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+  margin-right: 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+  min-width: auto !important;
+  max-width: none !important;
+  width: auto !important;
+  transition: all 0.2s ease !important;
+}
+
+.dashboard-header .submit-btn.date-filter-btn:hover:not(:disabled),
+.dashboard-header button.submit-btn.date-filter-btn:hover:not(:disabled) {
+  background: #f9fafb !important;
+  border-color: #d1d5db !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+.dashboard-header .submit-btn.date-filter-btn:active:not(:disabled),
+.dashboard-header button.submit-btn.date-filter-btn:active:not(:disabled) {
+  transform: translateY(0) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.dashboard-header .submit-btn.date-filter-btn .btn-icon,
+.dashboard-header button.submit-btn.date-filter-btn .btn-icon {
+  color: #6b7280 !important;
+  font-size: 16px !important;
+  margin: 0 !important;
+}
+
+/* POS Status Items - Only for Offline POS page */
+.pos-status-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 16px;
+}
+
+.pos-status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.pos-status-label {
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pos-status-value {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pos-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pos-status-badge.online {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1.5px solid #10B981;
+}
+
+.pos-status-badge.offline {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+  border: 1.5px solid #EF4444;
+}
+
+.pos-status-icon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: pos-status-pulse 2s infinite;
+}
+
+.pos-status-icon.online {
+  background: #10B981;
+}
+
+.pos-status-icon.offline {
+  background: #EF4444;
+}
+
+@keyframes pos-status-pulse {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.5; 
+  }
+}
+
+/* Responsive adjustments for POS status items */
+@media (max-width: 1024px) {
+  .pos-status-items {
+    gap: 12px;
+    margin-right: 12px;
+  }
+  
+  .pos-status-label {
+    font-size: 10px;
+  }
+  
+  .pos-status-value {
+    font-size: 13px;
+  }
+  
+  .pos-status-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pos-status-items {
+    gap: 8px;
+    margin-right: 8px;
+  }
+  
+  .pos-status-item {
+    gap: 2px;
+  }
+  
+  .pos-status-label {
+    font-size: 9px;
+  }
+  
+  .pos-status-value {
+    font-size: 12px;
+  }
+}
+

@@ -1,0 +1,176 @@
+/* Global Sidebar Design System - Professional Dusty White Theme */
+/* This file can be imported and used across all pages for consistent sidebar styling */
+
+/* Base Sidebar Container */
+.global-sidebar {
+  width: 280px;
+  min-width: 280px;
+  background: #f8f8f5;
+  border-right: 1px solid #e5e5e0;
+  height: 100%;
+  min-height: 100%;
+  flex-shrink: 0;
+}
+
+/* Navigation Items */
+.global-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+}
+
+.global-nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border: none;
+  background: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e0;
+}
+
+.global-nav-item:hover {
+  background: #f0f0ed;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.global-nav-item.active {
+  background: #fafaf8;
+  color: #6B0E9B;
+  font-weight: 600;
+  border-right: 3px solid #6B0E9B;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.global-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #6B0E9B;
+}
+
+/* Icons and Text */
+.global-nav-icon {
+  font-size: 18px;
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global-nav-text {
+  flex: 1;
+}
+
+.global-nav-count {
+  background: rgba(107, 14, 155, 0.1);
+  color: #6B0E9B;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Stats/Info Section */
+.global-sidebar-stats {
+  padding: 20px 24px;
+  border-top: 1px solid #e5e5e0;
+  background: rgba(248, 248, 245, 0.5);
+}
+
+.global-sidebar-stats h3 {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.global-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(229, 229, 224, 0.5);
+}
+
+.global-stat-item:last-child {
+  border-bottom: none;
+}
+
+.global-stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.global-stat-value {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .global-sidebar {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e0;
+  }
+
+  .global-sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 16px 20px;
+  }
+
+  .global-nav-item {
+    min-width: 140px;
+    padding: 16px 20px;
+    border-bottom: none;
+    border-right: 1px solid #e5e5e0;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .global-nav-item.active {
+    border-right: 1px solid #e5e5e0;
+    border-bottom: 3px solid #6B0E9B;
+  }
+
+  .global-nav-item.active::before {
+    display: none;
+  }
+
+  .global-nav-icon {
+    font-size: 16px;
+  }
+
+  .global-nav-text {
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+/* Usage Classes for Different Page Types */
+/* Import this file and use .global-sidebar class directly */
+/* Or copy the global-sidebar styles to your specific page CSS */

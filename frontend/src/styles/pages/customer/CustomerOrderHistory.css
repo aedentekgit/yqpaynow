@@ -1,0 +1,12 @@
+/* CustomerOrderHistory Component Styles - Extracted from inline styles */
+
+/* Loading Emoji Hidden */
+.loading-emoji-hidden {
+  display: none;
+}
+
+/* Order Status Color (Dynamic - keep inline) */
+.order-status-text {
+  /* Dynamic color based on order.status - keep inline */
+}
+

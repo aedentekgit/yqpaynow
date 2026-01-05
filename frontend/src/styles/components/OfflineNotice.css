@@ -1,0 +1,100 @@
+/* Offline Notice Styles */
+.offline-notice {
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  color: white;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.offline-notice-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.offline-icon {
+  font-size: 18px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.offline-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+
+.offline-text strong {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.offline-text span {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.offline-retry-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.offline-retry-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.offline-retry-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .offline-notice {
+    padding: 10px 12px;
+  }
+  
+  .offline-notice-content {
+    gap: 8px;
+    font-size: 13px;
+  }
+  
+  .offline-text {
+    gap: 1px;
+  }
+  
+  .offline-text strong {
+    font-size: 14px;
+  }
+  
+  .offline-text span {
+    font-size: 12px;
+  }
+  
+  .offline-retry-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}

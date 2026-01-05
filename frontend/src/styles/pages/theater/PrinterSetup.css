@@ -1,0 +1,411 @@
+/* Printer Setup Page Styles - Matching Global Product Management Layout */
+
+/* Stat Card Professional Status Badges - Separate wrapper for status badges */
+.qr-management-page .qr-stats .stat-card .stat-status-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  margin-bottom: 0;
+}
+
+/* Professional Status Badge in Stat Cards - Matching Global Design */
+.qr-management-page .qr-stats .stat-card .stat-status-wrapper .status-badge-small {
+  font-size: 0.7rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  white-space: nowrap;
+  border: none;
+  min-width: 80px;
+}
+
+.qr-management-page .qr-stats .stat-card .stat-status-wrapper .status-badge-small.active {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.qr-management-page .qr-stats .stat-card .stat-status-wrapper .status-badge-small.inactive {
+  background: rgba(156, 163, 175, 0.15);
+  color: #6b7280;
+}
+
+/* Main Content Container - Matching Product Management */
+.qr-management-page .theater-content {
+  background: transparent;
+  padding: 30px;
+  margin: 0;
+}
+
+/* Printer Selection Grid */
+.printer-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+/* Printer Selection Card */
+.printer-selection-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.printer-selection-card:hover {
+  box-shadow: 0 4px 15px rgba(107, 14, 155, 0.15);
+  transform: translateY(-2px);
+}
+
+.printer-card-header {
+  background: linear-gradient(135deg, #6B0E9B 0%, #8B2FC9 100%);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.printer-card-header h3 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.printer-card-header .printer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.printer-card-header .printer-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.printer-card-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.printer-card-body {
+  padding: 24px;
+}
+
+/* Connection Info Section - Styled for theater-filters */
+.printer-connection-info {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex: 1;
+}
+
+.qr-management-page .theater-filters .printer-connection-info {
+  flex: 1;
+  margin-left: 0;
+}
+
+.connection-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.connection-info-row label {
+  font-weight: 600;
+  color: var(--text-gray, #666);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.connection-info-row code {
+  background: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  color: var(--primary-color, #6B0E9B);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+}
+
+.connection-status-badge {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.connection-status-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.connection-status-badge.connected {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+}
+
+.connection-status-badge.connecting {
+  background: rgba(255, 193, 7, 0.2);
+  color: #FFC107;
+}
+
+.connection-status-badge.disconnected {
+  background: rgba(158, 158, 158, 0.2);
+  color: #9E9E9E;
+}
+
+.connection-status-badge.error {
+  background: rgba(244, 67, 54, 0.2);
+  color: #F44336;
+}
+
+/* Printer Dropdown Section */
+.printer-dropdown-section {
+  margin-bottom: 16px;
+}
+
+.printer-dropdown-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.printer-dropdown {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B0E9B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.printer-dropdown:hover {
+  border-color: #6B0E9B;
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.15);
+}
+
+.printer-dropdown:focus {
+  outline: none;
+  border-color: #6B0E9B;
+  box-shadow: 0 0 0 4px rgba(107, 14, 155, 0.2);
+}
+
+.printer-dropdown option {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.selected-printer-indicator {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(107, 14, 155, 0.1) 0%, rgba(139, 47, 201, 0.1) 100%);
+  border-left: 3px solid #6B0E9B;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B0E9B;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selected-printer-indicator svg {
+  width: 16px;
+  height: 16px;
+  fill: #4CAF50;
+  flex-shrink: 0;
+}
+
+.selected-printer-indicator strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.empty-state-message {
+  text-align: center;
+  padding: 30px 20px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty-state-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.empty-state-icon svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+.test-print-btn {
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.test-print-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.test-print-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #43A047 0%, #5CB860 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.test-print-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Add Theater Button - Base Styles (also used for Connect/Disconnect button) */
+.add-theater-btn {
+  background: var(--white);
+  color: var(--primary-color);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 10;
+}
+
+.add-theater-btn:hover {
+  background: var(--background-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.add-theater-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Fix button icon sizes */
+.add-theater-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.add-theater-btn .btn-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .printer-selection-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .printer-card-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .printer-card-body {
+    padding: 20px;
+  }
+
+  .printer-dropdown {
+    font-size: 14px;
+    padding: 10px 14px;
+    padding-right: 40px;
+  }
+
+  .printer-dropdown-label {
+    font-size: 13px;
+  }
+
+  .connection-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .connection-info-row label {
+    min-width: auto;
+    font-size: 13px;
+  }
+
+  .connection-info-row code {
+    font-size: 12px;
+  }
+}

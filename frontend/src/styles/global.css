@@ -1,0 +1,576 @@
+/* Global Design System - Main Styles */
+/* Import all design system files */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import './tokens.css';
+@import './components.css';
+@import './utilities.css';
+@import './AlertDialog.css';
+
+/* Custom Cursor for Frontend Pages */
+.frontend-page {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.15s ease;
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+/* Black Sketch Outline Effect */
+.sketch-outline {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9997;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.2s ease;
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+
+.sketch-outline.active {
+  opacity: 0.8;
+  animation: sketchPulse 1s ease-in-out infinite;
+}
+
+.sketch-outline.hover {
+  width: 80px;
+  height: 80px;
+  border-width: 3px;
+  opacity: 1;
+}
+
+/* Sketch animation */
+@keyframes sketchPulse {
+  0%, 100% {
+    transform: scale(1);
+    border-style: solid;
+  }
+  25% {
+    transform: scale(1.05);
+    border-style: dashed;
+  }
+  50% {
+    transform: scale(1.1);
+    border-style: dotted;
+  }
+  75% {
+    transform: scale(1.05);
+    border-style: dashed;
+  }
+}
+
+/* Sketch trail effect */
+.sketch-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9996;
+  width: 8px;
+  height: 8px;
+  background: #000000;
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+}
+
+.sketch-trail.fade-out {
+  opacity: 0;
+}
+
+.custom-cursor.active,
+.custom-cursor-follower.active {
+  opacity: 1;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+  background: linear-gradient(135deg, var(--primary-light), var(--white));
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+}
+
+.custom-cursor-follower.hover {
+  transform: scale(1.3);
+  border-color: var(--primary-light);
+  border-width: 3px;
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.3);
+}
+
+.custom-cursor.click {
+  transform: scale(0.8);
+}
+
+.custom-cursor-follower.click {
+  transform: scale(0.9);
+}
+
+/* Special cursor states for different elements */
+.custom-cursor.button-hover {
+  transform: scale(2);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border: 2px solid var(--white);
+}
+
+.custom-cursor-follower.button-hover {
+  transform: scale(1.5);
+  border-color: var(--primary-dark);
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.custom-cursor.link-hover {
+  transform: scale(1.2);
+  background: linear-gradient(45deg, var(--primary-color), var(--info-color));
+}
+
+.custom-cursor-follower.link-hover {
+  transform: scale(1.1);
+  border-style: dashed;
+}
+
+/* Interactive elements on frontend pages */
+.frontend-page a,
+.frontend-page button,
+.frontend-page .btn-primary,
+.frontend-page .btn-secondary,
+.frontend-page .workflow-step,
+.frontend-page .faq-item,
+.frontend-page .benefit-item,
+.frontend-page .menu-item,
+.frontend-page .demo-button {
+  cursor: none;
+}
+
+/* Enhanced hover effects for specific elements */
+.frontend-page .btn-primary:hover,
+.frontend-page .btn-secondary:hover {
+  cursor: none;
+}
+
+.frontend-page a:hover {
+  cursor: none;
+}
+
+/* Hide custom cursor on mobile devices and login pages */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .custom-cursor-follower,
+  .sketch-outline,
+  .sketch-trail {
+    display: none !important;
+  }
+  
+  .frontend-page,
+  .frontend-page a,
+  .frontend-page button,
+  .frontend-page .btn-primary,
+  .frontend-page .btn-secondary,
+  .frontend-page .workflow-step,
+  .frontend-page .faq-item,
+  .frontend-page .benefit-item,
+  .frontend-page .menu-item {
+    cursor: auto !important;
+  }
+}
+
+/* Ensure login pages don't have custom cursor */
+.login-page,
+.login-page *,
+.login-access-page,
+.login-access-page * {
+  cursor: auto !important;
+}
+
+.login-page .custom-cursor,
+.login-page .custom-cursor-follower,
+.login-page .sketch-outline,
+.login-page .sketch-trail,
+.login-access-page .custom-cursor,
+.login-access-page .custom-cursor-follower,
+.login-access-page .sketch-outline,
+.login-access-page .sketch-trail {
+  display: none !important;
+}
+
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  line-height: var(--line-height-normal);
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--background-light);
+}
+
+/* Remove default button and input styles */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  /* Remove dropdown arrow globally for all select elements */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none !important;
+  padding-right: 12px;
+}
+
+/* Remove arrow for select in all states */
+select::-ms-expand {
+  display: none;
+}
+
+/* Focus styles */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Link styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-base) ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* Image styles */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-gray);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-base) ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--primary-ultra-light);
+  color: var(--primary-dark);
+}
+
+/* Loading animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation utilities */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideInDown {
+  animation: slideInDown 0.3s ease-out;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--primary-color);
+  border-radius: var(--radius-full);
+  animation: spin 1s linear infinite;
+}
+
+.spinner-lg {
+  width: 32px;
+  height: 32px;
+  border-width: 3px;
+}
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  top: var(--space-4);
+  right: var(--space-4);
+  max-width: 400px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: var(--space-4);
+  z-index: var(--z-toast);
+  animation: slideInDown 0.3s ease-out;
+}
+
+.toast.success {
+  border-left: 4px solid var(--success-color);
+}
+
+.toast.error {
+  border-left: 4px solid var(--error-color);
+}
+
+.toast.warning {
+  border-left: 4px solid var(--warning-color);
+}
+
+.toast.info {
+  border-left: 4px solid var(--info-color);
+}
+
+/* Modal overlay - Universal rule to ensure modals appear above sidebar */
+.modal-overlay,
+div.modal-overlay,
+[class*="modal-overlay"] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  z-index: 1001 !important;
+  animation: fadeIn 0.2s ease-out !important;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-modal);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  animation: slideInDown 0.3s ease-out;
+}
+
+/* Form validation styles */
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-base) ease;
+  background: var(--white);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--shadow-light);
+}
+
+.form-input.error {
+  border-color: var(--error-color);
+}
+
+.form-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-error {
+  font-size: var(--font-size-xs);
+  color: var(--error-color);
+  margin-top: var(--space-1);
+}
+
+.form-help {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+}
+
+/* Checkbox and radio styles */
+.form-checkbox,
+.form-radio {
+  width: 16px;
+  height: 16px;
+  margin-right: var(--space-2);
+  accent-color: var(--primary-color);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: var(--space-16) var(--space-4);
+  color: var(--text-muted);
+}
+
+.empty-state-icon {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.empty-state-description {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-6);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .page-header {
+    background: var(--white) !important;
+    color: var(--text-primary) !important;
+    box-shadow: none !important;
+  }
+  
+  .btn {
+    background: var(--white) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: none !important;
+  }
+}

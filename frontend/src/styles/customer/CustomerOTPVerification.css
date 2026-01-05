@@ -1,0 +1,333 @@
+﻿/* OTP VERIFICATION - MODERN MINIMAL DESIGN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.otp-verification-page {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header with Purple Gradient */
+.otp-header {
+  position: relative;
+  padding: 16px 20px 80px;
+  padding-top: calc(env(safe-area-inset-top) + 16px);
+  background: linear-gradient(180deg, 
+    #1a0a2e 0%,
+    #2d1b4e 20%,
+    #4a2c6d 50%,
+    #2d1b4e 80%,
+    #1a0a2e 100%
+  );
+  color: white;
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 4px 20px rgba(107, 14, 155, 0.3);
+}
+
+/* Back button styles moved to customer-global.css for consistency */
+
+.otp-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Content Area */
+.otp-content {
+  flex: 1;
+  padding: 0 24px 40px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+
+.otp-card {
+  background: white;
+  border-radius: 32px;
+  padding: 40px 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(107, 14, 155, 0.08);
+  text-align: center;
+}
+
+.otp-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.3px;
+}
+
+.otp-card p {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+.phone-number-display {
+  font-weight: 600;
+  color: #6B0E9B;
+  margin: 0 0 32px 0;
+  font-size: 16px;
+}
+
+/* OTP Input Section */
+.otp-input-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 32px 0 24px;
+}
+
+.otp-input {
+  width: 56px;
+  height: 60px;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  caret-color: #6B0E9B;
+}
+
+.otp-input:focus {
+  outline: none;
+  border-color: #6B0E9B;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(107, 14, 155, 0.1);
+}
+
+.otp-input.filled {
+  border-color: #6B0E9B;
+  background: rgba(107, 14, 155, 0.05);
+}
+
+/* Verify Button */
+.verify-button {
+  width: 100%;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Lato', 'Arial', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 14px 0 rgba(139, 92, 246, 0.4),
+    0 2px 8px 0 rgba(0, 0, 0, 0.15);
+  margin-top: 24px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.verify-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.verify-button:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.verify-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px 0 rgba(139, 92, 246, 0.5),
+    0 4px 12px 0 rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.verify-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px 0 rgba(139, 92, 246, 0.4),
+    0 1px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.verify-button:disabled {
+  background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+  transform: none;
+}
+
+/* Resend Section */
+.resend-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.resend-text {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.resend-button {
+  background: transparent;
+  border: none;
+  color: #6B0E9B;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.resend-button:hover:not(:disabled) {
+  background: rgba(107, 14, 155, 0.05);
+}
+
+.resend-button:disabled {
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.timer {
+  font-size: 14px;
+  color: #6B0E9B;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* Error Message */
+.error-message {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  color: #dc2626;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #fecaca;
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 18px;
+}
+
+/* Success Message */
+.success-message {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  color: #16a34a;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #bbf7d0;
+}
+
+.success-message::before {
+  content: "✓";
+  font-size: 18px;
+}
+
+/* Edit Number Button */
+.edit-number-button {
+  background: transparent;
+  border: none;
+  color: #6B0E9B;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+
+.edit-number-button:hover {
+  background: rgba(107, 14, 155, 0.05);
+}
+
+/* Change Number Section */
+.change-number-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.change-number-text {
+  font-size: 15px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.change-number-button {
+  background: transparent;
+  border: none;
+  color: #6B0E9B;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-decoration: underline;
+}
+
+.change-number-button:hover {
+  background: rgba(107, 14, 155, 0.05);
+  text-decoration: none;
+}
+
+.change-number-button:active {
+  transform: scale(0.96);
+}
+
+/* Spinner Animation for Loading State */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.otp-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}

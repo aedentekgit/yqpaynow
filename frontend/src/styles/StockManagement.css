@@ -1,0 +1,357 @@
+/* Stock Management Page - Specific Styles */
+
+/* Stock Badge Styles */
+.stock-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid;
+  min-width: 80px;
+}
+
+.stock-badge .stock-quantity {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.stock-badge .stock-label {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Invord Stock - Green */
+.stock-badge.added {
+  background: #DCFCE7;
+  border-color: #86EFAC;
+}
+
+.stock-badge.added .stock-quantity {
+  color: #166534;
+}
+
+.stock-badge.added .stock-label {
+  color: #15803D;
+}
+
+/* Sales - Yellow */
+.stock-badge.used {
+  background: #FEF3C7;
+  border-color: #FDE047;
+}
+
+.stock-badge.used .stock-quantity {
+  color: #92400E;
+}
+
+.stock-badge.used .stock-label {
+  color: #A16207;
+}
+
+/* Expired Stock - Red */
+.stock-badge.expired {
+  background: #FEE2E2;
+  border-color: #FCA5A5;
+}
+
+.stock-badge.expired .stock-quantity {
+  color: #991B1B;
+}
+
+.stock-badge.expired .stock-label {
+  color: #B91C1C;
+}
+
+/* Damage Stock - Pink */
+.stock-badge.damage {
+  background: #FFE4E6;
+  border-color: #FDA4AF;
+}
+
+.stock-badge.damage .stock-quantity {
+  color: #881337;
+}
+
+.stock-badge.damage .stock-label {
+  color: #9F1239;
+}
+
+/* Balance - Blue */
+.stock-badge.balance {
+  background: #DBEAFE;
+  border-color: #93C5FD;
+}
+
+.stock-badge.balance .stock-quantity {
+  color: #1E40AF;
+}
+
+.stock-badge.balance .stock-label {
+  color: #1D4ED8;
+}
+
+/* Entry Type Badge */
+.entry-type-badge {
+  font-size: 11px;
+  color: #8B5CF6;
+  font-weight: 500;
+  padding: 2px 8px;
+  background: #F3E8FF;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Date Cell */
+.date-cell .entry-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1E293B;
+  margin-bottom: 4px;
+}
+
+/* Clickable Date Cell */
+.date-cell.clickable-date {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-cell.clickable-date:hover {
+  background-color: #F3F4F6;
+  transform: scale(1.02);
+}
+
+.date-cell.clickable-date:hover .entry-date {
+  color: #8B5CF6;
+  text-decoration: underline;
+}
+
+.date-cell.clickable-date:active {
+  transform: scale(0.98);
+  background-color: #E5E7EB;
+}
+
+/* Expire Date Cell */
+.expire-date-cell {
+  font-size: 14px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+/* Stats Sublabel */
+.stat-sublabel {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* ============================================
+   EXTRACTED INLINE STYLES FROM StockManagement.jsx
+   ============================================ */
+
+/* Entry Type Badge - Inline Style */
+.entry-type-badge-inline {
+  font-size: 11px;
+  color: #8B5CF6;
+  margin-top: 2px;
+}
+
+/* Expired Warning */
+.expired-warning {
+  font-size: 11px;
+  color: #dc2626;
+  margin-top: 2px;
+}
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.svg-icon-md {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-lg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+
+/* FIFO Details Container */
+.fifo-details-container {
+  margin-top: 4px;
+  padding: 6px 8px;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.fifo-details-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #856404;
+}
+
+.fifo-details-item {
+  color: #856404;
+  margin-left: 8px;
+}
+
+/* Modal Overlay */
+.modal-overlay-stock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001 !important;
+}
+
+/* Form Help Text */
+.form-help-text {
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Textarea Resize */
+.textarea-resize-vertical {
+  resize: vertical;
+}
+
+/* Error State Container */
+.error-state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.error-icon-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  margin-bottom: 24px;
+}
+
+.error-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 0 0 12px 0;
+}
+
+.error-message {
+  font-size: 16px;
+  color: #64748B;
+  margin: 0 0 32px 0;
+  max-width: 500px;
+}
+
+.error-retry-button {
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-retry-button:hover {
+  transform: translateY(-2px);
+}
+
+.error-retry-button:active {
+  transform: translateY(0);
+}
+
+/* Statistics Cards - Special Styles */
+.stat-card-expired {
+  border: 2px solid #EF4444 !important;
+}
+
+.stat-number-expired {
+  color: #DC2626 !important;
+}
+
+.stat-label-expired {
+  color: #DC2626 !important;
+}
+
+.stat-sublabel-expired {
+  font-size: 12px;
+  color: #DC2626;
+  margin-top: 4px;
+}
+
+.stat-card-balance {
+  background: #F3E8FF;
+  border: 2px solid #8B5CF6;
+  box-shadow: 0 4px 6px rgba(139, 92, 246, 0.2);
+}
+
+.stat-number-balance {
+  color: #1F2937;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.stat-label-balance {
+  color: #1F2937;
+  font-weight: 600;
+}
+
+.stat-sublabel-balance {
+  font-size: 12px;
+  color: #4B5563;
+  margin-top: 4px;
+}
+
+/* Previous Month Carry Forward Card */
+.stat-card-carryforward {
+  background: #EFF6FF;
+  border: 2px solid #3B82F6;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+.stat-number-carryforward {
+  color: #1E40AF;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.stat-label-carryforward {
+  color: #1E40AF;
+  font-weight: 600;
+}
+
+.stat-sublabel-carryforward {
+  font-size: 12px;
+  color: #3B82F6;
+  margin-top: 4px;
+}

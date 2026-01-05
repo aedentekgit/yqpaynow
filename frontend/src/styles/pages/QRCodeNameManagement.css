@@ -1,0 +1,25 @@
+/* QRCodeNameManagement Component Styles - Extracted from inline styles */
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+  color: #8b5cf6;
+}
+
+.svg-icon-lg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+
+/* Required Field Indicator */
+.required-field-indicator {
+  color: #e53e3e;
+}
+

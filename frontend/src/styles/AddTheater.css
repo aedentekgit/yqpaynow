@@ -1,0 +1,528 @@
+/* Corporate Add Theater Form Styles */
+.add-theater-form {
+  background: var(--white);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Corporate Form Sections */
+.form-section {
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  position: relative;
+}
+
+.form-section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-color), transparent);
+}
+
+.form-section h2 {
+  color: var(--text-dark);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border: none;
+  padding: 0 0 12px 0;
+  position: relative;
+  letter-spacing: -0.025em;
+}
+
+.form-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  border-radius: 2px;
+}
+
+/* Corporate Grid Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label::after {
+  content: '';
+  color: var(--error-color);
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.form-group label[for="name"]::after,
+.form-group label[for="phone"]::after,
+.form-group label[for="email"]::after,
+.form-group label[for="address"]::after,
+.form-group label[for="city"]::after,
+.form-group label[for="state"]::after,
+.form-group label[for="pincode"]::after,
+.form-group label[for="ownerName"]::after,
+.form-group label[for="ownerContactNumber"]::after,
+.form-group label[for="personalAddress"]::after,
+.form-group label[for="agreementStartDate"]::after,
+.form-group label[for="agreementEndDate"]::after {
+  content: '*';
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 14px 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: var(--white);
+  color: var(--text-dark);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+  border-color: var(--text-gray);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--shadow-light);
+  background: #fefefe;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: 6px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.error-message::before {
+  content: '⚠';
+  margin-right: 6px;
+  font-size: 0.75rem;
+}
+
+/* Corporate File Upload Styles */
+.file-input {
+  position: relative;
+  cursor: pointer;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  background: var(--background-light);
+  transition: all 0.2s ease;
+}
+
+.file-input:hover {
+  border-color: var(--primary-color);
+  background: var(--background-light);
+}
+
+.file-input::-webkit-file-upload-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+}
+
+.file-input::-webkit-file-upload-button:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+}
+
+.form-group small {
+  color: var(--text-gray);
+  font-size: 0.8rem;
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Corporate Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.form-actions .cancel-btn {
+  flex: 0 0 auto;
+  min-width: 150px;
+  padding: 16px 48px;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  border: none;
+  padding: 16px 48px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submit-btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-primary);
+}
+
+.submit-btn:disabled {
+  background: var(--text-gray);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Remove local cancel-btn styles - now using global styles from buttons.css */
+
+/* Corporate Responsive Design */
+@media (max-width: 1024px) {
+  .add-theater-form {
+    padding: 32px;
+  }
+  
+  .form-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-theater-form {
+    padding: 24px;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .submit-btn {
+    width: 100%;
+  }
+  
+  /* cancel-btn responsive styles now handled by global buttons.css */
+}
+
+@media (max-width: 480px) {
+  .add-theater-form {
+    padding: 20px;
+  }
+}
+
+/* Corporate Loading States */
+.submit-btn:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--white);
+  border-radius: 50%;
+  animation: corporateSpin 1s linear infinite;
+}
+
+@keyframes corporateSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Corporate Status Indicators */
+.form-group input:valid:not(:placeholder-shown) {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: var(--error-color);
+}
+
+/* Corporate Hover Effects */
+.form-section:hover h2::after {
+  width: 80px;
+  transition: width 0.3s ease;
+}
+
+.form-group:hover label {
+  color: var(--primary-color);
+  transition: color 0.2s ease;
+}
+
+/* Corporate Card Shadow */
+.add-theater-form {
+  box-shadow: var(--shadow-light);
+}
+
+/* Corporate Success States */
+.form-group.success input {
+  border-color: var(--success-color);
+  background: #f0fdf4;
+}
+
+.form-group.success label::after {
+  content: '✓';
+  color: var(--success-color);
+  margin-left: 8px;
+}
+
+/* Enhanced Error States with Accessibility */
+.error-field {
+  border-color: var(--error-color) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  background: #fef2f2;
+}
+
+.is-invalid {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 0.875rem;
+}
+
+/* Loading States */
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--white);
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.submit-btn.loading {
+  cursor: wait !important;
+  opacity: 0.9;
+  position: relative;
+  pointer-events: auto;
+}
+
+.submit-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(139, 92, 246, 0.1);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.submit-btn:disabled {
+  cursor: wait !important;
+  opacity: 0.9;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  pointer-events: none;
+}
+
+.submit-btn:disabled.loading {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  opacity: 0.95;
+}
+
+/* Upload Progress */
+.upload-progress-container {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--background-light);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.upload-progress-container h4 {
+  margin: 0 0 16px 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.progress-label {
+  min-width: 120px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.progress-fill.error {
+  background: var(--error-color);
+}
+
+.progress-text {
+  min-width: 40px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* Form Control Consistency */
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: var(--white);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Accessibility Improvements */
+.error-message[role="alert"] {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* File Preview Styles */
+.file-preview-container { margin-top: 12px; padding: 12px; background: #f8f9fa; border-radius: 8px; border: 2px dashed var(--border-color); position: relative; }
+.file-preview-image { width: 100%; max-width: 200px; height: auto; max-height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: block; margin: 0 auto; }
+.file-preview-pdf { display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px; border: 1px solid var(--border-color); }
+.file-preview-pdf-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #ff4444, #cc0000); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; flex-shrink: 0; }
+.file-preview-info { flex: 1; min-width: 0; }
+.file-preview-name { font-weight: 500; color: var(--text-dark); margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-preview-size { font-size: 0.875rem; color: var(--text-muted); }
+.file-remove-btn { position: absolute; top: 8px; right: 8px; background: #ff4444; color: white; border: none; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; line-height: 1; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3); }
+.file-remove-btn:hover { background: #cc0000; transform: scale(1.1); box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4); }
+.file-remove-btn:active { transform: scale(0.95); }

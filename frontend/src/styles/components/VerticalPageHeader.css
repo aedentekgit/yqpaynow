@@ -1,0 +1,261 @@
+/* Extracted Inline Styles */
+.svg-icon-back {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* Vertical Page Header Global Component */
+.vertical-page-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.vertical-page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+}
+
+.back-button-row {
+  margin-bottom: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.title-and-action-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+  gap: 20px;
+}
+
+.vertical-page-header .back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+}
+
+.vertical-page-header .back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(-2px);
+}
+
+.title-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vertical-page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+
+.vertical-page-header .header-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.9;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.action-button-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Action Button Styling for buttons inside the header */
+.vertical-page-header .action-btn,
+.vertical-page-header .header-btn {
+  background: var(--white);
+  color: var(--primary-color);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vertical-page-header .action-btn:hover,
+.vertical-page-header .header-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vertical-page-header {
+    padding: 24px 16px;
+    border-radius: 0;
+  }
+
+  .vertical-page-header::before {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .back-button-row {
+    margin-bottom: 16px;
+  }
+
+  .vertical-page-header .back-btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .vertical-page-header .back-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .vertical-page-header h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .vertical-page-header .header-subtitle {
+    font-size: 1rem;
+  }
+  
+  .title-and-action-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .action-button-container {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .vertical-page-header .action-btn,
+  .vertical-page-header .header-btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vertical-page-header .header-btn .btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vertical-page-header {
+    padding: 20px 12px;
+  }
+
+  .back-button-row {
+    margin-bottom: 12px;
+  }
+
+  .vertical-page-header h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .vertical-page-header .header-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .vertical-page-header .back-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .vertical-page-header .back-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 6px !important;
+  }
+  
+  .vertical-page-header .action-btn,
+  .vertical-page-header .header-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .vertical-page-header .header-btn .btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .title-and-action-row {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .vertical-page-header {
+    padding: 16px 10px;
+  }
+
+  .vertical-page-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .vertical-page-header .header-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .vertical-page-header .back-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .vertical-page-header .back-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    margin-right: 4px !important;
+  }
+
+  .vertical-page-header .action-btn,
+  .vertical-page-header .header-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .vertical-page-header .header-btn .btn-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

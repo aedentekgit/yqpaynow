@@ -1,0 +1,1015 @@
+/* Online POS Interface - 3 Column Layout */
+
+/* Main Container - 3 Column Grid */
+.online-pos-main-container {
+  display: grid;
+  grid-template-columns: 1fr 350px 350px; /* Products | Current Order | Online Order */
+  gap: 0;
+  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* Left Column - Product Menu Section */
+.online-pos-menu-section {
+  background: #f8f9fa;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Middle and Right Columns - Order Sections */
+.online-pos-order-section {
+  background: white;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: calc(100vh - 80px);
+}
+
+.online-pos-order-section:last-child {
+  border-right: none;
+}
+
+/* Enhanced Product Card for dual functionality */
+.online-pos-menu-section .pos-product-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.online-pos-menu-section .pos-product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(107, 14, 155, 0.15);
+}
+
+.online-pos-menu-section .pos-product-card::after {
+  content: "Double-click for Online Order";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(5, 150, 105, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.online-pos-menu-section .pos-product-card:hover::after {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .online-pos-main-container {
+    grid-template-columns: 1fr 320px 320px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .online-pos-main-container {
+    grid-template-columns: 1fr 300px 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .online-pos-main-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 16px;
+  }
+  
+  .online-pos-menu-section,
+  .online-pos-order-section {
+    border-right: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    max-height: 600px;
+    overflow: auto;
+  }
+
+  .online-pos-menu-section .pos-product-card::after {
+    display: none;
+  }
+}
+
+/* Mobile Responsive - Main Container */
+@media (max-width: 768px) {
+  .online-pos-main-container {
+    padding: 8px;
+    gap: 12px;
+  }
+  
+  .online-pos-order-section {
+    max-height: 500px;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 12px;
+  }
+}
+
+/* Enhanced Mobile Responsive for POS Main Container */
+@media (max-width: 768px) {
+  .pos-main-container {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+  
+  .pos-order-section {
+    flex: 1 1 auto !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    order: 1;
+  }
+  
+  .pos-menu-section {
+    flex: 1 1 auto !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    order: 2;
+  }
+  
+  /* Stack order sections vertically on mobile */
+  .pos-order-section:first-of-type {
+    order: 1;
+  }
+  
+  .pos-order-section:last-of-type {
+    order: 3;
+  }
+  
+  .pos-order-content {
+    max-height: 400px !important;
+    overflow-y: auto;
+  }
+  
+  .pos-products-grid {
+    max-height: 500px !important;
+    overflow-y: auto;
+  }
+  
+  /* Make order headers more compact on mobile */
+  .pos-order-header {
+    padding: 12px 16px !important;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .pos-order-title {
+    font-size: 16px !important;
+  }
+  
+  /* Make category tabs scrollable on mobile */
+  .pos-category-tabs {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 12px 8px !important;
+  }
+  
+  .pos-tab {
+    min-width: 100px !important;
+    padding: 10px 14px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Adjust order items for mobile */
+  .pos-order-item {
+    padding: 10px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .pos-item-content {
+    grid-template-columns: 1fr auto !important;
+    gap: 8px !important;
+  }
+  
+  .pos-item-name {
+    font-size: 13px !important;
+    margin-bottom: 4px;
+  }
+  
+  .pos-item-price {
+    font-size: 12px !important;
+  }
+  
+  /* Stack quantity controls and remove button */
+  .pos-quantity-controls,
+  .pos-remove-btn {
+    margin-top: 8px;
+  }
+  
+  /* Make summary more compact */
+  .pos-order-summary {
+    padding: 16px !important;
+  }
+  
+  .pos-summary-line {
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .pos-summary-total {
+    font-size: 15px !important;
+    padding-top: 8px !important;
+    margin-top: 8px !important;
+  }
+  
+  /* Make process button full width and more touch-friendly */
+  .pos-process-btn {
+    padding: 14px !important;
+    font-size: 15px !important;
+    min-height: 48px;
+  }
+  
+  /* Online order cards more compact */
+  .pos-order-content > div > div {
+    padding: 12px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Enable sound button smaller */
+  button[style*="background: '#22c55e'"] {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .online-pos-main-container {
+    padding: 4px;
+    gap: 8px;
+  }
+  
+  .pos-main-container {
+    padding: 8px !important;
+    gap: 8px !important;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    gap: 8px !important;
+    padding: 8px !important;
+  }
+  
+  .online-pos-order-section {
+    max-height: 350px;
+  }
+  
+  .pos-order-content {
+    max-height: 300px !important;
+    padding: 12px !important;
+  }
+  
+  .pos-order-header {
+    padding: 10px 12px !important;
+  }
+  
+  .pos-order-title {
+    font-size: 14px !important;
+  }
+  
+  .pos-category-tabs {
+    padding: 10px 6px !important;
+  }
+  
+  .pos-tab {
+    min-width: 90px !important;
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+  }
+  
+  .pos-order-item {
+    padding: 8px !important;
+  }
+  
+  .pos-item-name {
+    font-size: 12px !important;
+  }
+  
+  .pos-order-summary {
+    padding: 12px !important;
+  }
+  
+  .pos-summary-line {
+    font-size: 12px !important;
+  }
+  
+  .pos-summary-total {
+    font-size: 14px !important;
+  }
+  
+  .pos-process-btn {
+    padding: 12px !important;
+    font-size: 14px !important;
+    min-height: 44px;
+  }
+  
+  /* Make online order info more compact */
+  .pos-order-content > div > div > div {
+    margin-bottom: 6px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)) !important;
+    gap: 6px !important;
+    padding: 6px !important;
+  }
+  
+  .pos-tab {
+    min-width: 80px !important;
+    padding: 6px 10px !important;
+    font-size: 10px !important;
+  }
+  
+  .pos-order-title {
+    font-size: 13px !important;
+  }
+}
+
+/* Content styling overrides for online POS */
+.online-pos-content {
+  background: #f8f9fa !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure proper scrolling for order content */
+.online-pos-order-section .pos-order-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Style adjustments for online order header */
+.online-pos-order-section:last-child .pos-order-header {
+  background: #059669 !important;
+  background-color: #059669 !important;
+}
+
+/* Visual distinction for online order items */
+.online-pos-order-section:last-child .pos-order-item {
+  border-left: 3px solid #059669;
+  background: rgba(5, 150, 105, 0.02);
+}
+
+/* Online order button styling */
+.online-pos-order-section:last-child .pos-process-btn {
+  background: #059669 !important;
+  background-color: #059669 !important;
+}
+
+.online-pos-order-section:last-child .pos-process-btn:hover:not(:disabled) {
+  background: #047857 !important;
+  background-color: #047857 !important;
+}
+
+/* Empty state styling for online orders */
+.online-pos-order-section:last-child .empty-order-icon {
+  font-size: 3rem;
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+/* Ensure products can scroll properly */
+.online-pos-menu-section .pos-products-grid {
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+  min-height: 600px;
+}
+
+/* Grid adjustments for smaller screens */
+@media (max-width: 1400px) {
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+/* ============================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) {
+  .online-pos-main-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+    height: auto;
+    max-height: none;
+    padding: 12px;
+  }
+  
+  .online-pos-menu-section,
+  .online-pos-order-section {
+    border-right: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    min-height: 400px;
+    max-height: 70vh;
+  }
+  
+  .online-pos-menu-section {
+    order: 1;
+  }
+  
+  .online-pos-order-section:nth-child(2) {
+    order: 2;
+  }
+  
+  .online-pos-order-section:last-child {
+    order: 3;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .pos-product-card {
+    padding: 10px;
+  }
+  
+  .pos-product-image {
+    height: 100px;
+  }
+  
+  .pos-product-name {
+    font-size: 13px;
+  }
+  
+  .pos-product-price {
+    font-size: 14px;
+  }
+  
+  .pos-add-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile Styles (max 768px) */
+@media (max-width: 768px) {
+  .online-pos-main-container {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .online-pos-menu-section,
+  .online-pos-order-section {
+    min-height: 350px;
+    max-height: 65vh;
+    border-radius: 10px;
+  }
+  
+  .pos-header {
+    padding: 12px;
+  }
+  
+  .pos-header-title {
+    font-size: 16px;
+  }
+  
+  .pos-search-bar {
+    padding: 10px;
+  }
+  
+  .pos-search-input {
+    font-size: 14px;
+    padding: 10px 36px 10px 12px;
+    min-height: 42px;
+  }
+  
+  .pos-categories {
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .pos-category-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 18px;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .pos-product-card {
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .pos-product-image {
+    height: 90px;
+    border-radius: 6px;
+  }
+  
+  .pos-product-details {
+    padding: 6px 0 0;
+  }
+  
+  .pos-product-name {
+    font-size: 12px;
+  }
+  
+  .pos-product-description {
+    font-size: 10px;
+  }
+  
+  .pos-product-price {
+    font-size: 13px;
+  }
+  
+  .pos-add-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+    min-height: 36px;
+  }
+  
+  .pos-order-header {
+    padding: 12px;
+  }
+  
+  .pos-order-title {
+    font-size: 15px;
+  }
+  
+  .pos-order-content {
+    padding: 10px;
+  }
+  
+  .pos-order-item {
+    padding: 10px;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .pos-order-item-image {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .pos-order-item-details {
+    gap: 4px;
+  }
+  
+  .pos-order-item-name {
+    font-size: 13px;
+  }
+  
+  .pos-order-item-size {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+  
+  .pos-order-item-price {
+    font-size: 13px;
+  }
+  
+  .pos-quantity-controls {
+    gap: 6px;
+  }
+  
+  .pos-quantity-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .pos-quantity-value {
+    font-size: 13px;
+    min-width: 20px;
+  }
+  
+  .pos-order-footer {
+    padding: 12px;
+  }
+  
+  .pos-summary-row {
+    padding: 6px 0;
+  }
+  
+  .pos-summary-label,
+  .pos-summary-value {
+    font-size: 12px;
+  }
+  
+  .pos-summary-row.total-row .pos-summary-label,
+  .pos-summary-row.total-row .pos-summary-value {
+    font-size: 15px;
+  }
+  
+  .pos-process-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 46px;
+  }
+}
+
+/* Small Mobile Styles (max 640px) */
+@media (max-width: 640px) {
+  .online-pos-main-container {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .online-pos-menu-section,
+  .online-pos-order-section {
+    min-height: 320px;
+    max-height: 60vh;
+  }
+  
+  .pos-header {
+    padding: 10px;
+  }
+  
+  .pos-header-title {
+    font-size: 15px;
+  }
+  
+  .pos-search-bar {
+    padding: 8px;
+  }
+  
+  .pos-search-input {
+    font-size: 14px;
+    padding: 9px 34px 9px 10px;
+    min-height: 40px;
+  }
+  
+  .pos-categories {
+    padding: 8px;
+    gap: 6px;
+  }
+  
+  .pos-category-btn {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    padding: 7px;
+  }
+  
+  .pos-product-card {
+    padding: 7px;
+  }
+  
+  .pos-product-image {
+    height: 85px;
+  }
+  
+  .pos-product-details {
+    padding: 5px 0 0;
+  }
+  
+  .pos-product-name {
+    font-size: 11px;
+  }
+  
+  .pos-product-description {
+    font-size: 9px;
+  }
+  
+  .pos-product-price {
+    font-size: 12px;
+  }
+  
+  .pos-add-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+    min-height: 34px;
+  }
+  
+  .pos-order-header {
+    padding: 10px;
+  }
+  
+  .pos-order-title {
+    font-size: 14px;
+  }
+  
+  .pos-order-content {
+    padding: 8px;
+  }
+  
+  .pos-order-item {
+    padding: 8px;
+    gap: 8px;
+    margin-bottom: 7px;
+  }
+  
+  .pos-order-item-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .pos-order-item-details {
+    gap: 3px;
+  }
+  
+  .pos-order-item-name {
+    font-size: 12px;
+  }
+  
+  .pos-order-item-size {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  
+  .pos-order-item-price {
+    font-size: 12px;
+  }
+  
+  .pos-quantity-controls {
+    gap: 5px;
+  }
+  
+  .pos-quantity-btn {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .pos-quantity-value {
+    font-size: 12px;
+    min-width: 18px;
+  }
+  
+  .pos-order-footer {
+    padding: 10px;
+  }
+  
+  .pos-summary-row {
+    padding: 5px 0;
+  }
+  
+  .pos-summary-label,
+  .pos-summary-value {
+    font-size: 11px;
+  }
+  
+  .pos-summary-row.total-row .pos-summary-label,
+  .pos-summary-row.total-row .pos-summary-value {
+    font-size: 14px;
+  }
+  
+  .pos-process-btn {
+    padding: 11px 18px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+}
+
+/* Extra Small Mobile Styles (max 480px) */
+@media (max-width: 480px) {
+  .online-pos-main-container {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .online-pos-menu-section,
+  .online-pos-order-section {
+    min-height: 300px;
+    max-height: 55vh;
+    border-radius: 8px;
+  }
+  
+  .pos-header {
+    padding: 8px;
+  }
+  
+  .pos-header-title {
+    font-size: 14px;
+  }
+  
+  .pos-search-bar {
+    padding: 6px;
+  }
+  
+  .pos-search-input {
+    font-size: 13px;
+    padding: 8px 32px 8px 9px;
+    min-height: 38px;
+  }
+  
+  .pos-categories {
+    padding: 6px;
+    gap: 5px;
+  }
+  
+  .pos-category-btn {
+    padding: 6px 10px;
+    font-size: 10px;
+    border-radius: 14px;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding: 6px;
+  }
+  
+  .pos-product-card {
+    padding: 6px;
+    border-radius: 6px;
+  }
+  
+  .pos-product-image {
+    height: 75px;
+    border-radius: 5px;
+  }
+  
+  .pos-product-details {
+    padding: 4px 0 0;
+  }
+  
+  .pos-product-name {
+    font-size: 10px;
+  }
+  
+  .pos-product-description {
+    font-size: 8px;
+  }
+  
+  .pos-product-price {
+    font-size: 11px;
+  }
+  
+  .pos-add-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+    min-height: 32px;
+  }
+  
+  .pos-order-header {
+    padding: 8px;
+  }
+  
+  .pos-order-title {
+    font-size: 13px;
+  }
+  
+  .pos-order-content {
+    padding: 6px;
+  }
+  
+  .pos-order-item {
+    padding: 7px;
+    gap: 7px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+  }
+  
+  .pos-order-item-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+  }
+  
+  .pos-order-item-details {
+    gap: 2px;
+  }
+  
+  .pos-order-item-name {
+    font-size: 11px;
+  }
+  
+  .pos-order-item-size {
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+  
+  .pos-order-item-price {
+    font-size: 11px;
+  }
+  
+  .pos-quantity-controls {
+    gap: 4px;
+  }
+  
+  .pos-quantity-btn {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .pos-quantity-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .pos-quantity-value {
+    font-size: 11px;
+    min-width: 16px;
+  }
+  
+  .pos-order-footer {
+    padding: 8px;
+  }
+  
+  .pos-summary-row {
+    padding: 4px 0;
+  }
+  
+  .pos-summary-label,
+  .pos-summary-value {
+    font-size: 10px;
+  }
+  
+  .pos-summary-row.total-row {
+    padding: 6px 0;
+    margin-top: 4px;
+  }
+  
+  .pos-summary-row.total-row .pos-summary-label,
+  .pos-summary-row.total-row .pos-summary-value {
+    font-size: 13px;
+  }
+  
+  .pos-process-btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    min-height: 42px;
+  }
+}
+
+/* Very Small Screens (max 375px) */
+@media (max-width: 375px) {
+  .pos-header-title {
+    font-size: 13px;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .pos-product-image {
+    height: 70px;
+  }
+  
+  .pos-product-name {
+    font-size: 9px;
+  }
+  
+  .pos-add-btn {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+  
+  .pos-order-item-image {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .pos-quantity-btn {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .online-pos-main-container {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .online-pos-menu-section,
+  .online-pos-order-section {
+    max-height: 80vh;
+  }
+  
+  .pos-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .pos-product-image {
+    height: 70px;
+  }
+}

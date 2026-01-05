@@ -1,0 +1,24 @@
+{
+  "//": "Copy this file to config.json and fill in your real values.",
+  "backendUrl": "http://localhost:8080",
+  "agents": [
+    {
+      "label": "Theater 1 - POS Counter (USB ESC/POS)",
+     "username": "admin@yqpaynow.com",
+      "password": "admin123",
+      "driver": "usb",
+      "usbVendorId": 1155,
+      "usbProductId": 22304,
+      "printerName": ""
+    },
+    {
+      "label": "Theater 2 - POS Counter (Windows printer)",
+      "username": "admin@yqpaynow.com",
+      "password": "admin123",
+      "driver": "system",
+      "printerName": "EPSON TM-T88V"
+    }
+  ]
+}
+
+

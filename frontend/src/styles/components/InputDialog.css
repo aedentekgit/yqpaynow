@@ -1,0 +1,7 @@
+/* InputDialog Component Styles - Extracted from inline styles */
+
+/* Textarea Resize */
+.input-dialog-textarea {
+  resize: vertical;
+}
+

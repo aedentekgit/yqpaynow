@@ -1,0 +1,149 @@
+/* TheaterDashboard Component Styles - Extracted from inline styles */
+
+/* SVG Icon Sizes */
+.svg-chart-mini {
+  width: 60px;
+  height: 30px;
+}
+
+.svg-chart-full {
+  width: 100%;
+  height: 200px;
+}
+
+.svg-donut-large {
+  width: 100px;
+  height: 100px;
+}
+
+/* Placeholder Display */
+.placeholder-hidden {
+  display: none;
+}
+
+.placeholder-visible {
+  display: flex;
+}
+
+/* Category Bar Height (Dynamic - keep inline) */
+.category-bar {
+  /* Dynamic height remains inline */
+}
+
+/* Availability Bar Width (Dynamic - keep inline) */
+.availability-bar {
+  /* Dynamic width remains inline */
+}
+
+/* Image Container Styles (Dynamic - keep inline) */
+.image-container {
+  /* Dynamic styles remain inline */
+}
+
+/* ============================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet Styles (640px - 1024px) */
+@media (max-width: 1024px) {
+  .svg-chart-full {
+    height: 180px;
+  }
+  
+  .svg-donut-large {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .svg-chart-mini {
+    width: 55px;
+    height: 28px;
+  }
+}
+
+/* Mobile Styles (max 768px) */
+@media (max-width: 768px) {
+  .svg-chart-full {
+    height: 160px;
+  }
+  
+  .svg-donut-large {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .svg-chart-mini {
+    width: 50px;
+    height: 26px;
+  }
+  
+  /* Make dashboard cards stack vertically on mobile */
+  .dashboard-cards-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .dashboard-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+/* Small Mobile Styles (max 640px) */
+@media (max-width: 640px) {
+  .svg-chart-full {
+    height: 140px;
+  }
+  
+  .svg-donut-large {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .svg-chart-mini {
+    width: 45px;
+    height: 24px;
+  }
+}
+
+/* Extra Small Mobile Styles (max 480px) */
+@media (max-width: 480px) {
+  .svg-chart-full {
+    height: 120px;
+  }
+  
+  .svg-donut-large {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .svg-chart-mini {
+    width: 40px;
+    height: 22px;
+  }
+}
+
+/* Very Small Screens (max 375px) */
+@media (max-width: 375px) {
+  .svg-chart-full {
+    height: 100px;
+  }
+  
+  .svg-donut-large {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .svg-chart-full {
+    height: 100px;
+  }
+  
+  .svg-donut-large {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,556 @@
+/* TheaterPaymentGatewaySettings Component Styles - Exact mirror of Settings page */
+
+/* Container Width Override - Use full width for payment gateway settings */
+.dashboard-content .theater-list-container.qr-management-page {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.theater-list-container.qr-management-page {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Payment Gateway Settings Layout - Matching Settings Page Style */
+.theater-list-container.qr-management-page .page-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.theater-list-container.qr-management-page .page-content {
+  padding: 0 !important;
+  background: transparent !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.theater-list-container.qr-management-page .page-main-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Main Container - Use full available width */
+.settings-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  display: flex;
+  min-height: 600px;
+  height: 100%;
+}
+
+/* Left Sidebar Tabs - EXACT match to Settings page inline styles */
+.settings-tabs {
+  display: flex;
+  flex-direction: column;
+  background: #f8f8f5;
+  border-right: 1px solid #e5e5e0;
+  width: 280px;
+  min-width: 280px;
+  height: 100%;
+  min-height: 100%;
+}
+
+.settings-tab {
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.settings-tab:hover {
+  background: #f0f0ed;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.settings-tab.active {
+  background: #fafaf8;
+  color: #6B0E9B;
+  border-right: 3px solid #6B0E9B;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.settings-tab.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #6B0E9B;
+}
+
+.tab-icon {
+  font-size: 18px;
+  min-width: 20px;
+}
+
+/* Right Content Area - Use full available width with reasonable padding */
+.settings-content {
+  flex: 1 1 auto !important;
+  padding: 32px 24px;
+  background: transparent;
+  height: 100%;
+  min-height: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Settings Section - Use full available width */
+.settings-section {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Section Header - EXACT match to Settings page inline styles */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section-header h2,
+.section-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Form Grid - Matching Settings page two-column layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Form Labels - Matching Settings page style */
+.form-group label {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Form Inputs - Exact match to Settings page */
+.form-grid .form-group input,
+.form-grid .form-group textarea,
+.form-grid .form-group select,
+.form-group input,
+.form-group textarea,
+.form-group select,
+.form-control {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Form Input Hover - Matching Settings page */
+.form-grid .form-group input:hover,
+.form-grid .form-group textarea:hover,
+.form-grid .form-group select:hover,
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover,
+.form-control:hover {
+  border-color: #9ca3af;
+}
+
+/* Form Input Focus - Matching Settings page */
+.form-grid .form-group input:focus,
+.form-grid .form-group textarea:focus,
+.form-grid .form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.form-control:focus {
+  outline: none;
+  border-color: #6B0E9B;
+  box-shadow: 0 0 0 3px rgba(107, 14, 155, 0.1);
+  background: #fefefe;
+}
+
+/* Info Card - Matching Settings page style */
+.info-card-payment,
+.info-card {
+  margin-bottom: 24px;
+  background: #f3f4f6;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.info-card-text {
+  margin: 0;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Gateway Section - Exact match to Settings page section-header */
+.gateway-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.gateway-header h2,
+.gateway-header .gateway-title {
+  margin: 0;
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.gateway-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gateway-icon {
+  color: #8b5cf6;
+  font-size: 24px;
+}
+
+/* Enable/Disable Label */
+.enable-label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.enable-label-enabled {
+  color: #10b981;
+}
+
+.enable-label-disabled {
+  color: #6b7280;
+}
+
+/* Warning Message */
+.warning-message {
+  padding: 12px 16px;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #92400e;
+}
+
+/* Password Input Container */
+.password-input-container {
+  position: relative;
+}
+
+.password-input {
+  padding-right: 40px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+}
+
+/* Save Button Container - matching Settings page */
+.save-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.save-button {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.save-button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Theater Selection */
+.theater-selection-container {
+  padding: 32px !important;
+  border-bottom: 1px solid #e2e8f0;
+  background: transparent;
+}
+
+.theater-selection-inner {
+  max-width: 600px;
+}
+
+.theater-selection-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 14px;
+}
+
+/* Form Section */
+.form-section {
+  padding: 0 !important;
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 48px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  position: relative;
+}
+
+.form-section-disabled {
+  opacity: 0.6;
+}
+
+/* Ensure form sections match Settings page spacing */
+.form-section:not(:last-child)::after,
+.settings-section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #e2e8f0, transparent);
+}
+
+/* Ensure immediate UI updates - no transitions on state changes */
+.form-section,
+.form-section-disabled {
+  transition: opacity 0.15s ease-out;
+}
+
+/* Immediate feedback for enabled/disabled state */
+.enable-label {
+  transition: color 0.1s ease-out;
+}
+
+/* Form fields should update immediately when enabled/disabled */
+.form-grid input,
+.form-grid textarea {
+  transition: opacity 0.1s ease-out, background-color 0.1s ease-out, border-color 0.1s ease-out;
+}
+
+/* ✅ Disabled input fields styling - ensure they look and behave disabled */
+/* Target ALL inputs and textareas within disabled form sections with maximum specificity */
+.form-section.form-section-disabled input,
+.form-section.form-section-disabled textarea,
+.form-section.form-section-disabled input.form-control,
+.form-section.form-section-disabled textarea.form-control,
+.form-section-disabled input,
+.form-section-disabled textarea,
+.form-section-disabled .form-control,
+.form-section-disabled .form-group input,
+.form-section-disabled .form-group textarea,
+.form-section-disabled .form-grid input,
+.form-section-disabled .form-grid textarea,
+.form-section-disabled .form-grid .form-group input,
+.form-section-disabled .form-grid .form-group textarea,
+.form-section-disabled .form-grid .form-group .form-control,
+input.form-control:disabled,
+textarea.form-control:disabled,
+.form-section-disabled input:disabled,
+.form-section-disabled textarea:disabled,
+.form-section-disabled input[readonly],
+.form-section-disabled textarea[readonly] {
+  background-color: #f3f4f6 !important;
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+  border-color: #e5e7eb !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+/* ✅ Disabled input fields - prevent interaction */
+.form-section-disabled input:focus,
+.form-section-disabled textarea:focus,
+.form-section-disabled .form-control:focus,
+.form-section-disabled .form-group input:focus,
+.form-section-disabled .form-group textarea:focus,
+.form-section-disabled .form-grid input:focus,
+.form-section-disabled .form-grid textarea:focus {
+  outline: none !important;
+  border-color: #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+/* ✅ Also target readonly inputs */
+.form-section-disabled input[readonly],
+.form-section-disabled textarea[readonly],
+.form-section-disabled .form-control[readonly] {
+  background-color: #f3f4f6 !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+  border-color: #e5e7eb !important;
+  pointer-events: none !important;
+}
+
+/* ✅ Disabled password toggle button */
+.form-section-disabled .password-toggle-btn {
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* ✅ Ensure toggle switch is still clickable even when section is disabled */
+.form-section-disabled .gateway-header {
+  pointer-events: auto;
+}
+
+/* Custom toggle switch should still be clickable when section is disabled */
+.form-section-disabled .gateway-header .gateway-toggle-switch {
+  pointer-events: auto;
+}
+
+/* Toggle Switch Styles - Matching TheaterList style */
+.gateway-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.gateway-toggle-switch.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.gateway-toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.gateway-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.gateway-toggle-slider.active {
+  background-color: var(--primary-dark, #6D28D9);
+}
+
+.gateway-toggle-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.gateway-toggle-slider.active::before {
+  left: 26px;
+}
+
+.gateway-toggle-switch:hover .gateway-toggle-slider:not(.disabled) {
+  box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.1);
+}
+
+.gateway-toggle-slider.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f3f4f6;
+}
+
+.gateway-toggle-slider.disabled::before {
+  background-color: #e5e7eb;
+}
+
+/* Empty State Icon */
+.empty-state-icon-payment {
+  font-size: 48px;
+  color: #999;
+}
+
+/* Add Theater Form wrapper */
+.add-theater-form {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+}

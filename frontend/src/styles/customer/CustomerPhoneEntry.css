@@ -1,0 +1,300 @@
+﻿/* PHONE ENTRY - MODERN MINIMAL DESIGN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.phone-entry-page {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header with Purple Gradient */
+.phone-entry-header {
+  position: relative;
+  padding: 16px 20px 80px;
+  padding-top: calc(env(safe-area-inset-top) + 16px);
+  background: linear-gradient(180deg,
+      #1a0a2e 0%,
+      #2d1b4e 20%,
+      #4a2c6d 50%,
+      #2d1b4e 80%,
+      #1a0a2e 100%);
+  color: white;
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 4px 20px rgba(107, 14, 155, 0.3);
+}
+
+/* Back button styles */
+.back-button {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.back-button:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2.5;
+}
+
+.phone-entry-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Content Area */
+.phone-entry-content {
+  flex: 1;
+  padding: 0 24px 40px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+
+.phone-entry-card {
+  background: white;
+  border-radius: 32px;
+  padding: 40px 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(107, 14, 155, 0.08);
+}
+
+.phone-entry-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.3px;
+}
+
+.phone-entry-card p {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+/* Phone Input Section */
+.phone-input-container {
+  display: flex;
+  gap: 10px;
+  margin: 24px 0 16px;
+}
+
+.country-code-display {
+  width: 75px;
+  padding: 0 12px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  height: 52px;
+}
+
+.country-code-display span:first-child {
+  font-size: 18px;
+}
+
+.phone-input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.phone-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+  letter-spacing: 1px;
+  height: 52px;
+}
+
+.phone-input::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.phone-input:focus {
+  outline: none;
+  border-color: #6B0E9B;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(107, 14, 155, 0.1);
+}
+
+/* Continue Button - Matching Cart Checkout Button Style */
+.continue-button {
+  width: 100%;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #6B0E9B 0%, #5A0C82 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Lato', 'Arial', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.3);
+  margin: 24px 0 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: auto;
+}
+
+.continue-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.continue-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.continue-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 14, 155, 0.4);
+}
+
+.continue-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.3);
+}
+
+.continue-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.continue-button svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Security Text */
+.security-text {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #94a3b8;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.security-text::before {
+  content: "🔒";
+  font-size: 14px;
+}
+
+/* Error Message */
+.error-message {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  color: #dc2626;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #fecaca;
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 18px;
+}
+
+/* Feature List (Optional) */
+.features-list {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.feature-item::before {
+  content: "✓";
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #6B0E9B 0%, #8B1FB5 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  flex-shrink: 0;
+}

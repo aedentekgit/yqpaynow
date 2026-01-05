@@ -1,0 +1,64 @@
+/* RoleBasedRoute Component Styles - Extracted from inline styles */
+
+/* Access Denied Container */
+.role-based-route-access-denied-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+/* Access Denied Card */
+.role-based-route-access-denied-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Access Denied Icon */
+.role-based-route-access-denied-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+/* Access Denied Title */
+.role-based-route-access-denied-title {
+  color: #dc3545;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+/* Access Denied Message */
+.role-based-route-access-denied-message {
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* Access Denied Button */
+.role-based-route-access-denied-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.role-based-route-access-denied-button:hover {
+  background: #5568d3;
+}
+
+.role-based-route-access-denied-button:not(:last-child) {
+  margin-right: 10px;
+}
+

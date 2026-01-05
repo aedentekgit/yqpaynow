@@ -1,0 +1,2190 @@
+/* =============================================
+   GLOBAL THEATER MODAL STYLES
+   Standard modal design for all theater pages
+   ============================================= */
+
+/* Modal Overlay - Universal rule to ensure modals appear above sidebar (z-index: 1000) */
+.modal-overlay,
+div.modal-overlay,
+[class*="modal-overlay"],
+.modal-overlay[class] {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 1001 !important;
+  backdrop-filter: blur(4px) !important;
+  animation: fadeIn 0.2s ease-out !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Global Modal Content - Standard Width for ALL Theater Modals */
+.modal-content,
+.theater-edit-modal-content,
+.theater-view-modal-content,
+.theater-user-modal-content {
+  background: var(--white, #ffffff);
+  border-radius: 12px;
+  max-width: 900px !important; /* GLOBAL STANDARD WIDTH - Reduced from 1200px for better UX */
+  width: 85% !important; /* GLOBAL STANDARD WIDTH - Reduced from 95% for better UX */
+  max-height: 95vh; /* Increased height to show more content without scrolling */
+  min-height: 600px; /* Minimum height for better visibility */
+  overflow: hidden; /* Keep for rounded corners */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.3s ease-out;
+  box-sizing: border-box;
+  position: relative; /* For fixed footer positioning */
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal Header - Consistent Purple Gradient - Fixed at Top */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  background: linear-gradient(135deg, var(--primary-color, #5A0C82) 0%, var(--primary-dark, #5A0C82) 100%);
+  color: var(--white, #ffffff);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 2px 10px rgba(90, 12, 130, 0.2);
+  flex-shrink: 0; /* Prevent header from shrinking */
+  position: relative;
+  z-index: 1;
+}
+
+/* Header title - supports both direct h2 and wrapped in modal-title-section */
+.modal-header h2,
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--white, #ffffff);
+  flex: 1; /* Allow title to take available space */
+}
+
+.modal-nav-left,
+.modal-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1; /* Allow title section to take available space */
+}
+
+.modal-title-section h2,
+.modal-title-section h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--white, #ffffff);
+}
+
+/* Close Button */
+.close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--white, #ffffff);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+/* Modal Body - Scrollable Content Area */
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  padding: 32px; /* Balanced padding matching the image */
+  background: var(--white, #ffffff);
+  min-height: 0; /* Allow flexbox to control height */
+  scroll-behavior: smooth; /* Smooth scrolling for better UX */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; /* Ensure full width */
+  position: relative;
+}
+
+/* Ensure modal-actions inside modal-body don't interfere (legacy support) */
+.modal-body .modal-actions {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color, #e2e8f0);
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 10px; /* Slightly wider for better usability */
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Modal Footer / Actions - Fixed Footer at Bottom */
+.modal-content > .modal-actions,
+.modal-content > .modal-footer,
+.theater-edit-modal-content > .modal-actions,
+.theater-edit-modal-content > .modal-footer {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center;
+  padding: 24px 32px; /* Match header padding exactly - top and bottom same */
+  border-top: 1px solid var(--border-color, #e2e8f0);
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  position: relative;
+  margin-top: 0; /* No margin needed when outside body */
+  margin-bottom: 0; /* Ensure no extra margin */
+  z-index: 1; /* Ensure footer is above body content when scrolling */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow to separate from body */
+  gap: 12px; /* Gap between buttons - reduced for closer spacing */
+}
+
+/* View modals: If footer is empty or only has Close button, hide it (header X is sufficient) */
+.modal-content > .modal-actions:empty,
+.theater-edit-modal-content > .modal-actions:empty {
+  display: none;
+}
+
+/* Images in View modals should be full width and properly displayed */
+.modal-content .edit-form .form-group.full-width img,
+.modal-content .edit-form .form-group.full-width img[src],
+.modal-body .edit-form .form-group.full-width img,
+.modal-body .edit-form .form-group.full-width img[src],
+.modal-content .edit-form .form-group.full-width .InstantImage,
+.modal-body .edit-form .form-group.full-width .InstantImage {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+/* Image containers in View modals - ensure full width with proper styling */
+.modal-content .form-group.full-width > div,
+.modal-body .form-group.full-width > div {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Ensure image display containers are full width and centered */
+.modal-content .form-group.full-width > div[style*="textAlign"],
+.modal-body .form-group.full-width > div[style*="textAlign"],
+.modal-content .form-group.full-width > div[style*="padding"],
+.modal-body .form-group.full-width > div[style*="padding"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Image preview containers in View modals */
+.modal-content .form-group.full-width .product-image-preview,
+.modal-body .form-group.full-width .product-image-preview {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Legacy support for modal-actions inside modal-body (for backwards compatibility) */
+.modal-body > .modal-actions {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color, #e2e8f0);
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -32px;
+  margin-right: -32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background: #f9fafb;
+}
+
+/* Footer Navigation Sections - Matching Header Structure */
+.modal-actions-left,
+.modal-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto; /* Don't grow or shrink */
+  min-width: 0;
+}
+
+.modal-actions-center,
+.modal-footer-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Take remaining space */
+  min-width: 0;
+}
+
+.modal-actions-right,
+.modal-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto; /* Don't grow or shrink */
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+/* Buttons are aligned to the right, close together */
+/* Remove auto margins so buttons stay together on the right */
+.modal-actions > .cancel-btn,
+.modal-actions > .btn-primary,
+.modal-actions > .submit-btn,
+.modal-footer > .cancel-btn,
+.modal-footer > .btn-primary,
+.modal-footer > .submit-btn {
+  margin-left: 0;
+  margin-right: 0;
+  flex-shrink: 0; /* Prevent buttons from shrinking on desktop */
+}
+
+/* Ensure buttons don't have conflicting margins on desktop */
+.modal-content > .modal-actions > button:not(:only-child),
+.modal-content > .modal-footer > button:not(:only-child),
+.theater-edit-modal-content > .modal-actions > button:not(:only-child),
+.theater-edit-modal-content > .modal-footer > button:not(:only-child) {
+  flex-shrink: 0; /* Prevent buttons from shrinking on desktop */
+}
+
+/* Desktop: Buttons should not be full width */
+@media (min-width: 769px) {
+  .modal-content > .modal-actions > button,
+  .modal-content > .modal-footer > button,
+  .theater-edit-modal-content > .modal-actions > button,
+  .theater-edit-modal-content > .modal-footer > button {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+  }
+}
+
+/* Form Grid - Two Column Layout - Applied to ALL Modal Forms */
+/* Handle both direct form-group children and form-grid wrapper cases */
+
+/* Default: Make edit-form/form a grid when it has direct form-group children */
+.modal-content .edit-form,
+.modal-content form,
+.modal-body .edit-form,
+.modal-body form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px; /* Balanced spacing matching the image - 24px between fields */
+  align-items: start;
+}
+
+/* Single form field should take full width */
+/* Case 1: When form-group is the only child (simple case) */
+.modal-content .edit-form > .form-group:only-child,
+.modal-content form > .form-group:only-child,
+.modal-body .edit-form > .form-group:only-child,
+.modal-body form > .form-group:only-child {
+  grid-column: 1 / -1; /* Span both columns for full width */
+  width: 100%;
+}
+
+/* Case 2: When there's only one form-group type child (even with other element types like hidden inputs) */
+.modal-content .edit-form:has(> .form-group:only-of-type) > .form-group,
+.modal-content form:has(> .form-group:only-of-type) > .form-group,
+.modal-body .edit-form:has(> .form-group:only-of-type) > .form-group,
+.modal-body form:has(> .form-group:only-of-type) > .form-group {
+  grid-column: 1 / -1; /* Span both columns for full width */
+  width: 100%;
+}
+
+/* When edit-form/form contains a form-grid wrapper - change to block layout */
+.modal-content .edit-form .form-grid,
+.modal-content form .form-grid,
+.modal-body .edit-form .form-grid,
+.modal-body form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* Override: When form-grid exists, parent should be block, not grid */
+.modal-content .edit-form:has(.form-grid),
+.modal-content form:has(.form-grid),
+.modal-body .edit-form:has(.form-grid),
+.modal-body form:has(.form-grid) {
+  display: block;
+  gap: 0;
+}
+
+/* Form Grid wrapper - when explicitly used inside edit-form */
+.modal-content .edit-form .form-grid,
+.modal-content form .form-grid,
+.modal-body .edit-form .form-grid,
+.modal-body form .form-grid,
+.edit-form .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px; /* Balanced spacing matching the image */
+  margin-bottom: 0;
+  width: 100%;
+}
+
+/* Single form group in form-grid should take full width */
+.modal-content .edit-form .form-grid > .form-group:only-child,
+.modal-content form .form-grid > .form-group:only-child,
+.modal-body .edit-form .form-grid > .form-group:only-child,
+.modal-body form .form-grid > .form-group:only-child,
+.edit-form .form-grid > .form-group:only-child {
+  grid-column: 1 / -1; /* Span both columns for full width */
+  width: 100%;
+}
+
+/* Form Group - Clean field container with proper alignment */
+.modal-content .edit-form .form-group,
+.modal-content form .form-group,
+.modal-body .edit-form .form-group,
+.modal-body form .form-group,
+.edit-form .form-group {
+  margin: 0; /* Remove all margins - spacing handled by grid gap */
+  padding: 0; /* Remove padding - clean container */
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+  background: transparent; /* No background container */
+  border: none; /* No border container */
+  box-shadow: none; /* No shadow container */
+  width: 100%; /* Full width within grid cell */
+  align-items: stretch; /* Ensure proper alignment */
+}
+
+/* Full-width form groups (like textarea, file inputs, image uploads) span both columns */
+.modal-content .edit-form .form-group.full-width,
+.modal-content form .form-group.full-width,
+.modal-body .edit-form .form-group.full-width,
+.modal-body form .form-group.full-width,
+.edit-form .form-group.full-width,
+.modal-content .edit-form .form-group:has(textarea),
+.modal-content form .form-group:has(textarea),
+.modal-body .edit-form .form-group:has(textarea),
+.modal-body form .form-group:has(textarea),
+.edit-form .form-group:has(textarea),
+/* File inputs and image uploads should be full width - ImageUpload has hidden file input */
+.modal-content .edit-form .form-group:has(input[type="file"]),
+.modal-content form .form-group:has(input[type="file"]),
+.modal-body .edit-form .form-group:has(input[type="file"]),
+.modal-body form .form-group:has(input[type="file"]),
+.edit-form .form-group:has(input[type="file"]),
+/* Material-UI components (ImageUpload uses Box and Card) */
+.modal-content .edit-form .form-group:has([class*="MuiBox"]),
+.modal-content form .form-group:has([class*="MuiBox"]),
+.modal-body .edit-form .form-group:has([class*="MuiBox"]),
+.modal-body form .form-group:has([class*="MuiBox"]),
+.edit-form .form-group:has([class*="MuiBox"]),
+.modal-content .edit-form .form-group:has([class*="MuiCard"]),
+.modal-content form .form-group:has([class*="MuiCard"]),
+.modal-body .edit-form .form-group:has([class*="MuiCard"]),
+.modal-body form .form-group:has([class*="MuiCard"]),
+.edit-form .form-group:has([class*="MuiCard"]) {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  min-width: 0;
+}
+
+/* Textarea elements automatically span both columns */
+.modal-content .edit-form textarea,
+.modal-content form textarea,
+.modal-body .edit-form textarea,
+.modal-body form textarea {
+  grid-column: 1 / -1;
+}
+
+.modal-content .edit-form label,
+.modal-content form label,
+.modal-body .edit-form label,
+.modal-body form label,
+.edit-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px; /* Balanced spacing matching the image */
+  color: var(--text-dark, #1e293b);
+  font-size: 14px;
+  line-height: 1.4;
+  width: 100%; /* Full width within grid cell */
+  text-align: left; /* Ensure left alignment */
+}
+
+.modal-content .edit-form label.required::after,
+.modal-content form label.required::after,
+.modal-body .edit-form label.required::after,
+.modal-body form label.required::after,
+.edit-form label.required::after {
+  content: '*';
+  color: var(--error-color, #dc2626);
+  margin-left: 4px;
+  font-weight: 600;
+}
+
+.modal-content .edit-form .form-control,
+.modal-content form .form-control,
+.modal-content .edit-form input,
+.modal-content form input,
+.modal-content .edit-form select,
+.modal-content form select,
+.modal-content .edit-form textarea,
+.modal-content form textarea,
+.modal-body .edit-form .form-control,
+.modal-body form .form-control,
+.edit-form .form-control {
+  width: 100%;
+  padding: 12px 16px; /* Comfortable padding matching the image */
+  border: 2px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background: var(--white, #ffffff);
+  box-sizing: border-box;
+  font-family: inherit;
+  color: var(--text-dark, #1e293b);
+  margin: 0; /* Remove any default margins */
+  display: block; /* Ensure block display */
+}
+
+.modal-content .edit-form .form-control:focus,
+.modal-content form .form-control:focus,
+.modal-content .edit-form input:focus,
+.modal-content form input:focus,
+.modal-content .edit-form select:focus,
+.modal-content form select:focus,
+.modal-content .edit-form textarea:focus,
+.modal-content form textarea:focus,
+.modal-body .edit-form .form-control:focus,
+.modal-body form .form-control:focus,
+.edit-form .form-control:focus {
+  outline: none;
+  border-color: var(--primary-color, #5A0C82);
+  box-shadow: 0 0 0 3px rgba(90, 12, 130, 0.1);
+}
+
+.modal-content .edit-form .form-control:disabled,
+.modal-content form .form-control:disabled,
+.modal-content .edit-form .form-control[readonly],
+.modal-content form .form-control[readonly],
+.modal-body .edit-form .form-control:disabled,
+.modal-body form .form-control:disabled,
+.edit-form .form-control:disabled,
+.edit-form .form-control[readonly] {
+  background: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.modal-content .edit-form .form-control::placeholder,
+.modal-content form .form-control::placeholder,
+.modal-content .edit-form input::placeholder,
+.modal-content form input::placeholder,
+.modal-content .edit-form textarea::placeholder,
+.modal-content form textarea::placeholder,
+.modal-body .edit-form .form-control::placeholder,
+.modal-body form .form-control::placeholder,
+.edit-form .form-control::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.modal-content .edit-form textarea.form-control,
+.modal-content form textarea,
+.modal-content .edit-form textarea,
+.modal-body .edit-form textarea.form-control,
+.modal-body form textarea,
+.edit-form textarea.form-control {
+  resize: vertical;
+  min-height: 80px; /* Comfortable textarea height matching the image */
+  line-height: 1.5;
+  padding: 12px 16px; /* Match input padding */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.modal-content .edit-form select.form-control,
+.modal-content form select,
+.modal-body .edit-form select.form-control,
+.modal-body form select,
+.edit-form select.form-control {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 40px;
+}
+
+.modal-content .edit-form .form-help,
+.modal-content form .form-help,
+.modal-body .edit-form .form-help,
+.modal-body form .form-help,
+.edit-form .form-help {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* Error Messages */
+.modal-content .edit-form .error-message,
+.modal-content form .error-message,
+.modal-body .edit-form .error-message,
+.modal-body form .error-message,
+.edit-form .error-message,
+.error-message {
+  display: block;
+  color: var(--error-color, #dc2626);
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+}
+
+.form-error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: var(--error-color, #dc2626);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Buttons - Equal Heights in Modal Context */
+.modal-content .btn-primary,
+.modal-content .submit-btn,
+.theater-edit-modal-content .btn-primary,
+.theater-edit-modal-content .submit-btn,
+.modal-actions .btn-primary,
+.modal-actions .submit-btn,
+.modal-footer .btn-primary,
+.modal-footer .submit-btn {
+  background: linear-gradient(135deg, var(--primary-color, #5A0C82) 0%, var(--primary-dark, #5A0C82) 100%);
+  color: var(--white, #ffffff);
+  border: 2px solid transparent !important; /* Add transparent border to match cancel-btn height */
+  padding: 10px 24px !important; /* Reduced padding to account for border */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 44px !important; /* Fixed height to match cancel-btn */
+  min-height: 44px !important; /* Ensure minimum height */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box !important; /* Include border in height calculation */
+  flex: 0 0 auto !important; /* Override flex: 1 from buttons.css */
+}
+
+.modal-content .btn-primary:hover,
+.modal-content .submit-btn:hover:not(:disabled),
+.theater-edit-modal-content .btn-primary:hover,
+.theater-edit-modal-content .submit-btn:hover:not(:disabled),
+.modal-actions .btn-primary:hover,
+.modal-actions .submit-btn:hover:not(:disabled),
+.modal-footer .btn-primary:hover,
+.modal-footer .submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(90, 12, 130, 0.3);
+}
+
+.modal-content .btn-primary:active,
+.modal-content .submit-btn:active:not(:disabled),
+.theater-edit-modal-content .btn-primary:active,
+.theater-edit-modal-content .submit-btn:active:not(:disabled),
+.modal-actions .btn-primary:active,
+.modal-actions .submit-btn:active:not(:disabled),
+.modal-footer .btn-primary:active,
+.modal-footer .submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.modal-content .btn-secondary,
+.modal-content .cancel-btn,
+.theater-edit-modal-content .btn-secondary,
+.theater-edit-modal-content .cancel-btn,
+.modal-actions .btn-secondary,
+.modal-actions .cancel-btn,
+.modal-footer .btn-secondary,
+.modal-footer .cancel-btn {
+  background: #dc2626; /* Red background for cancel button */
+  color: var(--white, #ffffff); /* White text on red background */
+  border: 2px solid #dc2626 !important; /* Red border */
+  padding: 10px 24px !important; /* Reduced padding to match btn-primary */
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 44px !important; /* Fixed height to match btn-primary */
+  min-height: 44px !important; /* Ensure minimum height */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box !important; /* Include border in height calculation */
+  flex: 0 0 auto !important; /* Override flex: 1 from buttons.css */
+}
+
+.modal-content .btn-secondary:hover,
+.modal-content .cancel-btn:hover,
+.theater-edit-modal-content .btn-secondary:hover,
+.theater-edit-modal-content .cancel-btn:hover,
+.modal-actions .btn-secondary:hover,
+.modal-actions .cancel-btn:hover,
+.modal-footer .btn-secondary:hover,
+.modal-footer .cancel-btn:hover {
+  /* ✅ FIX: Removed hover background color - keep original background */
+  /* background: #b91c1c; */
+  color: var(--white, #ffffff) !important; /* Keep text white on hover */
+  /* border-color: #b91c1c; */
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3); /* Red shadow on hover */
+}
+
+.modal-content .btn-secondary:active,
+.modal-content .cancel-btn:active,
+.theater-edit-modal-content .btn-secondary:active,
+.theater-edit-modal-content .cancel-btn:active,
+.modal-actions .btn-secondary:active,
+.modal-actions .cancel-btn:active,
+.modal-footer .btn-secondary:active,
+.modal-footer .cancel-btn:active {
+  background: #991b1b; /* Even darker red on active */
+  border-color: #991b1b;
+  transform: translateY(0);
+}
+
+/* Medium-sized tablets and large phones */
+@media (max-width: 900px) and (min-width: 769px) {
+  .modal-content > .modal-actions,
+  .modal-content > .modal-footer,
+  .theater-edit-modal-content > .modal-actions,
+  .theater-edit-modal-content > .modal-footer {
+    padding: 18px 22px;
+    gap: 12px;
+  }
+
+  .modal-content > .modal-actions > button,
+  .modal-content > .modal-footer > button,
+  .theater-edit-modal-content > .modal-actions > button,
+  .theater-edit-modal-content > .modal-footer > button {
+    min-width: 140px; /* Ensure buttons don't get too small */
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .modal-content,
+  .theater-edit-modal-content,
+  .theater-view-modal-content,
+  .theater-user-modal-content {
+    max-width: 900px !important; /* Keep max-width on tablets */
+    width: 90% !important; /* Tablet responsive width */
+  }
+
+  .modal-body {
+    padding: 24px;
+  }
+
+  .modal-header {
+    padding: 20px 24px;
+  }
+
+  /* Tablet Footer - Keep horizontal layout but ensure responsiveness */
+  .modal-content > .modal-actions,
+  .modal-content > .modal-footer,
+  .theater-edit-modal-content > .modal-actions,
+  .theater-edit-modal-content > .modal-footer {
+    padding: 20px 24px; /* Match header padding on tablets */
+    flex-wrap: wrap; /* Allow wrapping if buttons are too wide */
+    gap: 12px; /* Consistent gap on tablets */
+  }
+
+  /* Tablet buttons - can be side-by-side but wrap if needed */
+  .modal-content > .modal-actions .btn-primary,
+  .modal-content > .modal-actions .btn-secondary,
+  .modal-content > .modal-actions .submit-btn,
+  .modal-content > .modal-actions .cancel-btn,
+  .modal-content > .modal-footer .btn-primary,
+  .modal-content > .modal-footer .btn-secondary,
+  .modal-content > .modal-footer .submit-btn,
+  .modal-content > .modal-footer .cancel-btn,
+  .theater-edit-modal-content > .modal-actions .btn-primary,
+  .theater-edit-modal-content > .modal-actions .btn-secondary,
+  .theater-edit-modal-content > .modal-actions .submit-btn,
+  .theater-edit-modal-content > .modal-actions .cancel-btn,
+  .theater-edit-modal-content > .modal-footer .btn-primary,
+  .theater-edit-modal-content > .modal-footer .btn-secondary,
+  .theater-edit-modal-content > .modal-footer .submit-btn,
+  .theater-edit-modal-content > .modal-footer .cancel-btn {
+    flex: 0 1 auto; /* Allow buttons to shrink if needed */
+    min-width: 120px; /* Minimum width for readability */
+  }
+
+  /* Tablet: Single column layout */
+  .modal-content .edit-form,
+  .modal-content form,
+  .modal-body .edit-form,
+  .modal-body form {
+    grid-template-columns: 1fr;
+    gap: 20px; /* Balanced spacing on tablets */
+  }
+  
+  /* When form-grid exists, keep parent as block */
+  .modal-content .edit-form:has(.form-grid),
+  .modal-content form:has(.form-grid),
+  .modal-body .edit-form:has(.form-grid),
+  .modal-body form:has(.form-grid) {
+    display: block;
+  }
+
+  .modal-content .edit-form .form-grid,
+  .modal-content form .form-grid,
+  .modal-body .edit-form .form-grid,
+  .modal-body form .form-grid,
+  .edit-form .form-grid {
+    grid-template-columns: 1fr;
+    gap: 20px; /* Balanced spacing on tablets */
+  }
+
+  .modal-body {
+    padding: 24px; /* Balanced padding on tablets */
+    min-height: 400px;
+    max-height: calc(95vh - 160px);
+  }
+
+  .modal-content,
+  .theater-edit-modal-content,
+  .theater-view-modal-content,
+  .theater-user-modal-content {
+    max-height: 95vh;
+    min-height: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content,
+  .theater-edit-modal-content,
+  .theater-view-modal-content,
+  .theater-user-modal-content {
+    max-width: none !important; /* Remove max-width on mobile */
+    width: 95% !important; /* Mobile responsive width */
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+  }
+
+  .modal-header h2,
+  .modal-header h3,
+  .modal-title-section h2,
+  .modal-title-section h3 {
+    font-size: 18px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  /* Mobile Footer - Stack buttons vertically with proper spacing */
+  .modal-content > .modal-actions,
+  .modal-content > .modal-footer,
+  .theater-edit-modal-content > .modal-actions,
+  .theater-edit-modal-content > .modal-footer {
+    flex-direction: column !important; /* Stack buttons vertically on mobile */
+    align-items: stretch !important; /* Stretch buttons to full width */
+    padding: 16px 20px !important; /* Match header padding on mobile */
+    gap: 12px !important; /* Space between stacked buttons */
+    justify-content: flex-start !important; /* Align to top when stacked */
+    width: 100% !important; /* Ensure footer is full width */
+    box-sizing: border-box !important;
+  }
+
+  /* Buttons inside footer on mobile - full width and stacked */
+  .modal-content > .modal-actions > button,
+  .modal-content > .modal-footer > button,
+  .theater-edit-modal-content > .modal-actions > button,
+  .theater-edit-modal-content > .modal-footer > button,
+  .modal-content > .modal-actions .btn-primary,
+  .modal-content > .modal-actions .btn-secondary,
+  .modal-content > .modal-actions .submit-btn,
+  .modal-content > .modal-actions .cancel-btn,
+  .modal-content > .modal-footer .btn-primary,
+  .modal-content > .modal-footer .btn-secondary,
+  .modal-content > .modal-footer .submit-btn,
+  .modal-content > .modal-footer .cancel-btn,
+  .theater-edit-modal-content > .modal-actions .btn-primary,
+  .theater-edit-modal-content > .modal-actions .btn-secondary,
+  .theater-edit-modal-content > .modal-actions .submit-btn,
+  .theater-edit-modal-content > .modal-actions .cancel-btn,
+  .theater-edit-modal-content > .modal-footer .btn-primary,
+  .theater-edit-modal-content > .modal-footer .btn-secondary,
+  .theater-edit-modal-content > .modal-footer .submit-btn,
+  .theater-edit-modal-content > .modal-footer .cancel-btn {
+    width: 100% !important; /* Full width on mobile */
+    max-width: 100% !important; /* Ensure no overflow */
+    min-width: 100% !important; /* Prevent shrinking */
+    height: 48px !important; /* Slightly larger touch target on mobile */
+    min-height: 48px !important;
+    max-height: 48px !important;
+    margin: 0 !important; /* Remove any margins */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 10px 24px !important; /* Consistent padding */
+    box-sizing: border-box !important; /* Include padding and border in width */
+    flex: 1 1 100% !important; /* Take full width */
+    flex-shrink: 0 !important; /* Don't shrink */
+    flex-grow: 0 !important; /* Don't grow beyond 100% */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+
+  /* Legacy support for modal-actions inside modal-body on mobile */
+  .modal-body .modal-actions,
+  .modal-body .modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .modal-body .modal-actions .btn-primary,
+  .modal-body .modal-actions .btn-secondary,
+  .modal-body .modal-actions .submit-btn,
+  .modal-body .modal-actions .cancel-btn,
+  .modal-body .modal-footer .btn-primary,
+  .modal-body .modal-footer .btn-secondary,
+  .modal-body .modal-footer .submit-btn,
+  .modal-body .modal-footer .cancel-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Mobile: Single column layout */
+  .modal-content .edit-form,
+  .modal-content form,
+  .modal-body .edit-form,
+  .modal-body form {
+    grid-template-columns: 1fr;
+    gap: 16px; /* Comfortable spacing on mobile */
+  }
+  
+  /* When form-grid exists, keep parent as block */
+  .modal-content .edit-form:has(.form-grid),
+  .modal-content form:has(.form-grid),
+  .modal-body .edit-form:has(.form-grid),
+  .modal-body form:has(.form-grid) {
+    display: block;
+  }
+
+  .modal-content .edit-form .form-grid,
+  .modal-content form .form-grid,
+  .modal-body .edit-form .form-grid,
+  .modal-body form .form-grid,
+  .edit-form .form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px; /* Comfortable spacing on mobile */
+  }
+
+  .modal-content .edit-form .form-group,
+  .modal-content form .form-group,
+  .modal-body .edit-form .form-group,
+  .modal-body form .form-group,
+  .edit-form .form-group {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .modal-body {
+    padding: 20px; /* Balanced padding on mobile */
+    min-height: 350px;
+    max-height: calc(98vh - 140px);
+  }
+
+  .modal-content,
+  .theater-edit-modal-content,
+  .theater-view-modal-content,
+  .theater-user-modal-content {
+    max-height: 98vh; /* Use more of the viewport on mobile */
+    min-height: 500px;
+  }
+}
+
+/* Very Small Mobile Devices */
+@media (max-width: 480px) {
+  .modal-content,
+  .theater-edit-modal-content,
+  .theater-view-modal-content,
+  .theater-user-modal-content {
+    width: 98% !important; /* Very small mobile responsive width */
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-header h2,
+  .modal-header h3,
+  .modal-title-section h2,
+  .modal-title-section h3 {
+    font-size: 16px;
+  }
+
+  .modal-body {
+    padding: 16px;
+    max-height: calc(100vh - 120px);
+  }
+
+  /* Very small mobile footer - ensure proper spacing and full width */
+  .modal-content > .modal-actions,
+  .modal-content > .modal-footer,
+  .theater-edit-modal-content > .modal-actions,
+  .theater-edit-modal-content > .modal-footer {
+    flex-direction: column !important; /* Ensure vertical stacking */
+    align-items: stretch !important; /* Full width buttons */
+    padding: 14px 16px !important; /* Reduced padding on very small screens */
+    gap: 10px !important; /* Slightly smaller gap */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Buttons on very small mobile - ensure full width */
+  .modal-content > .modal-actions > button,
+  .modal-content > .modal-footer > button,
+  .theater-edit-modal-content > .modal-actions > button,
+  .theater-edit-modal-content > .modal-footer > button,
+  .modal-content > .modal-actions .btn-primary,
+  .modal-content > .modal-actions .btn-secondary,
+  .modal-content > .modal-actions .submit-btn,
+  .modal-content > .modal-actions .cancel-btn,
+  .modal-content > .modal-footer .btn-primary,
+  .modal-content > .modal-footer .btn-secondary,
+  .modal-content > .modal-footer .submit-btn,
+  .modal-content > .modal-footer .cancel-btn,
+  .theater-edit-modal-content > .modal-actions .btn-primary,
+  .theater-edit-modal-content > .modal-actions .btn-secondary,
+  .theater-edit-modal-content > .modal-actions .submit-btn,
+  .theater-edit-modal-content > .modal-actions .cancel-btn,
+  .theater-edit-modal-content > .modal-footer .btn-primary,
+  .theater-edit-modal-content > .modal-footer .btn-secondary,
+  .theater-edit-modal-content > .modal-footer .submit-btn,
+  .theater-edit-modal-content > .modal-footer .cancel-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    height: 46px !important; /* Slightly smaller on very small screens */
+    min-height: 46px !important;
+    max-height: 46px !important;
+    font-size: 13px !important; /* Slightly smaller font */
+    padding: 10px 20px !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    flex: 1 1 100% !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Legacy support for very small mobile */
+  .modal-body .modal-actions,
+  .modal-body .modal-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 14px 16px !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .modal-body .modal-actions > button,
+  .modal-body .modal-footer > button,
+  .modal-body .modal-actions .btn-primary,
+  .modal-body .modal-actions .btn-secondary,
+  .modal-body .modal-actions .submit-btn,
+  .modal-body .modal-actions .cancel-btn,
+  .modal-body .modal-footer .btn-primary,
+  .modal-body .modal-footer .btn-secondary,
+  .modal-body .modal-footer .submit-btn,
+  .modal-body .modal-footer .cancel-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    font-size: 13px !important;
+    padding: 10px 20px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    flex: 1 1 100% !important;
+  }
+}
+
+/* Password Input Wrapper */
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.password-toggle:hover {
+  opacity: 1;
+}
+
+/* Delete/Confirmation Modals */
+.delete-modal {
+  background: var(--white, #ffffff);
+  border-radius: 12px;
+  max-width: 500px !important;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.3s ease-out;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.delete-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  background: linear-gradient(135deg, var(--primary-color, #5A0C82) 0%, var(--primary-dark, #5A0C82) 100%);
+  color: var(--white, #ffffff);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 2px 10px rgba(90, 12, 130, 0.2);
+  flex-shrink: 0;
+}
+
+.delete-modal .modal-body {
+  flex: 1;
+  padding: 32px;
+  background: var(--white, #ffffff);
+  overflow-y: auto;
+  text-align: center;
+}
+
+.delete-modal .modal-actions,
+.delete-modal .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 24px 32px;
+  border-top: 1px solid var(--border-color, #e2e8f0);
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.delete-modal-content {
+  max-width: 500px !important;
+}
+
+.delete-modal-body {
+  padding: 32px;
+  text-align: center;
+}
+
+.delete-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.delete-modal-body h3 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark, #1e293b);
+}
+
+.delete-modal-body p {
+  margin: 0;
+  color: var(--text-gray, #6b7280);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.delete-modal-body strong {
+  color: var(--error-color, #dc2626);
+  font-weight: 600;
+}
+
+/* Delete Modal - Cancel button should be purple (submit button color) */
+.delete-modal .cancel-btn,
+.delete-modal .modal-actions .cancel-btn,
+.delete-modal .modal-footer .cancel-btn {
+  background: linear-gradient(135deg, var(--primary-color, #5A0C82) 0%, var(--primary-dark, #5A0C82) 100%) !important;
+  color: var(--white, #ffffff) !important;
+  border: 2px solid transparent !important;
+  padding: 10px 24px !important;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+}
+
+.delete-modal .cancel-btn:hover,
+.delete-modal .modal-actions .cancel-btn:hover,
+.delete-modal .modal-footer .cancel-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(90, 12, 130, 0.3) !important;
+}
+
+.delete-modal .cancel-btn:active,
+.delete-modal .modal-actions .cancel-btn:active,
+.delete-modal .modal-footer .cancel-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Delete Modal - Delete button should be red */
+.delete-modal .confirm-delete-btn,
+.delete-modal .modal-actions .confirm-delete-btn,
+.delete-modal .modal-footer .confirm-delete-btn {
+  background: #dc2626 !important; /* Red background for delete button */
+  color: var(--white, #ffffff) !important; /* White text on red background */
+  border: 2px solid #dc2626 !important; /* Red border */
+  padding: 10px 24px !important;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box !important;
+  flex: 0 0 auto !important;
+}
+
+.delete-modal .confirm-delete-btn:hover,
+.delete-modal .modal-actions .confirm-delete-btn:hover,
+.delete-modal .modal-footer .confirm-delete-btn:hover {
+  background: #b91c1c !important; /* Darker red on hover */
+  border-color: #b91c1c !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+}
+
+.delete-modal .confirm-delete-btn:active,
+.delete-modal .modal-actions .confirm-delete-btn:active,
+.delete-modal .modal-footer .confirm-delete-btn:active {
+  background: #991b1b !important;
+  border-color: #991b1b !important;
+  transform: translateY(0);
+}
+
+/* Delete Modal - Responsive styles for mobile */
+@media (max-width: 768px) {
+  .delete-modal {
+    width: 95% !important;
+    max-width: none !important;
+    border-radius: 0;
+  }
+
+  .delete-modal .modal-header {
+    padding: 16px 20px;
+  }
+
+  .delete-modal .modal-body {
+    padding: 20px;
+  }
+
+  .delete-modal .modal-actions,
+  .delete-modal .modal-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 16px 20px !important;
+    gap: 12px !important;
+  }
+
+  .delete-modal .cancel-btn,
+  .delete-modal .confirm-delete-btn,
+  .delete-modal .modal-actions .cancel-btn,
+  .delete-modal .modal-actions .confirm-delete-btn,
+  .delete-modal .modal-footer .cancel-btn,
+  .delete-modal .modal-footer .confirm-delete-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    flex: 1 1 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .delete-modal {
+    width: 98% !important;
+  }
+
+  .delete-modal .modal-header {
+    padding: 14px 16px;
+  }
+
+  .delete-modal .modal-body {
+    padding: 16px;
+  }
+
+  .delete-modal .modal-actions,
+  .delete-modal .modal-footer {
+    padding: 14px 16px !important;
+    gap: 10px !important;
+  }
+
+  .delete-modal .cancel-btn,
+  .delete-modal .confirm-delete-btn,
+  .delete-modal .modal-actions .cancel-btn,
+  .delete-modal .modal-actions .confirm-delete-btn,
+  .delete-modal .modal-footer .cancel-btn,
+  .delete-modal .modal-footer .confirm-delete-btn {
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    font-size: 13px !important;
+    padding: 10px 20px !important;
+  }
+}
+
+/* Success Modal */
+.success-modal-content {
+  max-width: 500px !important;
+}
+
+.success-modal-body {
+  padding: 32px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.success-modal-body h3 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark, #1e293b);
+}
+
+.success-modal-body p {
+  margin: 0;
+  color: var(--text-gray, #6b7280);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =============================================
+   QR THEATER SEAT LAYOUT STYLES
+   Global design for seat layout section
+   ============================================= */
+
+/* Seat Layout Container */
+.qr-seat-layout-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  min-width: 0;
+}
+
+.qr-seat-layout-wrapper {
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Screen Header */
+.qr-seat-screen-header {
+  background-color: #8b5cf6;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.qr-seat-screen-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qr-seat-screen-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Action Buttons in Screen Header */
+.qr-seat-action-btn {
+  background-color: white;
+  color: #8b5cf6;
+  border: none;
+  padding: 8px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: fit-content;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.qr-seat-action-btn:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.05);
+}
+
+.qr-seat-action-btn:active {
+  transform: scale(1);
+}
+
+/* Seat Grid Container */
+.qr-seat-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Seat Row */
+.qr-seat-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.qr-seat-row-label {
+  min-width: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+}
+
+.qr-seat-row-seats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Individual Seat Button */
+.qr-seat-button {
+  background-color: #8b5cf6;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 50px;
+}
+
+.qr-seat-button.inactive {
+  background-color: #d1d5db;
+}
+
+.qr-seat-button:hover {
+  transform: scale(1.05);
+  border-color: #6366f1;
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+}
+
+.qr-seat-button:active {
+  transform: scale(0.95);
+}
+
+/* QR Code Indicator on Seat */
+.qr-seat-qr-indicator {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  background-color: #10b981;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Legend Section */
+.qr-seat-legend {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: #6b7280;
+  flex-wrap: wrap;
+}
+
+.qr-seat-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qr-seat-legend-box {
+  width: 20px;
+  height: 20px;
+  background-color: #8b5cf6;
+  border-radius: 4px;
+}
+
+.qr-seat-legend-box.inactive {
+  background-color: #d1d5db;
+}
+
+.qr-seat-legend-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #10b981;
+  border-radius: 50%;
+}
+
+/* Summary Section */
+.qr-seat-summary {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #f3f4f6;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.qr-seat-summary-text {
+  margin-bottom: 8px;
+}
+
+.qr-seat-summary-text strong {
+  font-weight: 600;
+}
+
+.qr-seat-quick-actions {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.qr-seat-quick-actions strong {
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .qr-seat-layout-wrapper {
+    padding: 16px;
+  }
+
+  .qr-seat-screen-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .qr-seat-screen-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .qr-seat-action-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .qr-seat-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .qr-seat-row-label {
+    margin-bottom: 8px;
+  }
+
+  .qr-seat-legend {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* =============================================
+   QR SEAT INFORMATION SECTION STYLES
+   Global design for seat information display in edit/view popup
+   ============================================= */
+
+/* Seat Information Container */
+.qr-seat-info-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Override form-group styles for QR seat sections */
+.qr-seat-info-container .qr-seat-image-section,
+.qr-seat-info-container .qr-seat-update-section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.qr-seat-info-display {
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Seat Information Items */
+.qr-seat-info-item {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 0;
+}
+
+.qr-seat-info-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.qr-seat-info-value {
+  font-size: 15px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.qr-seat-info-value.highlight {
+  font-size: 16px;
+  color: #8b5cf6;
+}
+
+/* QR Code Image Section */
+.qr-seat-image-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.qr-seat-image-label {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.qr-seat-image-container {
+  text-align: center;
+  margin-bottom: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-seat-image {
+  max-width: 200px;
+  max-height: 200px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+}
+
+.qr-seat-image-error {
+  display: none;
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* Download Button */
+.qr-seat-download-btn {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.qr-seat-download-btn:hover {
+  background-color: #7c3aed;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(139, 92, 246, 0.4);
+}
+
+.qr-seat-download-btn:active {
+  transform: translateY(0);
+}
+
+.qr-seat-download-container {
+  text-align: center;
+  margin-top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* QR Image Update Section */
+.qr-seat-update-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.qr-seat-update-label {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+}
+
+.qr-seat-update-note {
+  font-size: 11px;
+  color: #9ca3af;
+  font-style: italic;
+  margin-top: 6px;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .qr-seat-info-display {
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .qr-seat-info-item {
+    min-width: 100%;
+  }
+
+  .qr-seat-image {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .qr-seat-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =============================================
+   BILL MODAL STYLES
+   Global bill/receipt design for all theater order history pages
+   ============================================= */
+
+/* Bill Modal Container */
+.modal-content-bill {
+  max-width: 400px;
+  font-family: 'Courier New', monospace;
+  background-color: #fff;
+  padding: 0;
+}
+
+.modal-header-bill {
+  background: #8B5CF6;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-title-bill {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.modal-close-btn-bill {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.modal-body-bill {
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Bill Header */
+.bill-header {
+  text-align: center;
+  border-bottom: 2px dashed #000;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.bill-header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #8B5CF6;
+}
+
+.bill-header-subtitle {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Bill Info Section */
+.bill-info-section {
+  border-bottom: 2px dashed #000;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.bill-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.bill-info-row-last {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bill-info-label {
+  font-weight: bold;
+}
+
+/* Items Table Header - Grid Layout (Primary) */
+.items-table-header {
+  display: grid;
+  grid-template-columns: 2fr 0.7fr 1fr 1fr;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  align-items: center;
+}
+
+.items-table-header > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.items-table-header > div:first-child {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.items-table-header-center,
+.items-table-header .item-qty {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.items-table-header-right,
+.items-table-header .item-rate,
+.items-table-header .item-total {
+  text-align: right !important;
+  justify-content: flex-end !important;
+}
+
+/* Items Table Header - Flexbox Layout (Backward Compatibility) */
+.items-table-header.flex-layout {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+
+.items-header-name {
+  flex: 2;
+}
+
+.items-header-qty {
+  flex: 0.5;
+  text-align: center;
+}
+
+.items-header-rate {
+  flex: 1;
+  text-align: right;
+}
+
+.items-header-total {
+  flex: 1;
+  text-align: right;
+}
+
+/* Item Row - Grid Layout (Primary) */
+.item-row {
+  display: grid;
+  grid-template-columns: 2fr 0.7fr 1fr 1fr;
+  margin-bottom: 6px;
+  font-size: 12px;
+  align-items: center;
+}
+
+.item-row > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.item-name {
+  word-break: break-word;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.item-qty {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.item-rate {
+  text-align: right !important;
+  justify-content: flex-end !important;
+}
+
+.item-total {
+  text-align: right !important;
+  font-weight: bold;
+  justify-content: flex-end !important;
+}
+
+/* Item Row - Flexbox Layout (Backward Compatibility) */
+.item-row.flex-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 11px;
+}
+
+.item-row.flex-layout .item-name {
+  flex: 2;
+}
+
+.item-row.flex-layout .item-qty {
+  flex: 0.5;
+  text-align: center;
+}
+
+.item-row.flex-layout .item-rate {
+  flex: 1;
+  text-align: right;
+}
+
+.item-row.flex-layout .item-total {
+  flex: 1;
+  text-align: right;
+}
+
+/* Summary Section */
+.summary-section {
+  border-top: 2px dashed #000;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 16px;
+  border-top: 2px solid #000;
+  padding-top: 8px;
+  margin-top: 8px;
+  color: #8B5CF6;
+}
+
+/* Footer */
+.bill-footer {
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px dashed #000;
+  font-size: 11px;
+  color: #666;
+}
+
+.bill-footer-thanks {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.bill-footer-date {
+  margin: 5px 0;
+}
+
+/* Modal Footer */
+.modal-footer-bill {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #eee;
+}
+
+.btn-print {
+  padding: 8px 16px;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-close-modal {
+  padding: 8px 16px;
+  background: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* =============================================
+   QR PREVIEW CENTERING STYLES
+   Center QR code in view modal
+   ============================================= */
+
+/* QR Preview Container - Center the QR code */
+.qr-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.qr-preview-styled-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.qr-preview-card-portrait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-preview-full-image {
+  max-width: 100%;
+  height: auto;
+}

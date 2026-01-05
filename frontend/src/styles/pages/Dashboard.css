@@ -1,0 +1,88 @@
+/* Dashboard Component Styles - Extracted from inline styles */
+
+/* SVG Chart Sizes */
+.svg-chart-full {
+  width: 100%;
+  height: 160px;
+}
+
+.svg-donut-medium {
+  width: 140px;
+  height: 140px;
+}
+
+.svg-donut-large {
+  width: 160px;
+  height: 160px;
+}
+
+/* Working Time Bar (Dynamic width remains inline) */
+.sadmin-working-time-bar {
+  /* Dynamic width style remains inline */
+}
+
+/* Food Order Indicator Colors */
+.food-order-indicator-blue {
+  background: #1E40AF;
+}
+
+.food-order-indicator-purple {
+  background: #A78BFA;
+}
+
+.food-order-indicator-pink {
+  background: #EC4899;
+}
+
+/* Order Status Indicator Colors */
+.order-status-indicator-success {
+  background: #10B981;
+}
+
+.order-status-indicator-warning {
+  background: #F59E0B;
+}
+
+.order-status-indicator-info {
+  background: #3B82F6;
+}
+
+.order-status-indicator-error {
+  background: #EF4444;
+}
+
+/* Product Stats Value Colors */
+.product-stats-value-success {
+  color: #10B981;
+}
+
+.product-stats-value-error {
+  color: #EF4444;
+}
+
+/* Payment Method Indicator Colors */
+.payment-method-indicator-purple {
+  background: #A78BFA;
+}
+
+.payment-method-indicator-pink {
+  background: #EC4899;
+}
+
+/* Transaction Breakdown Indicator Colors */
+.transaction-breakdown-indicator-success {
+  background: #10B981;
+}
+
+.transaction-breakdown-indicator-warning {
+  background: #F59E0B;
+}
+
+.transaction-breakdown-indicator-info {
+  background: #3B82F6;
+}
+
+.transaction-breakdown-indicator-error {
+  background: #EF4444;
+}
+

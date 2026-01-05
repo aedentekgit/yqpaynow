@@ -1,0 +1,406 @@
+/* OnlinePOSInterface Component Styles - Extracted from inline styles */
+
+/* Image Rendering */
+.img-auto-rendering {
+  image-rendering: auto;
+}
+
+/* Placeholder Display */
+.placeholder-hidden {
+  display: none;
+}
+
+.placeholder-visible {
+  display: flex;
+}
+
+/* Modern Error Container */
+.pos-error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.pos-error-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pos-error-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fef3c7;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pos-error-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 1rem;
+}
+
+.pos-error-message {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  word-break: break-word;
+}
+
+.pos-error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pos-error-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.pos-error-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.pos-error-btn-secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.pos-error-btn-primary {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6B0E9B 100%);
+  color: white;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+
+.pos-error-btn-primary:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #5b0a8a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.pos-error-btn:active {
+  transform: translateY(0);
+}
+
+.pos-error-btn svg {
+  flex-shrink: 0;
+}
+
+/* Empty State - No Products */
+.pos-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  min-height: 400px;
+}
+
+.pos-empty-icon {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.pos-empty-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.75rem;
+}
+
+.pos-empty-message {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0 0 0.5rem;
+  line-height: 1.6;
+}
+
+.pos-empty-hint {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin: 0;
+  font-style: italic;
+}
+
+/* No Products in Category */
+.pos-no-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 300px;
+}
+
+.pos-no-products .no-products-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.pos-no-products h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.5rem;
+}
+
+.pos-no-products p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Legacy Error Container (for backward compatibility) */
+.error-actions {
+  margin-top: 20px;
+}
+
+/* Button Styles */
+.btn-margin-right {
+  margin-right: 10px;
+}
+
+.btn-purple {
+  background-color: #8B5CF6;
+}
+
+/* Main Content Container */
+.professional-pos-content {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Order Header */
+.pos-order-header-primary {
+  background-color: #6B0E9B;
+  background: #6B0E9B;
+  color: white;
+}
+
+.pos-order-title-white {
+  color: white;
+  margin: 0;
+}
+
+/* Flex Container */
+.flex-container {
+  display: flex;
+  gap: 8px;
+}
+
+/* Enable Sound Button */
+.btn-enable-sound {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Order Content */
+.pos-order-content-scroll {
+  padding: 16px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Small Text */
+.text-small-gray {
+  font-size: 12px;
+  color: #999;
+  margin-top: 8px;
+}
+
+/* Flex Column */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Order Card */
+.order-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fafafa;
+  font-size: 13px;
+}
+
+/* Order Header Inner */
+.order-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #6B0E9B;
+}
+
+/* Order Number Span */
+.order-number {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Order Total Span */
+.order-total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #6B0E9B;
+}
+
+/* Screen/Seat Container */
+.screen-seat-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Screen/Seat Label */
+.screen-seat-label {
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* Screen/Seat Value */
+.screen-seat-value {
+  color: #1f2937;
+  font-weight: bold;
+}
+
+/* Phone Container */
+.phone-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Phone Label */
+.phone-label {
+  color: #4b5563;
+  font-weight: 600;
+}
+
+/* Phone Value */
+.phone-value {
+  color: #1f2937;
+  font-weight: bold;
+}
+
+/* Category Tabs */
+.pos-category-tabs-primary {
+  background-color: #6B0E9B;
+  background: #6B0E9B;
+}
+
+/* Tab Active */
+.pos-tab-active {
+  background-color: white;
+  color: #6B0E9B;
+}
+
+/* Tab Inactive */
+.pos-tab-inactive {
+  color: white;
+}
+
+/* Tab Disabled */
+.pos-tab-disabled {
+  color: white;
+}
+
+/* Clear Button */
+.btn-clear-order {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Process Button */
+.btn-process-order {
+  background-color: #6B0E9B;
+  background: #6B0E9B;
+  color: white;
+  border: none;
+}
+
+.btn-process-order:disabled {
+  background-color: #9ca3af;
+  background: #9ca3af;
+}
+

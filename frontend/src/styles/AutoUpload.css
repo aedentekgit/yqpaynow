@@ -1,0 +1,46 @@
+/* AutoUpload Component Styles - Extracted from inline styles */
+
+/* Helper Text */
+.auto-upload-helper-text {
+  color: #666;
+  font-size: 12px;
+  display: block;
+}
+
+/* File Input */
+.auto-upload-input {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Progress Container */
+.auto-upload-progress-container {
+  margin-top: 10px;
+}
+
+/* Progress Text */
+.auto-upload-progress-text {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Progress Bar Container */
+.auto-upload-progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+/* Progress Bar Fill */
+.auto-upload-progress-bar-fill {
+  height: 100%;
+  background-color: #8B5CF6;
+  transition: width 0.3s ease;
+}
+

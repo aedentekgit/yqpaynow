@@ -1,0 +1,72 @@
+/* InstantImage Component Styles - Extracted from inline styles */
+
+/* Placeholder Container */
+.instant-image-placeholder-base {
+  background-color: #f0f0f0;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Loading Spinner */
+.instant-image-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Image Container */
+.instant-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Image Base Styles */
+.instant-image-base {
+  image-rendering: auto;
+  transition: opacity 0.3s ease;
+}
+
+/* Loading Spinner Overlay */
+.instant-image-spinner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+/* Error Message Container */
+.instant-image-error-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* Error Icon */
+.instant-image-error-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+

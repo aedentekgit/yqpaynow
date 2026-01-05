@@ -1,0 +1,15 @@
+/* TheaterQRCodeNames Component Styles - Extracted from inline styles */
+
+/* SVG Icon Small */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+/* Empty State Icon */
+.empty-state-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+

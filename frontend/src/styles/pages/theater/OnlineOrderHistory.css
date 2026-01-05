@@ -1,0 +1,701 @@
+/* OnlineOrderHistory Component Styles - Extracted from inline styles */
+
+/* ✅ FIX: Table Layout - Fixed to prevent column shifting when new orders arrive */
+.theater-table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.theater-table {
+  width: 100%;
+  table-layout: fixed !important; /* Fixed layout prevents column shifting */
+  border-collapse: collapse;
+  min-width: 1650px; /* Ensure minimum width for all columns */
+}
+
+/* Notification Button Styles */
+.btn-enable-notification {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.btn-enable-notification:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4);
+}
+
+.notification-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+}
+
+/* ✅ FIX: New Order Flash Animation - Removed transform to prevent layout shifts */
+@keyframes newOrderFlash {
+  0% {
+    background-color: rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5), 0 0 20px rgba(46, 204, 113, 0.3);
+    border-left: 5px solid #2ecc71;
+  }
+  10% {
+    background-color: rgba(46, 204, 113, 1);
+    box-shadow: 0 0 40px rgba(46, 204, 113, 1), 0 0 80px rgba(46, 204, 113, 0.9), 0 0 120px rgba(46, 204, 113, 0.7);
+    border-left: 6px solid #27ae60;
+  }
+  20% {
+    background-color: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+    border-left: 5px solid #2ecc71;
+  }
+  30% {
+    background-color: rgba(46, 204, 113, 1);
+    box-shadow: 0 0 45px rgba(46, 204, 113, 1), 0 0 90px rgba(46, 204, 113, 0.9), 0 0 130px rgba(46, 204, 113, 0.7);
+    border-left: 6px solid #27ae60;
+  }
+  40% {
+    background-color: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+    border-left: 5px solid #2ecc71;
+  }
+  50% {
+    background-color: rgba(46, 204, 113, 1);
+    box-shadow: 0 0 50px rgba(46, 204, 113, 1), 0 0 100px rgba(46, 204, 113, 0.9), 0 0 140px rgba(46, 204, 113, 0.7);
+    border-left: 6px solid #27ae60;
+  }
+  60% {
+    background-color: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+    border-left: 5px solid #2ecc71;
+  }
+  70% {
+    background-color: rgba(46, 204, 113, 1);
+    box-shadow: 0 0 45px rgba(46, 204, 113, 1), 0 0 90px rgba(46, 204, 113, 0.9), 0 0 130px rgba(46, 204, 113, 0.7);
+    border-left: 6px solid #27ae60;
+  }
+  80% {
+    background-color: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+    border-left: 5px solid #2ecc71;
+  }
+  90% {
+    background-color: rgba(46, 204, 113, 1);
+    box-shadow: 0 0 40px rgba(46, 204, 113, 1), 0 0 80px rgba(46, 204, 113, 0.9), 0 0 120px rgba(46, 204, 113, 0.7);
+    border-left: 6px solid #27ae60;
+  }
+  100% {
+    background-color: rgba(46, 204, 113, 0.2);
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5), 0 0 20px rgba(46, 204, 113, 0.3);
+    border-left: 5px solid #2ecc71;
+  }
+}
+
+.theater-row.new-order-flash {
+  animation: newOrderFlash 0.25s linear infinite !important;
+  border-left: 6px solid #2ecc71 !important;
+  position: relative;
+  z-index: 100 !important;
+  transition: none !important;
+  will-change: background-color, box-shadow, transform;
+  font-weight: 600 !important;
+  background: linear-gradient(90deg, rgba(46, 204, 113, 0.1) 0%, rgba(255, 255, 255, 1) 2%, rgba(255, 255, 255, 1) 98%, rgba(46, 204, 113, 0.1) 100%) !important;
+}
+
+/* Enhanced blinking effect for entire row */
+.theater-row.new-order-flash td {
+  position: relative;
+  z-index: 1;
+}
+
+.theater-row.new-order-flash::after {
+  content: '🆕 NEW ORDER';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  animation: pulse 0.25s linear infinite;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+  z-index: 1000;
+}
+
+/* Order Highlight Animation - When order status changes */
+@keyframes orderHighlight {
+  0% {
+    background-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(102, 126, 234, 0.7);
+    box-shadow: 0 0 25px rgba(102, 126, 234, 0.9);
+    transform: scale(1.01);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: none;
+    transform: scale(1);
+  }
+}
+
+.theater-row.order-highlight {
+  animation: orderHighlight 2s ease-in-out;
+  border-left: 4px solid #667eea;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.theater-row.new-order-flash::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, #2ecc71, #27ae60);
+  animation: aggressivePulse 0.3s linear infinite;
+  z-index: 11;
+}
+
+@keyframes aggressivePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+    box-shadow: 0 0 10px #2ecc71;
+  }
+  50% {
+    opacity: 0.3;
+    transform: scaleY(1.1);
+    box-shadow: 0 0 20px #2ecc71, 0 0 30px #2ecc71;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scaleY(1.05);
+  }
+}
+
+/* Error Container */
+.error-container-center {
+  padding: 40px;
+  text-align: center;
+  color: #e74c3c;
+  background: white;
+}
+
+/* Table Cell Center */
+.table-cell-center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-header-center {
+  text-align: center;
+  min-width: 120px;
+  vertical-align: middle;
+}
+
+/* ✅ FIX: Proper alignment for table cells */
+.amount-cell,
+.payment-mode-cell,
+.payment-status-cell,
+.status-cell,
+.date-cell,
+.items-cell {
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 8px;
+}
+
+/* Badge Styles for Payment Status - Matching TheaterOrderHistory */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  min-width: 70px;
+}
+
+.badge-success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-pending {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.badge-failed {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.amount-cell {
+  text-align: center;
+  font-weight: 600;
+}
+
+.payment-mode-cell {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.items-cell {
+  font-size: 13px;
+}
+
+.date-cell {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Quick Actions Cell - Increased width for this page */
+.quick-actions-cell {
+  min-width: 180px !important;
+  width: 180px !important;
+  white-space: nowrap;
+}
+
+.quick-actions-cell.table-header-center {
+  text-align: center;
+}
+
+/* Quick Action Buttons Container */
+.quick-action-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Quick Action Button Base */
+.quick-action-btn-base {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Prepare Button */
+.quick-action-btn-prepare {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.quick-action-btn-prepare:disabled,
+.quick-action-btn-prepare.disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Deliver Button */
+.quick-action-btn-deliver {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.quick-action-btn-deliver:disabled,
+.quick-action-btn-deliver.disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Cancel Button */
+.quick-action-btn-cancel {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.quick-action-btn-cancel:disabled,
+.quick-action-btn-cancel.disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Action Buttons */
+.action-buttons-flex {
+  gap: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-no-margin {
+  margin: 0;
+}
+
+/* SVG Icons */
+.svg-icon-xs {
+  width: 16px;
+  height: 16px;
+}
+
+.svg-icon-md {
+  width: 20px;
+  height: 20px;
+}
+
+/* Bill Modal Styles - Moved to TheaterGlobalModals.css */
+
+/* Excel Download Button - Styles moved to GlobalButtons.css */
+
+/* ✅ FIX: Table Layout - Fixed to prevent column shifting when new orders arrive */
+.theater-table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* ✅ FIX: Use more specific selector to override App.css table-layout: auto */
+.theater-table-container .theater-table,
+.online-order-history-page .theater-table,
+[data-page="online-order-history"] .theater-table {
+  width: 100%;
+  table-layout: fixed !important; /* Fixed layout prevents column shifting */
+  border-collapse: collapse;
+  min-width: 1650px; /* Ensure minimum width for all columns */
+  box-sizing: border-box;
+}
+
+/* ✅ FIX: Ensure all table cells have proper box-sizing */
+.theater-table th,
+.theater-table td {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ✅ FIX: Fixed column widths to prevent alignment glitching - Using nth-child for precise column targeting */
+.theater-table thead tr th:nth-child(1) {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(2) {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(3) {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(4) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(5) {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(6) {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(7) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(8) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(9) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(10) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(11) {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+.theater-table thead tr th:nth-child(12) {
+  width: 140px;
+  min-width: 140px;
+  max-width: 140px;
+  text-align: center;
+  padding: 12px 8px;
+}
+
+/* ✅ FIX: Match TD widths to TH widths - Using nth-child for precise column targeting */
+.theater-table tbody tr td:nth-child(1) {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.theater-table tbody tr td:nth-child(2) {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.theater-table tbody tr td:nth-child(2) .order-number {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  text-align: center;
+}
+
+.theater-table tbody tr td:nth-child(3) {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.theater-table tbody tr td:nth-child(3) .customer-info {
+  overflow: hidden;
+  text-align: center;
+}
+
+.theater-table tbody tr td:nth-child(3) .customer-name,
+.theater-table tbody tr td:nth-child(3) .customer-phone {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  text-align: center;
+}
+
+.theater-table tbody tr td:nth-child(4) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  padding: 12px 8px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.theater-table tbody tr td:nth-child(5) {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.theater-table tbody tr td:nth-child(6) {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+  font-weight: 600;
+}
+
+.theater-table tbody tr td:nth-child(7) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.theater-table tbody tr td:nth-child(8) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.theater-table tbody tr td:nth-child(9) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.theater-table tbody tr td:nth-child(10) {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.theater-table tbody tr td:nth-child(11) {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.theater-table tbody tr td:nth-child(12) {
+  width: 140px;
+  min-width: 140px;
+  max-width: 140px;
+  text-align: center;
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+/* Screen & Seat Column Styles */
+.screen-seat-cell {
+  padding: 12px;
+  min-width: 150px;
+}
+
+.screen-seat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.screen-name {
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.seat-name {
+  color: #718096;
+  font-size: 12px;
+}
+
+.screen-seat-empty {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* ✅ FIX: Prevent animation from causing layout shifts */
+.theater-row.new-order-flash {
+  animation: newOrderFlash 0.25s linear infinite !important;
+  border-left: 6px solid #2ecc71 !important;
+  position: relative;
+  z-index: 100 !important;
+  transition: none !important;
+  will-change: background-color, box-shadow;
+  font-weight: 600 !important;
+  background: linear-gradient(90deg, rgba(46, 204, 113, 0.1) 0%, rgba(255, 255, 255, 1) 2%, rgba(255, 255, 255, 1) 98%, rgba(46, 204, 113, 0.1) 100%) !important;
+  /* ✅ FIX: Remove transform from animation to prevent layout shifts */
+  transform: none !important;
+}
+
+.theater-row.new-order-flash td {
+  position: relative;
+  z-index: 1;
+  /* ✅ FIX: Maintain fixed widths during animation - prevent any width changes */
+  width: inherit !important;
+  min-width: inherit !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  /* ✅ FIX: Prevent content from causing width changes */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

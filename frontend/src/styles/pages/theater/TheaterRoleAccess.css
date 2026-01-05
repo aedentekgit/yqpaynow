@@ -1,0 +1,210 @@
+/* TheaterRoleAccess Component Styles - Extracted from inline styles */
+
+/* Empty State Icon */
+.empty-state-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+
+/* Role Icon */
+.role-icon {
+  width: 24px;
+  height: 24px;
+  color: #8b5cf6;
+}
+
+/* Filter Controls Alignment - Right align when search box is present */
+.page-container.theater-role-access-page .theater-filters .filter-controls,
+.theater-role-access-page .theater-filters .filter-controls,
+.page-container .theater-role-access-page .theater-filters .filter-controls,
+.role-access-management-page .theater-filters .filter-controls {
+  margin-left: auto !important;
+  justify-content: flex-end !important;
+}
+
+.page-container.theater-role-access-page .theater-filters,
+.theater-role-access-page .theater-filters,
+.page-container .theater-role-access-page .theater-filters,
+.role-access-management-page .theater-filters {
+  justify-content: space-between !important;
+}
+
+
+/* --- Modern Permissions Modal Styles --- */
+
+.permissions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.permissions-header label {
+  margin-bottom: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.text-btn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.text-btn:hover {
+  background-color: #f8fafc;
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+  box-shadow: 0 2px 4px rgba(139, 92, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.text-btn:active {
+  transform: translateY(0);
+  background-color: #f1f5f9;
+}
+
+.permissions-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.permission-card-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.permission-card-modern:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.permission-card-modern.granted {
+  border-color: #10b981;
+  background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.permission-card-modern.granted::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #10b981;
+}
+
+.permission-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.permission-name {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.status-indicator {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #94a3b8;
+  transition: color 0.2s;
+}
+
+.permission-card-modern.granted .status-indicator {
+  color: #10b981;
+}
+
+.toggle-wrapper {
+  flex-shrink: 0;
+}
+
+.modern-toggle {
+  width: 44px;
+  height: 24px;
+  background-color: #cbd5e1;
+  border-radius: 99px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.modern-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.modern-toggle.checked {
+  background-color: #10b981;
+}
+
+.modern-toggle.checked::after {
+  transform: translateX(20px);
+}
+
+/* Empty State */
+.role-access-empty-state {
+  text-align: center;
+  padding: 48px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 2px dashed #e2e8f0;
+}
+
+.role-access-empty-state p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.role-access-empty-hint {
+  font-size: 0.875rem !important;
+  color: #94a3b8 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .permissions-grid-modern {
+    grid-template-columns: 1fr;
+  }
+
+  .permission-card-modern {
+    padding: 12px;
+  }
+}

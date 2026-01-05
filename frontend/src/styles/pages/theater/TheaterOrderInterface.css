@@ -1,0 +1,258 @@
+/* TheaterOrderInterface Component Styles - Extracted from inline styles */
+
+/* Product Image */
+.product-image-auto {
+  image-rendering: auto;
+}
+
+/* Modern Product Placeholder */
+.modern-product-placeholder {
+  display: flex;
+}
+
+.modern-product-placeholder-hidden {
+  display: none;
+}
+
+/* Discount Line */
+.pos-item-discount {
+  color: #10B981;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+/* Action Buttons Container */
+.action-buttons-container {
+  margin-top: 20px;
+}
+
+.action-button-spacing {
+  margin-right: 10px;
+}
+
+.action-button-primary {
+  background-color: #8B5CF6;
+}
+
+/* Professional POS Content */
+.professional-pos-content {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Category Tabs */
+.pos-category-tabs {
+  background-color: #6B0E9B;
+  background: #6B0E9B;
+}
+
+.pos-tab-disabled {
+  color: white;
+}
+
+/* Order Header */
+.pos-order-header {
+  background-color: #6B0E9B;
+  background: #6B0E9B;
+  color: white;
+}
+
+.pos-order-title-white {
+  color: white;
+  margin: 0;
+}
+
+/* Tab Active State */
+.pos-tab.active.pos-tab-active {
+  background-color: white;
+  color: #6B0E9B;
+}
+
+/* Clear Button */
+.pos-clear-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Process Order Button (Dynamic - keep inline) */
+.pos-process-btn {
+  color: white;
+  border: none;
+}
+
+/* ============================================
+   RESPONSIVE STYLES FOR POS INTERFACE
+   ============================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .professional-pos-content {
+    padding: 16px;
+  }
+  
+  .pos-category-tabs {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .pos-tab {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .pos-clear-btn {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+  
+  .action-buttons-container {
+    margin-top: 16px;
+  }
+  
+  .action-button-spacing {
+    margin-right: 8px;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .professional-pos-content {
+    padding: 12px;
+    min-height: calc(100vh - 60px);
+  }
+  
+  .pos-order-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .pos-order-title-white {
+    font-size: 18px;
+  }
+  
+  .pos-category-tabs {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .pos-tab {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .pos-tab.active.pos-tab-active {
+    border-left: 4px solid #6B0E9B;
+  }
+  
+  .pos-clear-btn {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  .pos-item-discount {
+    font-size: 0.8125rem;
+  }
+  
+  .action-buttons-container {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  
+  .action-button-spacing {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+  
+  .pos-process-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Small Mobile (640px and below) */
+@media (max-width: 640px) {
+  .professional-pos-content {
+    padding: 10px;
+  }
+  
+  .pos-order-header {
+    padding: 10px;
+  }
+  
+  .pos-order-title-white {
+    font-size: 16px;
+  }
+  
+  .pos-tab {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .pos-clear-btn {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+  
+  .pos-item-discount {
+    font-size: 0.75rem;
+    margin-top: 3px;
+  }
+  
+  .modern-product-placeholder {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Extra Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .professional-pos-content {
+    padding: 8px;
+  }
+  
+  .pos-order-header {
+    padding: 8px;
+  }
+  
+  .pos-order-title-white {
+    font-size: 15px;
+  }
+  
+  .pos-tab {
+    padding: 9px;
+    font-size: 13px;
+  }
+  
+  .pos-clear-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .pos-process-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .action-buttons-container button {
+    min-height: 44px; /* iOS touch target */
+  }
+}
+

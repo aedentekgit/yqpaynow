@@ -1,0 +1,20 @@
+{
+  "provider": "twilio",
+  "twilioAccountSid": "test-sid",
+  "twilioAuthToken": "test-token",
+  "twilioPhoneNumber": "+1234567890",
+  "textlocalApiKey": "",
+  "textlocalUsername": "",
+  "textlocalSender": "",
+  "awsAccessKeyId": "",
+  "awsSecretAccessKey": "",
+  "awsRegion": "us-east-1",
+  "msg91ApiKey": "",
+  "msg91SenderId": "",
+  "msg91Route": "4",
+  "otpLength": 6,
+  "otpExpiry": 300,
+  "maxRetries": 3,
+  "enabled": true,
+  "lastUpdated": "2025-09-15T14:42:55.524Z"
+}

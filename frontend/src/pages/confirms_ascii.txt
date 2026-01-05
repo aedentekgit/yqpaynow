@@ -1,0 +1,8 @@
+D:\02-01-2025 - Copy\frontend\src\components\TheaterUsersArray.jsx:211:     if (!window.confirm('Are you sure you want to deactivate this user?')) return;
+D:\02-01-2025 - Copy\frontend\src\pages\TheaterQRDetail.jsx:2174:     const confirmed = window.confirm(`Are you sure you want to delete ${seatName}? This action cannot be undone.`);
+D:\02-01-2025 - Copy\frontend\src\pages\theater\CafeStockManagement.jsx:3842:     if (!window.confirm('This will remove all auto-generated old stock entries and regenerate them. Continue?')) {
+D:\02-01-2025 - Copy\frontend\src\pages\theater\OnlineOrderHistory.jsx:3652:                                   if (window.confirm('Are you sure you want to cancel this order?')) {
+D:\02-01-2025 - Copy\frontend\src\pages\theater\StockManagement.jsx:2541:     if (!window.confirm('This will remove all auto-generated old stock entries and regenerate them. Continue?')) {
+D:\02-01-2025 - Copy\frontend\src\pages\theater\TheaterQRManagement.jsx:1848:     const confirmed = window.confirm(`Are you sure you want to delete ${seatName}? This action cannot be undone.`);
+D:\02-01-2025 - Copy\frontend\src\pages\theater\ViewCart.jsx:1243:       const confirmed = window.confirm(paytmInfo + '\n\nClick OK after completing payment, or Cancel to abort.');
+D:\02-01-2025 - Copy\frontend\src\pages\theater\ViewCart.jsx:1308:       const confirmed = window.confirm(phonePeInfo + '\n\nClick OK after completing payment, or Cancel to abort.');

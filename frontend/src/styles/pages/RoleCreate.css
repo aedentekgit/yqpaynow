@@ -1,0 +1,126 @@
+/* RoleCreate Component Styles - Extracted from inline styles */
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+  color: #8b5cf6;
+}
+
+.svg-icon-lg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.3;
+}
+
+.svg-icon-xs {
+  width: 12px;
+  height: 12px;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  display: block;
+}
+
+.switch input:checked + .switch-slider {
+  background-color: #8b5cf6;
+}
+
+.switch input:checked + .switch-slider:before {
+  transform: translateX(26px);
+}
+
+.switch input:disabled + .switch-slider {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Default Role Badge Styling */
+.default-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+  margin-left: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.4);
+  text-transform: uppercase;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 2px 6px rgba(139, 92, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.default-badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Role Name Container for Badge Support */
+.role-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.role-name {
+  font-weight: 600;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+

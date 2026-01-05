@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Print Client - Theater POS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .status.printing {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .log {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .log-entry {
+            padding: 8px;
+            margin-bottom: 5px;
+            border-left: 3px solid #667eea;
+            background: white;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .log-entry.success {
+            border-left-color: #28a745;
+        }
+
+        .log-entry.error {
+            border-left-color: #dc3545;
+        }
+
+        #printReceipt {
+            display: none;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printReceipt, #printReceipt * {
+                visibility: visible;
+            }
+            #printReceipt {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 80mm;
+            }
+        }
+
+        .receipt {
+            font-family: 'Courier New', monospace;
+            width: 80mm;
+            padding: 10mm;
+            font-size: 12pt;
+        }
+
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+        }
+
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        .receipt-total {
+            border-top: 2px dashed #000;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14pt;
+        }
+
+        .instructions {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .instructions h3 {
+            color: #1976D2;
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .instructions li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖨️ Cloud Print Client</h1>
+
+        <div class="instructions">
+            <h3>📋 Setup Instructions:</h3>
+            <ol>
+                <li>Make sure the <strong>Print Server</strong> is running on <code>localhost:17388</code></li>
+                <li>Enter your <strong>Theater ID</strong> below</li>
+                <li>Enter your <strong>Live Backend URL</strong> (e.g., https://your-domain.com)</li>
+                <li>Click <strong>"Connect to Cloud"</strong></li>
+                <li><strong>Keep this tab open</strong> in your browser</li>
+                <li>When orders are placed, they will <strong>auto-print to selected printers</strong>!</li>
+            </ol>
+            <p><strong>✅ Printer Selection:</strong> The system will automatically use the printers you selected in Printer Setup page!</p>
+            <p><strong>⚠️ Important:</strong> Keep this page open for automatic printing!</p>
+        </div>
+
+        <div id="status" class="status disconnected">
+            ⚠️ Not Connected
+        </div>
+
+        <div id="printServerStatus" style="margin-top: 10px; padding: 10px; border-radius: 8px; background: #f8f9fa; font-size: 13px; font-weight: 500;">
+            ⚠️ Print Server: Checking...
+        </div>
+
+        <div class="form-group">
+            <label for="theaterId">Theater ID:</label>
+            <input type="text" id="theaterId" placeholder="691a9fe1326aa3c817167895" value="691a9fe1326aa3c817167895">
+        </div>
+
+        <div class="form-group">
+            <label for="backendUrl">Backend URL:</label>
+            <input type="text" id="backendUrl" placeholder="https://your-live-domain.com">
+        </div>
+
+        <button id="connectBtn" onclick="connect()">Connect to Cloud</button>
+        <button id="disconnectBtn" onclick="disconnect()" style="display: none; background: #dc3545;">Disconnect</button>
+
+        <div class="log" id="log"></div>
+    </div>
+
+    <!-- Hidden print area -->
+    <div id="printReceipt"></div>
+
+    <script>
+        let ws = null; // Cloud WebSocket (receives print orders)
+        let printServerWs = null; // Local print server WebSocket (sends print commands)
+        let theaterId = null;
+        let backendUrl = null;
+        let reconnectAttempts = 0;
+        const MAX_RECONNECT_ATTEMPTS = 5;
+        const PRINT_SERVER_URL = 'ws://localhost:17388';
+
+        function log(message, type = 'info') {
+            const logEl = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.innerHTML = `<strong>${new Date().toLocaleTimeString()}</strong> - ${message}`;
+            logEl.insertBefore(entry, logEl.firstChild);
+            
+            // Keep only last 50 entries
+            while (logEl.children.length > 50) {
+                logEl.removeChild(logEl.lastChild);
+            }
+        }
+
+        function updateStatus(message, isConnected, isPrinting = false) {
+            const statusEl = document.getElementById('status');
+            const printServerStatusEl = document.getElementById('printServerStatus');
+            
+            if (statusEl) {
+            statusEl.textContent = message;
+            statusEl.className = 'status ' + (isPrinting ? 'printing' : (isConnected ? 'connected' : 'disconnected'));
+        }
+            
+            // Update print server connection status
+            if (printServerStatusEl) {
+                if (isPrintServerConnected()) {
+                    printServerStatusEl.innerHTML = '<strong style="color: #28a745;">✅ Print Server: CONNECTED</strong> (Silent Format Available)';
+                    printServerStatusEl.style.background = '#d4edda';
+                    printServerStatusEl.style.border = '2px solid #28a745';
+                } else {
+                    printServerStatusEl.innerHTML = '<strong style="color: #dc3545;">❌ Print Server: NOT CONNECTED</strong> (Will Use HTML Fallback - NOT Silent Format)';
+                    printServerStatusEl.style.background = '#f8d7da';
+                    printServerStatusEl.style.border = '2px solid #dc3545';
+                }
+            }
+        }
+        
+        // Periodically check print server connection status
+        setInterval(() => {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                // Only update if we're connected to cloud print
+                updateStatus(document.getElementById('status')?.textContent || 'Connected', true);
+            }
+        }, 2000); // Check every 2 seconds
+
+        function connect() {
+            theaterId = document.getElementById('theaterId').value.trim();
+            backendUrl = document.getElementById('backendUrl').value.trim();
+
+            if (!theaterId) {
+                alert('Please enter Theater ID');
+                return;
+            }
+
+            if (!backendUrl) {
+                alert('Please enter Backend URL');
+                return;
+            }
+
+            // Convert http/https to ws/wss
+            const wsUrl = backendUrl.replace('http://', 'ws://').replace('https://', 'wss://');
+            
+            log(`Connecting to ${wsUrl}...`, 'info');
+            updateStatus('🔄 Connecting...', false);
+
+            try {
+                ws = new WebSocket(`${wsUrl}/cloud-print?theaterId=${theaterId}`);
+
+                ws.onopen = () => {
+                    log('✅ Connected to cloud print service!', 'success');
+                    updateStatus('✅ Connected - Ready to Print', true);
+                    reconnectAttempts = 0;
+                    
+                    // Auto-connect to print server when cloud print connects (for silent format)
+                    log('🔄 Auto-connecting to print server for silent format...', 'info');
+                    connectToPrintServer().then(() => {
+                        log('✅ Print server connected - Ready for SILENT TEXT FORMAT', 'success');
+                        updateStatus('✅ Connected - Ready for Silent Print', true);
+                    }).catch(err => {
+                        log('⚠️ Print server not available - will use HTML fallback', 'error');
+                        log('💡 To enable SILENT format, start print server on localhost:17388', 'info');
+                        updateStatus('⚠️ Connected - Print Server Not Available', false);
+                    });
+                    
+                    document.getElementById('connectBtn').style.display = 'none';
+                    document.getElementById('disconnectBtn').style.display = 'block';
+                    document.getElementById('theaterId').disabled = true;
+                    document.getElementById('backendUrl').disabled = true;
+                };
+
+                ws.onmessage = (event) => {
+                    try {
+                        const message = JSON.parse(event.data);
+                        
+                        if (message.type === 'print-order') {
+                            const order = message.order || {};
+                            
+                            // Determine order type from order data (same logic as backend)
+                            const source = (order.source || '').toLowerCase();
+                            const orderType = order.orderType ? order.orderType.toLowerCase() : '';
+                            
+                            // Online order sources
+                            const onlineSources = ['qr_code', 'qr_order', 'online', 'web', 'app', 'customer'];
+                            const isOnlineOrder = onlineSources.includes(source) || orderType === 'qr_order';
+                            
+                            // Get printers from localStorage based on order type
+                            const savedPosPrinter = localStorage.getItem(`printer-pos-${theaterId}`);
+                            const savedOnlinePrinter = localStorage.getItem(`printer-online-${theaterId}`);
+                            
+                            // Use printer from message first, then fallback to correct printer based on order type
+                            const printerName = message.printerName || (isOnlineOrder ? savedOnlinePrinter : savedPosPrinter) || 'default printer';
+                            
+                            log(`🖨️ Printing order: ${order.orderNumber} (Printer: ${printerName})`, 'info');
+                            log(`📋 Order type: ${isOnlineOrder ? 'ONLINE' : 'POS'} (source: ${source || 'N/A'})`, 'info');
+                            log(`📋 Order data: ${JSON.stringify(order).substring(0, 200)}...`, 'info');
+                            updateStatus(`🖨️ Printing to ${printerName}...`, true, true);
+                            // Store theater info globally for use in printOrder
+                            if (message.theaterInfo) {
+                                window.theaterInfo = message.theaterInfo;
+                                log(`✅ Theater info received: ${message.theaterInfo.name || 'N/A'}`, 'info');
+                            } else {
+                                log(`⚠️ No theater info in message`, 'error');
+                            }
+                            printOrder(order, printerName);
+                        }
+                    } catch (err) {
+                        log(`❌ Error processing message: ${err.message}`, 'error');
+                    }
+                };
+
+                ws.onerror = (error) => {
+                    log(`❌ Connection error: ${error}`, 'error');
+                    updateStatus('❌ Connection Error', false);
+                };
+
+                ws.onclose = () => {
+                    log('⚠️ Disconnected from cloud', 'error');
+                    updateStatus('⚠️ Disconnected', false);
+                    
+                    document.getElementById('connectBtn').style.display = 'block';
+                    document.getElementById('disconnectBtn').style.display = 'none';
+                    document.getElementById('theaterId').disabled = false;
+                    document.getElementById('backendUrl').disabled = false;
+
+                    // Auto-reconnect
+                    if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+                        reconnectAttempts++;
+                        log(`🔄 Reconnecting in 5 seconds... (attempt ${reconnectAttempts}/${MAX_RECONNECT_ATTEMPTS})`, 'info');
+                        setTimeout(connect, 5000);
+                    }
+                };
+            } catch (err) {
+                log(`❌ Failed to connect: ${err.message}`, 'error');
+                updateStatus('❌ Connection Failed', false);
+            }
+        }
+
+        function disconnect() {
+            if (ws) {
+                ws.close();
+                ws = null;
+                reconnectAttempts = MAX_RECONNECT_ATTEMPTS; // Prevent auto-reconnect
+            }
+            if (printServerWs) {
+                printServerWs.close();
+                printServerWs = null;
+            }
+        }
+
+        /**
+         * Check if print server is connected
+         */
+        function isPrintServerConnected() {
+            return printServerWs && printServerWs.readyState === WebSocket.OPEN;
+        }
+
+        /**
+         * Connect to local print server (localhost:17388)
+         * This server can select specific printers programmatically
+         */
+        function connectToPrintServer(retryCount = 0, maxRetries = 3) {
+            return new Promise((resolve, reject) => {
+                // If already connected, verify and resolve immediately
+                if (isPrintServerConnected()) {
+                    log('✅ Print server already connected', 'success');
+                    resolve();
+                    return;
+                }
+
+                log(`🔄 Connecting to local print server (attempt ${retryCount + 1}/${maxRetries + 1})...`, 'info');
+                
+                try {
+                    // Close existing connection if any
+                    if (printServerWs) {
+                        printServerWs.close();
+                        printServerWs = null;
+                    }
+
+                    printServerWs = new WebSocket(PRINT_SERVER_URL);
+
+                    const timeout = setTimeout(() => {
+                        if (printServerWs && printServerWs.readyState !== WebSocket.OPEN) {
+                            printServerWs.close();
+                            printServerWs = null;
+                            const error = new Error('Print server connection timeout after 5 seconds');
+                            if (retryCount < maxRetries) {
+                                log(`⚠️ Timeout, retrying in 2 seconds...`, 'info');
+                                setTimeout(() => {
+                                    connectToPrintServer(retryCount + 1, maxRetries).then(resolve).catch(reject);
+                                }, 2000);
+                            } else {
+                                reject(error);
+                            }
+                        }
+                    }, 5000);
+
+                    printServerWs.onopen = () => {
+                        clearTimeout(timeout);
+                        log('✅ ✅ ✅ CONNECTED to local print server - SILENT FORMAT AVAILABLE', 'success');
+                        resolve();
+                    };
+
+                    printServerWs.onerror = (error) => {
+                        clearTimeout(timeout);
+                        const errorMsg = error.message || 'Connection failed';
+                        log(`⚠️ Print server connection error: ${errorMsg}`, 'error');
+                        
+                        if (retryCount < maxRetries) {
+                            log(`🔄 Retrying connection in 2 seconds...`, 'info');
+                            printServerWs = null;
+                            setTimeout(() => {
+                                connectToPrintServer(retryCount + 1, maxRetries).then(resolve).catch(reject);
+                            }, 2000);
+                        } else {
+                        log('💡 Make sure the print server is running on localhost:17388', 'info');
+                            reject(new Error(errorMsg));
+                        }
+                    };
+
+                    printServerWs.onclose = (event) => {
+                        log(`⚠️ Disconnected from print server (code: ${event.code}, reason: ${event.reason || 'none'})`, 'error');
+                        printServerWs = null;
+                    };
+
+                    printServerWs.onmessage = (event) => {
+                        try {
+                            const data = JSON.parse(event.data);
+                            if (data.printers && Array.isArray(data.printers)) {
+                                log(`📋 Found ${data.printers.length} printer(s)`, 'info');
+                            }
+                        } catch (err) {
+                            // Ignore non-JSON messages
+                        }
+                    };
+                } catch (err) {
+                    if (retryCount < maxRetries) {
+                        log(`🔄 Error occurred, retrying in 2 seconds...`, 'info');
+                        setTimeout(() => {
+                            connectToPrintServer(retryCount + 1, maxRetries).then(resolve).catch(reject);
+                        }, 2000);
+                    } else {
+                    reject(err);
+                    }
+                }
+            });
+        }
+
+        // Helper functions for text formatting (matching silentPrintService format)
+        function padRight(str, width) {
+            return str.length >= width ? str.substring(0, width) : str + ' '.repeat(width - str.length);
+        }
+
+        function padLeft(str, width) {
+            return str.length >= width ? str.substring(0, width) : ' '.repeat(width - str.length) + str;
+        }
+
+        function centerText(str, width) {
+            if (str.length >= width) return str.substring(0, width);
+            const leftPad = Math.floor((width - str.length) / 2);
+            const rightPad = width - str.length - leftPad;
+            return ' '.repeat(leftPad) + str + ' '.repeat(rightPad);
+        }
+
+        function generateReceiptText(order, theaterInfo = {}) {
+            console.log('[CloudPrint] Generating receipt text, order:', order);
+            console.log('[CloudPrint] Theater info:', theaterInfo);
+            
+            const theaterName = theaterInfo.name || order.theaterName || 'THEATER';
+            const theaterAddress = theaterInfo.address || '';
+            const theaterPhone = theaterInfo.phone || '';
+            
+            // Format date - handle multiple date formats
+            let orderDate;
+            if (order.createdAt) {
+                const dateObj = order.createdAt instanceof Date ? order.createdAt : new Date(order.createdAt);
+                orderDate = dateObj.toLocaleString('en-IN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } else {
+                orderDate = new Date().toLocaleString('en-IN');
+            }
+            
+            // Calculate totals - handle both pricing object and direct fields
+            const pricing = order.pricing || {};
+            const grandTotal = pricing.total || order.totalAmount || order.total || 0;
+            const tax = pricing.taxAmount || pricing.tax || order.tax || pricing.gst || order.gst || 0;
+            const discount = pricing.totalDiscount || pricing.discountAmount || pricing.discount || order.discount || order.totalDiscount || 0;
+            const subtotal = pricing.subtotal || order.subtotal || (grandTotal - tax);
+            const cgst = tax / 2;
+            const sgst = tax / 2;
+            
+            // Generate plain text receipt (matching silentPrintService format)
+            let textContent = "";
+            
+            // Header Section - Centered
+            const line = "================================";
+            textContent += line + "\n";
+            textContent += centerText(theaterName.toUpperCase(), 32) + "\n";
+            textContent += line + "\n";
+            
+            // Theater Info
+            if (theaterAddress) {
+                const addrStr = typeof theaterAddress === 'string' ? theaterAddress :
+                    [theaterAddress.street, theaterAddress.city, theaterAddress.state].filter(Boolean).join(', ');
+                textContent += centerText(addrStr, 32) + "\n";
+            }
+            if (theaterPhone) textContent += centerText("Tel: " + theaterPhone, 32) + "\n";
+            if (theaterInfo.email) textContent += centerText(theaterInfo.email, 32) + "\n";
+            if (theaterInfo.fssaiNumber) textContent += centerText("FSSAI: " + theaterInfo.fssaiNumber, 32) + "\n";
+            if (theaterInfo.gstNumber) textContent += centerText("GST: " + theaterInfo.gstNumber, 32) + "\n";
+            textContent += line + "\n\n";
+            
+            // Bill Info Section
+            textContent += "Invoice ID: " + (order.orderNumber || order._id || 'N/A') + "\n";
+            textContent += "Date: " + orderDate + "\n";
+            textContent += "Customer: " + (order.customerInfo?.name || order.customerName || 'Customer') + "\n";
+            textContent += "Payment: " + (order.paymentMethod || order.payment?.method || 'CASH').toUpperCase() + "\n";
+            textContent += "\n" + "--------------------------------" + "\n";
+            
+            // Items Header
+            textContent += "ITEMS:\n";
+            textContent += "--------------------------------" + "\n";
+            textContent += centerText("Item", 15) + centerText("Qty", 3) + centerText("Rate", 7) + centerText("Total", 7) + "\n";
+            textContent += "--------------------------------" + "\n";
+            
+            // Items List - handle both items and products arrays
+            const items = order.items || order.products || [];
+            console.log(`[CloudPrint] Processing ${items.length} items`);
+            
+            items.forEach((item, idx) => {
+                let itemName = item.name || item.productName || 'Item';
+                
+                // Add size/variant information if available (prioritize originalQuantity)
+                const size = item.originalQuantity || item.size || item.productSize || item.sizeLabel || 
+                             item.variant?.option || (item.variants && item.variants.length > 0 ? item.variants[0].option : null);
+                
+                if (size) {
+                    itemName = `${itemName} (${size})`;
+                }
+                
+                // Truncate to fit in column (fixed width of 15 chars)
+                const itemNameWidth = 15;
+                itemName = itemName.substring(0, itemNameWidth);
+                
+                const qty = item.quantity || 1;
+                const rate = item.unitPrice || item.price || 0;
+                const total = item.total || item.totalPrice || (qty * rate);
+                
+                console.log(`[CloudPrint] Item ${idx + 1}: ${itemName}, Qty: ${qty}, Rate: ${rate}, Total: ${total}`);
+                
+                // Use consistent column widths (32 chars total)
+                textContent += padRight(itemName, itemNameWidth) +
+                    padLeft(qty.toString(), 3) +
+                    padLeft("₹" + rate.toFixed(2), 7) +
+                    padLeft("₹" + total.toFixed(2), 7) + "\n";
+            });
+            
+            textContent += "--------------------------------" + "\n";
+            
+            // Summary Section
+            if (subtotal > 0) {
+                textContent += padRight("Subtotal:", 24) + padLeft("₹" + subtotal.toFixed(2), 8) + "\n";
+            }
+            
+            if (tax > 0) {
+                textContent += padRight("CGST:", 24) + padLeft("₹" + cgst.toFixed(2), 8) + "\n";
+                textContent += padRight("SGST:", 24) + padLeft("₹" + sgst.toFixed(2), 8) + "\n";
+            }
+            
+            if (discount > 0) {
+                textContent += padRight("Discount:", 24) + padLeft("-₹" + discount.toFixed(2), 8) + "\n";
+            }
+            
+            textContent += "================================" + "\n";
+            textContent += padRight("GRAND TOTAL:", 24) + padLeft("₹" + grandTotal.toFixed(2), 8) + "\n";
+            textContent += "================================" + "\n\n";
+            
+            // Footer
+            textContent += centerText("Thank you for your order!", 32) + "\n";
+            textContent += centerText("By YQPayNow", 32) + "\n";
+            textContent += centerText("Generated on " + new Date().toLocaleString('en-IN'), 32) + "\n";
+            textContent += line + "\n";
+            
+            return textContent;
+        }
+
+        /**
+         * Check if printer is a PDF/virtual printer (should not print physically)
+         * @param {String} printerName - Printer name to check
+         * @returns {Boolean} - True if PDF/virtual printer
+         */
+        function isPDFPrinter(printerName) {
+            if (!printerName) return false;
+            
+            const pdfPrinterKeywords = [
+                'pdf',
+                'microsoft print to pdf',
+                'onenote',
+                'save as pdf',
+                'adobe pdf',
+                'foxit reader pdf',
+                'cutepdf',
+                'primo pdf',
+                'pdf24',
+                'pdfcreator',
+                'anydesk',
+                'virtual',
+                'xps',
+                'fax'
+            ];
+            
+            const printerLower = printerName.toLowerCase();
+            return pdfPrinterKeywords.some(keyword => printerLower.includes(keyword));
+        }
+
+        async function printOrder(order, printerName = null) {
+            try {
+                log(`🖨️ [PRINT] Starting print process for order: ${order.orderNumber}`, 'info');
+                log(`🖨️ [PRINT] Printer: ${printerName || 'default'}`, 'info');
+                
+                // ✅ VALIDATION: Check if PDF/virtual printer is selected
+                if (printerName && isPDFPrinter(printerName)) {
+                    const errorMsg = `❌ Cannot print to PDF/virtual printer: "${printerName}". Please select a physical printer (Primary/POS Printer or Mobile Printer).`;
+                    log(errorMsg, 'error');
+                    updateStatus('❌ PDF Printer Selected - Cannot Print', false);
+                    
+                    // Send error confirmation back to cloud server
+                    if (ws && ws.readyState === WebSocket.OPEN) {
+                        ws.send(JSON.stringify({
+                            type: 'print-error',
+                            orderId: order._id || order.orderNumber,
+                            timestamp: new Date().toISOString(),
+                            printer: printerName,
+                            error: 'PDF/virtual printer selected - physical printing blocked'
+                        }));
+                    }
+                    
+                    return {
+                        success: false,
+                        error: errorMsg,
+                        blocked: true
+                    };
+                }
+                
+                // Generate silent text format receipt (matching printReceiptSilently)
+                const theaterInfo = window.theaterInfo || {};
+                log(`📝 Generating receipt text with theater: ${theaterInfo.name || 'N/A'}`, 'info');
+                log(`📦 Order items count: ${(order.items || order.products || []).length}`, 'info');
+                
+                const receiptText = generateReceiptText(order, theaterInfo);
+                log(`📄 Receipt text generated, length: ${receiptText.length} chars`, 'info');
+                
+                // ✅ CRITICAL: ALWAYS try silent text format first (printText action)
+                // This matches the format used by printReceiptSilently
+                
+                // First check if already connected
+                if (!isPrintServerConnected()) {
+                    log(`🔄 Print server not connected, attempting connection...`, 'info');
+                    try {
+                        await connectToPrintServer();
+                    } catch (connectError) {
+                        log(`❌ ❌ ❌ FAILED to connect to print server: ${connectError.message}`, 'error');
+                        log(`❌ ❌ ❌ SILENT FORMAT NOT AVAILABLE - Print server must be running!`, 'error');
+                        log(`💡 💡 💡 To use SILENT format:`, 'info');
+                        log(`   1. Start print server on localhost:17388`, 'info');
+                        log(`   2. Refresh this page`, 'info');
+                        log(`   3. The connection will be retried automatically`, 'info');
+                    }
+                }
+                
+                // Double-check connection status before printing
+                if (isPrintServerConnected()) {
+                    log(`✅ ✅ ✅ Print server CONNECTED - Using SILENT TEXT FORMAT`, 'success');
+                    
+                    // ✅ SILENT FORMAT: Use printText action (not printHtml)
+                            const printCommand = {
+                        action: 'printText', // ✅ CRITICAL: Silent text format
+                        printer: printerName || '', // Use provided printer or default
+                        content: receiptText // Plain text content
+                    };
+                    
+                    log(`📤 Sending printText command to print server...`, 'info');
+                    log(`📋 Command details:`, 'info');
+                    log(`   - action: ${printCommand.action}`, 'info');
+                    log(`   - printer: "${printCommand.printer || 'default'}"`, 'info');
+                    log(`   - content length: ${printCommand.content.length} chars`, 'info');
+                    
+                    try {
+                        // ✅ VERIFY: Double-check we're using printText (silent format)
+                        if (printCommand.action !== 'printText') {
+                            throw new Error(`WRONG ACTION: Expected 'printText' but got '${printCommand.action}'`);
+                        }
+                        
+                        // Verify WebSocket is still open before sending
+                        if (!isPrintServerConnected()) {
+                            throw new Error('Print server connection lost before sending');
+                        }
+                        
+                        log(`📤 SENDING: action="${printCommand.action}", printer="${printCommand.printer || 'default'}"`, 'info');
+                            printServerWs.send(JSON.stringify(printCommand));
+                        
+                        // Verify send was successful (no immediate error)
+                        log(`✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅`, 'success');
+                        log(`✅ ✅ ✅ SILENT PRINT COMMAND SENT SUCCESSFULLY ✅ ✅ ✅`, 'success');
+                        log(`✅ ACTION USED: "${printCommand.action}" (printText = Silent Format)`, 'success');
+                        log(`✅ Receipt sent to printer using SILENT TEXT FORMAT`, 'success');
+                        log(`✅ Format: Plain Text (NOT HTML)`, 'success');
+                        log(`✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅ ✅`, 'success');
+                            
+                            // Send confirmation back to cloud server
+                            if (ws && ws.readyState === WebSocket.OPEN) {
+                                ws.send(JSON.stringify({
+                                    type: 'print-success',
+                                    orderId: order._id || order.orderNumber,
+                                    timestamp: new Date().toISOString(),
+                                printer: printerName || 'default',
+                                format: 'silent-text' // Indicate we used silent format
+                                }));
+                            }
+                            
+                        log(`✅ Print job completed (SILENT FORMAT): ${order.orderNumber} → ${printerName || 'default'}`, 'success');
+                        updateStatus('✅ Connected - Silent Print Sent', true);
+                        return; // ✅ SUCCESS - Silent format used, EXIT
+                        
+                    } catch (sendError) {
+                        log(`❌ ❌ ❌ ERROR sending print command: ${sendError.message}`, 'error');
+                        log(`❌ Connection state: ${printServerWs?.readyState}`, 'error');
+                        log(`❌ Order ${order.orderNumber} NOT printed - Print server error`, 'error');
+                        updateStatus('❌ Print Failed - Server Error', false);
+                    }
+                } else {
+                    log(`❌ ❌ ❌ Print server NOT connected - Cannot print!`, 'error');
+                    log(`❌ Order ${order.orderNumber} NOT printed`, 'error');
+                    log(`💡 To enable printing:`, 'info');
+                    log(`   1. Make sure print server is running on localhost:17388`, 'info');
+                    log(`   2. Refresh this page to reconnect`, 'info');
+                    log(`   3. Verify "Print Server: CONNECTED" status`, 'info');
+                    updateStatus('❌ Print Server NOT Connected', false);
+                }
+                
+            } catch (error) {
+                log(`❌ ❌ ❌ Print error: ${error.message}`, 'error');
+                log(`❌ Error stack: ${error.stack}`, 'error');
+                updateStatus('❌ Print Error', false);
+            }
+        }
+
+        // Auto-detect backend URL based on current hostname
+        function getDefaultBackendUrl() {
+            const hostname = window.location.hostname;
+            const protocol = window.location.protocol;
+            
+            // If on localhost, use localhost:8080
+            if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                return 'http://localhost:8080';
+            }
+            
+            // Otherwise, use the same hostname as the current page
+            // For production (yqpaynow.com), this will be https://yqpaynow.com
+            return `${protocol}//${hostname}`;
+        }
+
+        // Auto-connect if already configured
+        window.addEventListener('load', () => {
+            const savedTheaterId = localStorage.getItem('theaterId');
+            const savedBackendUrl = localStorage.getItem('backendUrl');
+            
+            // Set default backend URL if not saved
+            const defaultBackendUrl = getDefaultBackendUrl();
+            const backendUrlInput = document.getElementById('backendUrl');
+            
+            if (savedBackendUrl) {
+                backendUrlInput.value = savedBackendUrl;
+            } else {
+                backendUrlInput.value = defaultBackendUrl;
+                // Save default for next time
+                localStorage.setItem('backendUrl', defaultBackendUrl);
+            }
+            
+            if (savedTheaterId) {
+                document.getElementById('theaterId').value = savedTheaterId;
+            }
+            
+            // Auto-connect after 1 second if both are set
+            if (savedTheaterId || document.getElementById('theaterId').value) {
+                setTimeout(connect, 1000);
+            }
+        });
+
+        // Save configuration
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('theaterId', document.getElementById('theaterId').value);
+            localStorage.setItem('backendUrl', document.getElementById('backendUrl').value);
+        });
+    </script>
+</body>
+</html>

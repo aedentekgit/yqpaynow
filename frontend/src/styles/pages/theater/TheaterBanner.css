@@ -1,0 +1,89 @@
+/* TheaterBanner Component Styles - Extracted from inline styles */
+
+/* Theater Photo Thumbnail */
+.theater-photo-thumb {
+  width: 80px;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+.theater-photo-thumb.no-photo {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+  color: #9ca3af;
+}
+
+/* Form Helper Text */
+.form-helper-text {
+  margin-top: 8px;
+}
+
+/* ImageUpload with helper text spacing */
+.form-group.full-width .form-helper-text {
+  margin-top: 8px;
+}
+
+/* Empty State Center */
+.empty-state-center {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+/* Filter Controls Alignment - Right align when no search box */
+.page-container.theater-banner-page .theater-filters .filter-controls,
+.theater-banner-page .theater-filters .filter-controls,
+.page-container .theater-banner-page .theater-filters .filter-controls {
+  margin-left: auto !important;
+  justify-content: flex-end !important;
+}
+
+.page-container.theater-banner-page .theater-filters,
+.theater-banner-page .theater-filters,
+.page-container .theater-banner-page .theater-filters {
+  justify-content: flex-end !important;
+}
+
+/* Center align all table cell values */
+.theater-table-container .theater-table td {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .sno-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .photo-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .status-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .actions-cell {
+  text-align: center !important;
+}
+

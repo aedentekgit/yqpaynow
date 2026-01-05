@@ -1,0 +1,14 @@
+/* DashboardContent Component Styles - Extracted from inline styles */
+
+/* Deprecated Notice Container */
+.deprecated-notice-container {
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+}
+
+.deprecated-notice-text {
+  font-size: 0.875rem;
+  margin-top: 8px;
+}
+

@@ -1,0 +1,95 @@
+/* TheaterProductTypes Component Styles - Extracted from inline styles */
+
+/* Theater Photo Thumbnail */
+.theater-photo-thumb {
+  width: 80px;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+/* InstantImage component in table */
+.theater-photo-thumb .instant-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theater-photo-thumb .instant-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.theater-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.theater-photo-thumb.no-photo {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+  color: #9ca3af;
+}
+
+/* Form Helper Text */
+.form-helper-text {
+  margin-top: 8px;
+}
+
+/* ImageUpload with helper text spacing */
+.form-group.full-width .form-helper-text {
+  margin-top: 8px;
+}
+
+/* Empty State Center */
+.empty-state-center {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+/* Spinner Animation */
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

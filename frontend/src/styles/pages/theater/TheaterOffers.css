@@ -1,0 +1,392 @@
+/* TheaterOffers Component Styles - Extracted from inline styles */
+
+/* Theater Photo Thumbnail */
+.theater-photo-thumb {
+  width: 80px;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+.theater-photo-thumb.no-photo {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+}
+
+/* Offer Text Cell */
+.offer-text-cell {
+  max-width: 300px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.offer-text-content {
+  padding: 8px;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+  color: #9ca3af;
+}
+
+/* Form Helper Text */
+.form-helper-text {
+  margin-top: 8px;
+}
+
+/* ImageUpload with helper text spacing */
+.form-group.full-width .form-helper-text {
+  margin-top: 8px;
+}
+
+/* Empty State Center */
+.empty-state-center {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+/* Filter Controls Alignment - Right align when no search box */
+.page-container.theater-offers-page .theater-filters .filter-controls,
+.theater-offers-page .theater-filters .filter-controls,
+.page-container .theater-offers-page .theater-filters .filter-controls {
+  margin-left: auto !important;
+  justify-content: flex-end !important;
+}
+
+.page-container.theater-offers-page .theater-filters,
+.theater-offers-page .theater-filters,
+.page-container .theater-offers-page .theater-filters {
+  justify-content: flex-end !important;
+}
+
+/* Theater Offers Table Container - Fix horizontal scrolling bug */
+.theater-table-container {
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Offers Table - Reduce min-width to prevent unnecessary horizontal scrolling */
+.theater-table-container .theater-table {
+  min-width: 700px !important; /* Reduced from 1000px - only 5 columns needed */
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Center align all table cell values */
+.theater-table-container .theater-table td {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .sno-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .photo-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .offer-text-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .status-cell {
+  text-align: center !important;
+}
+
+.theater-table-container .theater-table .actions-cell {
+  text-align: center !important;
+}
+
+/* Column Width Constraints for Offers Table */
+.theater-table-container .theater-table .sno-cell {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+}
+
+.theater-table-container .theater-table .photo-cell {
+  width: 120px;
+  min-width: 120px;
+  max-width: 150px;
+}
+
+.theater-table-container .theater-table .offer-text-cell {
+  width: auto;
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.theater-table-container .theater-table .status-cell {
+  width: 120px;
+  min-width: 120px;
+  max-width: 140px;
+}
+
+.theater-table-container .theater-table .actions-cell {
+  width: 160px;
+  min-width: 140px;
+  max-width: 180px;
+}
+
+/* ============================================
+   RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .theater-table-container .theater-table {
+    min-width: 650px !important;
+  }
+  
+  .theater-table-container .theater-table .sno-cell {
+    width: 60px;
+    min-width: 60px;
+  }
+  
+  .theater-table-container .theater-table .photo-cell {
+    width: 100px;
+    min-width: 100px;
+  }
+  
+  .theater-table-container .theater-table .offer-text-cell {
+    min-width: 180px;
+    max-width: 350px;
+  }
+  
+  .theater-table-container .theater-table .status-cell {
+    width: 110px;
+    min-width: 110px;
+  }
+  
+  .theater-table-container .theater-table .actions-cell {
+    width: 140px;
+    min-width: 130px;
+  }
+  
+  .theater-photo-thumb,
+  .theater-photo-thumb.no-photo {
+    width: 70px;
+    height: 35px;
+  }
+  
+  .offer-text-content {
+    font-size: 13px;
+    padding: 6px;
+  }
+  
+  .svg-icon-md {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .theater-table-container .theater-table {
+    min-width: 600px !important;
+    font-size: 14px;
+  }
+  
+  .theater-table-container .theater-table .sno-cell {
+    width: 50px;
+    min-width: 50px;
+  }
+  
+  .theater-table-container .theater-table .photo-cell {
+    width: 90px;
+    min-width: 90px;
+  }
+  
+  .theater-table-container .theater-table .offer-text-cell {
+    min-width: 160px;
+    max-width: 300px;
+  }
+  
+  .theater-table-container .theater-table .status-cell {
+    width: 100px;
+    min-width: 100px;
+  }
+  
+  .theater-table-container .theater-table .actions-cell {
+    width: 120px;
+    min-width: 110px;
+  }
+  
+  .theater-photo-thumb,
+  .theater-photo-thumb.no-photo {
+    width: 60px;
+    height: 30px;
+  }
+  
+  .offer-text-cell {
+    max-width: 250px;
+  }
+  
+  .offer-text-content {
+    font-size: 12px;
+    padding: 5px;
+  }
+  
+  .svg-icon-sm {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .svg-icon-md {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Stack filter controls on mobile */
+  .page-container.theater-offers-page .theater-filters,
+  .theater-offers-page .theater-filters,
+  .page-container .theater-offers-page .theater-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .page-container.theater-offers-page .theater-filters .filter-controls,
+  .theater-offers-page .theater-filters .filter-controls,
+  .page-container .theater-offers-page .theater-filters .filter-controls {
+    margin-left: 0 !important;
+    justify-content: stretch !important;
+    width: 100%;
+  }
+}
+
+/* Small Mobile (640px and below) */
+@media (max-width: 640px) {
+  .theater-table-container .theater-table {
+    min-width: 550px !important;
+    font-size: 13px;
+  }
+  
+  .theater-table-container .theater-table td {
+    padding: 8px 4px !important;
+  }
+  
+  .theater-table-container .theater-table .sno-cell {
+    width: 45px;
+    min-width: 45px;
+  }
+  
+  .theater-table-container .theater-table .photo-cell {
+    width: 80px;
+    min-width: 80px;
+  }
+  
+  .theater-table-container .theater-table .offer-text-cell {
+    min-width: 140px;
+    max-width: 250px;
+  }
+  
+  .theater-table-container .theater-table .status-cell {
+    width: 90px;
+    min-width: 90px;
+  }
+  
+  .theater-table-container .theater-table .actions-cell {
+    width: 110px;
+    min-width: 100px;
+  }
+  
+  .theater-photo-thumb,
+  .theater-photo-thumb.no-photo {
+    width: 50px;
+    height: 25px;
+  }
+  
+  .offer-text-content {
+    font-size: 11px;
+    padding: 4px;
+  }
+  
+  .empty-state-center {
+    padding: 15px;
+    font-size: 13px;
+  }
+}
+
+/* Extra Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .theater-table-container {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .theater-table-container .theater-table {
+    min-width: 500px !important;
+    font-size: 12px;
+  }
+  
+  .theater-table-container .theater-table td {
+    padding: 6px 3px !important;
+  }
+  
+  .theater-table-container .theater-table .sno-cell {
+    width: 40px;
+    min-width: 40px;
+  }
+  
+  .theater-table-container .theater-table .photo-cell {
+    width: 70px;
+    min-width: 70px;
+  }
+  
+  .theater-table-container .theater-table .offer-text-cell {
+    min-width: 120px;
+    max-width: 200px;
+  }
+  
+  .theater-table-container .theater-table .status-cell {
+    width: 80px;
+    min-width: 80px;
+  }
+  
+  .theater-table-container .theater-table .actions-cell {
+    width: 100px;
+    min-width: 90px;
+  }
+  
+  .theater-photo-thumb,
+  .theater-photo-thumb.no-photo {
+    width: 45px;
+    height: 22px;
+  }
+  
+  .svg-icon-sm {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .svg-icon-md {
+    width: 18px;
+    height: 18px;
+  }
+}
+

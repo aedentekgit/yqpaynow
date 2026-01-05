@@ -1,0 +1,118 @@
+/* Customer Layout - Mobile First Design */
+.customer-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.customer-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  max-height: 90vh;
+}
+
+/* Main content area */
+.customer-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-content.with-footer {
+  padding-bottom: 80px; /* Space for footer */
+}
+
+/* Override for checkout layout */
+.checkout-layout .customer-container {
+  min-height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+}
+
+.checkout-layout {
+  padding: 0;
+  align-items: stretch;
+}
+
+.checkout-layout .customer-container {
+  max-width: 100%;
+  border-radius: 0;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 480px) {
+  .customer-layout {
+    padding: 10px;
+  }
+  
+  .customer-container {
+    max-width: 100%;
+    border-radius: 15px;
+    min-height: 95vh;
+    max-height: 95vh;
+  }
+  
+  .customer-content.with-footer {
+    padding-bottom: 70px;
+  }
+  
+  .checkout-layout {
+    padding: 0;
+  }
+  
+  .checkout-layout .customer-container {
+    border-radius: 0;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+  .customer-container {
+    max-width: 450px;
+    min-height: 85vh;
+    max-height: 85vh;
+  }
+  
+  .customer-content.with-footer {
+    padding-bottom: 90px;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.fade-in-delay {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}

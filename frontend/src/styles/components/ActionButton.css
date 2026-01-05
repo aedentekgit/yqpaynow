@@ -1,0 +1,13 @@
+/* ActionButton Component Styles - Extracted from inline styles */
+
+/* Action Buttons Container */
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+}
+

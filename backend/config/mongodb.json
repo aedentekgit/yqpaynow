@@ -1,0 +1,9 @@
+{
+  "_comment": "This file is legacy and not used. MongoDB connection is configured via MONGODB_URI environment variable in .env file.",
+  "_note": "Do not use localhost here. Set MONGODB_URI in backend/.env file instead.",
+  "uri": "DEPRECATED - Use MONGODB_URI in .env file",
+  "status": "deprecated",
+  "lastTested": null,
+  "databaseSize": null,
+  "collections": null
+}

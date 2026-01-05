@@ -1,0 +1,486 @@
+/* ============================================
+   THEATER GENERATE QR - UNIFIED ADVANCED STYLES
+   ============================================ */
+
+/* Import all advanced QR Generate styles from Admin page */
+@import './QRGenerate.css';
+
+/* ✅ Theater page now uses the same advanced loading UI as Admin page:
+   - Large modal (1200px)
+   - Advanced progress bar with animated stripes
+   - Shine effect animation
+   - Percentage overlay inside progress bar
+   - Progress stats with emoji icons
+   - All modern animations and effects
+*/
+
+/* ============================================
+   EXTRACTED INLINE STYLES
+   ============================================ */
+
+/* Error Container */
+.error-container-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: #e74c3c;
+  background: white;
+}
+
+.qr-preview-no-data {
+  border: 2px dashed #ccc;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Canvas Border Radius */
+.canvas-rounded {
+  border-radius: 8px;
+}
+
+/* Logo Preview Container */
+.logo-preview-container {
+  margin-top: 15px;
+  padding: 15px;
+  border: 2px solid #8B5CF6;
+  border-radius: 8px;
+  background-color: #F9F5FF;
+  text-align: center;
+}
+
+.logo-preview-title {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B21A8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.logo-preview-image-wrapper {
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo-preview-image {
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-preview-error {
+  display: none;
+  color: #DC2626;
+  font-size: 12px;
+  padding: 20px;
+}
+
+.logo-preview-label {
+  margin: 10px 0 0 0;
+  font-size: 11px;
+  color: #6B7280;
+}
+
+/* Form Control Error State */
+.form-control-error {
+  color: #e74c3c;
+}
+
+/* Form Group Full Width */
+.form-group-full-width {
+  grid-column: 1 / -1;
+}
+
+/* Seat Map Section */
+.seat-map-section-full {
+  grid-column: 1 / -1;
+}
+
+/* Form Section Spacing */
+.form-section-spaced {
+  margin-top: 20px;
+}
+
+/* QR Preview Wrapper */
+.qr-preview-wrapper {
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* QR Orientation Toggle */
+.qr-orientation-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.orientation-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #6B7280;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.orientation-btn.active {
+  border-color: #8B5CF6;
+  background: #8B5CF6;
+  color: #FFFFFF;
+}
+
+/* QR Preview Card */
+.qr-preview-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.qr-preview-card.portrait {
+  border-radius: 20px;
+  padding: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0px;
+  width: 280px;
+  max-width: 280px;
+}
+
+.qr-preview-card.landscape {
+  border-radius: 12px;
+  padding: 16px 16px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Portrait Layout Elements */
+.portrait-theater-name {
+  text-align: center;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.portrait-theater-name-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+}
+
+.portrait-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.portrait-qr-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #F3F4F6;
+  min-height: 150px;
+  max-height: 150px;
+  flex-shrink: 0;
+}
+
+.portrait-qr-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9FAFB;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.portrait-qr-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #E5E7EB;
+  border-top: 3px solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.portrait-qr-canvas {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  transition: opacity 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.portrait-qr-canvas.loading {
+  opacity: 0;
+}
+
+.portrait-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2px 20px;
+  flex-shrink: 0;
+  min-height: 150px;
+  position: relative;
+}
+
+.portrait-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.portrait-image.hidden {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.portrait-image.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portrait-seat-info {
+  text-align: center;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+  border-top: 1px solid #F3F4F6;
+}
+
+.portrait-seat-info-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+}
+
+/* Landscape Layout Elements */
+.landscape-theater-name {
+  text-align: center;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.landscape-theater-name-text {
+  font-size: 1.375rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+}
+
+.landscape-main-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+  padding-top: 4px;
+  padding-bottom: 32px;
+  position: relative;
+  min-height: 180px;
+}
+
+.landscape-qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+.landscape-qr-wrapper {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #F3F4F6;
+  min-height: 150px;
+  max-height: 150px;
+  flex-shrink: 0;
+}
+
+.landscape-qr-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9FAFB;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.landscape-qr-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #E5E7EB;
+  border-top: 3px solid #8B5CF6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.landscape-qr-canvas {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  transition: opacity 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.landscape-qr-canvas.loading {
+  opacity: 0;
+}
+
+.landscape-image-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.landscape-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  min-height: 120px;
+  max-height: 120px;
+  height: 120px;
+}
+
+.landscape-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.landscape-image.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.landscape-image.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.landscape-seat-info {
+  text-align: center;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+  border-top: 1px solid #F3F4F6;
+}
+
+.landscape-seat-info-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+}
+
+/* Progress Bar Fill */
+.progress-bar-fill {
+  width: 0%;
+  transition: width 0.3s ease;
+}

@@ -1,0 +1,2599 @@
+/* ============================================
+   ADVANCED MODERN THEATER DASHBOARD
+   With Advanced Animations & Modern UI
+   Primary Color: #6B0E9B
+   Secondary Color: #F3F4F6
+   ============================================ */
+
+/* Using Lato font from global import */
+
+:root {
+  --primary-color: #6B0E9B;
+  --primary-dark: #5A0C82;
+  --primary-light: rgba(107, 14, 155, 0.1);
+  --primary-glow: rgba(107, 14, 155, 0.3);
+  --secondary-color: #F3F4F6;
+  --secondary-dark: #E5E7EB;
+  --secondary-light: #F9FAFB;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 48px rgba(107, 14, 155, 0.2);
+}
+
+.tadmin-wrapper-clean {
+  padding: 32px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, var(--secondary-light) 100%);
+  font-family: 'Lato', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background gradient */
+.tadmin-wrapper-clean::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(107, 14, 155, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(107, 14, 155, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: gradientMove 20s ease infinite;
+}
+
+@keyframes gradientMove {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, -20px) scale(1.1); }
+}
+
+/* ============================================
+   STATS CARDS - ADVANCED WITH ANIMATIONS
+   ============================================ */
+.tadmin-stats-row-clean {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Second stats row for POS, Kiosk, Online Sales */
+.tadmin-sales-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tadmin-stat-card-clean {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--secondary-dark);
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  animation: slideInUp 0.6s ease-out backwards;
+}
+
+.tadmin-stat-card-clean::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tadmin-stat-card-clean::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(107, 14, 155, 0.05) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.tadmin-stat-card-clean:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--primary-color);
+}
+
+.tadmin-stat-card-clean:hover::before {
+  transform: scaleX(1);
+}
+
+.tadmin-stat-card-clean:hover::after {
+  opacity: 1;
+}
+
+/* Gradient earning card */
+.tadmin-stat-earning {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 24px rgba(107, 14, 155, 0.4);
+}
+
+.tadmin-stat-earning:hover {
+  box-shadow: 0 12px 48px rgba(107, 14, 155, 0.5);
+  transform: translateY(-8px) scale(1.02);
+}
+
+.tadmin-stat-earning::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+}
+
+.tadmin-stat-earning .tadmin-stat-card-title,
+.tadmin-stat-earning .tadmin-stat-card-value {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tadmin-stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.tadmin-stat-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+/* ✅ FIX: White cards (profit, sales, orders) - keep dark text on hover */
+.tadmin-stat-card-clean:not(.tadmin-stat-earning):not(.tadmin-stat-pos):not(.tadmin-stat-kiosk):not(.tadmin-stat-online):hover .tadmin-stat-card-title {
+  color: var(--primary-color); /* Change to purple on hover instead of white */
+}
+
+/* Colored cards - use white text on hover */
+.tadmin-stat-earning:hover .tadmin-stat-card-title,
+.tadmin-stat-pos:hover .tadmin-stat-card-title,
+.tadmin-stat-kiosk:hover .tadmin-stat-card-title,
+.tadmin-stat-online:hover .tadmin-stat-card-title {
+  color: #ffffff;
+}
+
+.tadmin-stat-card-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #1e293b 0%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: countUp 1s ease-out;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* ✅ FIX: White cards - enhance gradient on hover but keep it visible */
+.tadmin-stat-card-clean:not(.tadmin-stat-earning):not(.tadmin-stat-pos):not(.tadmin-stat-kiosk):not(.tadmin-stat-online):hover .tadmin-stat-card-value {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tadmin-stat-earning .tadmin-stat-card-value {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ✅ POS, Kiosk, and Online Sales Cards */
+.tadmin-stat-pos {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.tadmin-stat-pos:hover {
+  box-shadow: 0 12px 48px rgba(16, 185, 129, 0.4);
+}
+
+.tadmin-stat-pos::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+}
+
+.tadmin-stat-pos .tadmin-stat-card-title,
+.tadmin-stat-pos .tadmin-stat-card-value,
+.tadmin-stat-pos .tadmin-stat-card-subtitle {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tadmin-stat-pos .tadmin-stat-card-value {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tadmin-stat-kiosk {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+}
+
+.tadmin-stat-kiosk:hover {
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.4);
+}
+
+.tadmin-stat-kiosk::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+}
+
+.tadmin-stat-kiosk .tadmin-stat-card-title,
+.tadmin-stat-kiosk .tadmin-stat-card-value,
+.tadmin-stat-kiosk .tadmin-stat-card-subtitle {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tadmin-stat-kiosk .tadmin-stat-card-value {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tadmin-stat-online {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+}
+
+.tadmin-stat-online:hover {
+  box-shadow: 0 12px 48px rgba(245, 158, 11, 0.4);
+}
+
+.tadmin-stat-online::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+}
+
+.tadmin-stat-online .tadmin-stat-card-title,
+.tadmin-stat-online .tadmin-stat-card-value,
+.tadmin-stat-online .tadmin-stat-card-subtitle {
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tadmin-stat-online .tadmin-stat-card-value {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tadmin-stat-card-subtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 8px;
+  opacity: 0.9;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* ✅ FIX: White cards - keep subtitle dark on hover */
+.tadmin-stat-card-clean:not(.tadmin-stat-earning):not(.tadmin-stat-pos):not(.tadmin-stat-kiosk):not(.tadmin-stat-online):hover .tadmin-stat-card-subtitle {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.tadmin-mini-chart {
+  width: 60px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tadmin-stat-card-clean:hover .tadmin-mini-chart {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.tadmin-mini-chart svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  animation: chartPulse 2s ease-in-out infinite;
+}
+
+@keyframes chartPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.tadmin-trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tadmin-trend-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.tadmin-trend-badge:hover::before {
+  left: 100%;
+}
+
+.tadmin-trend-badge.trend-up {
+  background: linear-gradient(135deg, var(--primary-light), rgba(107, 14, 155, 0.15));
+  color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.2);
+}
+
+.tadmin-trend-badge.trend-down {
+  background: linear-gradient(135deg, var(--secondary-dark), rgba(229, 231, 235, 0.8));
+  color: var(--primary-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.tadmin-trend-badge.small {
+  padding: 6px 10px;
+  font-size: 0.75rem;
+}
+
+.tadmin-trend-badge span {
+  font-size: 0.875rem;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.tadmin-view-more-btn {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 12px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.tadmin-view-more-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: -1;
+}
+
+.tadmin-view-more-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.tadmin-view-more-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   MAIN CONTENT GRID - ANIMATED
+   ============================================ */
+.tadmin-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  align-items: stretch; /* ✅ FIX: Ensure all grid items stretch to same height */
+}
+
+.tadmin-main-grid > *:nth-child(3) {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+/* ============================================
+   CHART CARDS - ADVANCED
+   ============================================ */
+.tadmin-chart-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--secondary-dark);
+  box-shadow: var(--shadow-md);
+  height: 100%; /* ✅ FIX: Ensure chart cards also fill grid cell height */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: slideInLeft 0.6s ease-out backwards;
+  animation-delay: 0.2s;
+}
+
+.tadmin-chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.tadmin-chart-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+}
+
+.tadmin-chart-card:hover::before {
+  transform: scaleX(1);
+}
+
+.tadmin-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--secondary-color);
+  position: relative;
+}
+
+.tadmin-chart-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  position: relative;
+  padding-left: 12px;
+}
+
+.tadmin-chart-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+  border-radius: 2px;
+}
+
+.tadmin-period-select {
+  padding: 10px 16px;
+  border: 2px solid var(--secondary-dark);
+  border-radius: 10px;
+  background: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lato', sans-serif;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.tadmin-period-select:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.15);
+  transform: translateY(-1px);
+}
+
+.tadmin-period-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+/* ============================================
+   LINE CHART - ANIMATED
+   ============================================ */
+.tadmin-line-chart-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin-top: 24px;
+  background: linear-gradient(180deg, rgba(107, 14, 155, 0.02) 0%, transparent 100%);
+  border-radius: 12px;
+  padding: 16px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.tadmin-line-chart-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(107, 14, 155, 0.1));
+}
+
+.tadmin-line-chart-container svg polyline {
+  animation: drawLine 1.5s ease-out;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.tadmin-line-chart-container svg polygon {
+  animation: fadeIn 1s ease-out 0.5s backwards;
+}
+
+.tadmin-line-chart-container svg circle {
+  animation: scaleIn 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.tadmin-line-chart-container svg circle:hover {
+  r: 6;
+  filter: drop-shadow(0 4px 12px var(--primary-glow));
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tadmin-chart-labels-x {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 0 20px;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+.tadmin-chart-label-x {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.tadmin-chart-label-x:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.tadmin-chart-labels-y {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 12px;
+  animation: fadeIn 0.8s ease-out 0.3s backwards;
+}
+
+.tadmin-chart-label-y {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ============================================
+   BAR CHART - ANIMATED
+   ============================================ */
+.tadmin-bar-chart-container {
+  margin-top: 24px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.tadmin-bar-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+
+.tadmin-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  animation: slideInUp 0.6s ease-out backwards;
+}
+
+.tadmin-bar-group:nth-child(1) { animation-delay: 0.1s; }
+.tadmin-bar-group:nth-child(2) { animation-delay: 0.2s; }
+.tadmin-bar-group:nth-child(3) { animation-delay: 0.3s; }
+.tadmin-bar-group:nth-child(4) { animation-delay: 0.4s; }
+.tadmin-bar-group:nth-child(5) { animation-delay: 0.5s; }
+.tadmin-bar-group:nth-child(6) { animation-delay: 0.6s; }
+.tadmin-bar-group:nth-child(7) { animation-delay: 0.7s; }
+
+.tadmin-bars-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+}
+
+.tadmin-bar {
+  width: 100%;
+  min-height: 8px;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: growUp 0.8s ease-out backwards;
+}
+
+.tadmin-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.tadmin-bar:hover::before {
+  left: 100%;
+}
+
+@keyframes growUp {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+
+.tadmin-bar:hover {
+  opacity: 0.9;
+  transform: translateY(-4px) scaleY(1.05);
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.3);
+}
+
+.tadmin-bar-food {
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.3);
+}
+
+.tadmin-bar-drink {
+  background: linear-gradient(180deg, var(--primary-dark), rgba(90, 12, 130, 0.8));
+  box-shadow: 0 2px 8px rgba(90, 12, 130, 0.3);
+}
+
+.tadmin-bar-desert {
+  background: linear-gradient(180deg, rgba(107, 14, 155, 0.8), var(--primary-light));
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.2);
+}
+
+.tadmin-bar-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tadmin-bar-group:hover .tadmin-bar-label {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.tadmin-chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 2px solid var(--secondary-color);
+  animation: fadeIn 0.8s ease-out 0.6s backwards;
+}
+
+.tadmin-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tadmin-legend-item:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.tadmin-legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tadmin-legend-item:hover .tadmin-legend-color {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tadmin-legend-food {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+.tadmin-legend-drink {
+  background: linear-gradient(135deg, var(--primary-dark), rgba(90, 12, 130, 0.8));
+}
+
+.tadmin-legend-desert {
+  background: linear-gradient(135deg, rgba(107, 14, 155, 0.8), var(--primary-light));
+  border: 1px solid var(--primary-color);
+}
+
+.tadmin-legend-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.tadmin-legend-item:hover .tadmin-legend-label {
+  color: var(--primary-color);
+}
+
+/* ============================================
+   TRANSACTION CARD - ADVANCED
+   ============================================ */
+.tadmin-transaction-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--secondary-dark);
+  box-shadow: var(--shadow-md);
+  height: 100%; /* ✅ FIX: Fill grid cell to match Earning Categories height */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: slideInRight 0.6s ease-out backwards;
+  animation-delay: 0.3s;
+}
+
+.tadmin-transaction-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.tadmin-transaction-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+}
+
+.tadmin-transaction-card:hover::before {
+  transform: scaleX(1);
+}
+
+.tadmin-transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 8px;
+  margin-top: 20px;
+}
+
+.tadmin-transaction-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tadmin-transaction-list::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+  border-radius: 10px;
+}
+
+.tadmin-transaction-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.tadmin-transaction-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-dark), var(--primary-color));
+}
+
+.tadmin-transaction-item {
+  display: flex;
+  align-items: center; /* ✅ Ensure all items (image, text, price) are vertically centered on same line */
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  animation: slideInRight 0.5s ease-out backwards;
+}
+
+.tadmin-transaction-item:nth-child(1) { animation-delay: 0.1s; }
+.tadmin-transaction-item:nth-child(2) { animation-delay: 0.2s; }
+.tadmin-transaction-item:nth-child(3) { animation-delay: 0.3s; }
+.tadmin-transaction-item:nth-child(4) { animation-delay: 0.4s; }
+.tadmin-transaction-item:nth-child(5) { animation-delay: 0.5s; }
+
+.tadmin-transaction-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+  border-radius: 0 3px 3px 0;
+  transition: height 0.3s ease;
+}
+
+.tadmin-transaction-item:hover {
+  background: linear-gradient(90deg, var(--primary-light), rgba(107, 14, 155, 0.05));
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.15);
+}
+
+.tadmin-transaction-item:hover::before {
+  height: 60%;
+}
+
+.tadmin-transaction-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--secondary-color), white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid white;
+  /* ✅ Ensure image is vertically centered with text and price */
+  align-self: center;
+}
+
+.tadmin-transaction-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  display: block !important;
+  border: 2px solid var(--primary-light);
+}
+
+.tadmin-transaction-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+  border-radius: 50%;
+}
+
+.tadmin-transaction-item:hover .tadmin-transaction-image {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 16px rgba(107, 14, 155, 0.25);
+}
+
+.tadmin-transaction-image::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(107, 14, 155, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tadmin-transaction-item:hover .tadmin-transaction-image::before {
+  opacity: 1;
+}
+
+.tadmin-transaction-emoji {
+  font-size: 28px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.tadmin-transaction-placeholder .tadmin-transaction-emoji {
+  font-size: 28px;
+}
+
+.tadmin-transaction-item:hover .tadmin-transaction-emoji {
+  transform: scale(1.2);
+}
+
+.tadmin-transaction-info {
+  flex: 1;
+  min-width: 0;
+  /* ✅ Left-align text and timing, vertically center with image and price */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.tadmin-transaction-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+  /* ✅ Ensure text is left-aligned */
+  text-align: left;
+  width: 100%;
+}
+
+.tadmin-transaction-item:hover .tadmin-transaction-name {
+  color: var(--primary-color);
+}
+
+.tadmin-transaction-time {
+  font-size: 0.8125rem;
+  color: #64748b;
+  font-weight: 500;
+  /* ✅ Ensure timing is left-aligned */
+  text-align: left;
+  width: 100%;
+}
+
+.tadmin-transaction-amount {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #1e293b;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  /* ✅ Ensure price is vertically centered with image and text */
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.tadmin-transaction-item:hover .tadmin-transaction-amount {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* ============================================
+   SPECIALTY CARDS - ADVANCED
+   ============================================ */
+.tadmin-specialty-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid var(--secondary-dark);
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInUp 0.6s ease-out backwards;
+  animation-delay: 0.4s;
+  height: 100%; /* ✅ FIX: Ensure specialty cards fill grid cell height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   TRANSACTION HISTORY TABLE - PROFESSIONAL
+   ============================================ */
+.tadmin-transaction-table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  flex: 1;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  box-sizing: border-box;
+}
+
+.tadmin-transaction-table-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.tadmin-transaction-table-container::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.tadmin-transaction-table-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-dark));
+  border-radius: 10px;
+}
+
+.tadmin-transaction-table-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-dark), var(--primary-color));
+}
+
+.tadmin-transaction-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.8125rem;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tadmin-transaction-thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+.tadmin-transaction-thead th {
+  padding: 14px 12px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tadmin-transaction-thead th:last-child {
+  border-right: none;
+}
+
+.tadmin-transaction-tbody {
+  background: white;
+}
+
+.tadmin-transaction-row {
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.tadmin-transaction-row:last-child {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tadmin-transaction-row:hover {
+  background: #f8fafc;
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.1);
+}
+
+.tadmin-transaction-row td {
+  padding: 14px 12px;
+  color: #1e293b;
+  font-size: 0.8125rem;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-right: 1px solid #e2e8f0;
+}
+
+.tadmin-transaction-row td:last-child {
+  border-right: none;
+}
+
+.tadmin-transaction-order-num {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  width: 140px;
+  max-width: 140px;
+}
+
+.tadmin-transaction-items {
+  color: #475569;
+  font-weight: 500;
+  width: 100px;
+  max-width: 100px;
+}
+
+.tadmin-transaction-amount-cell {
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  width: 110px;
+  max-width: 110px;
+  font-size: 0.875rem;
+}
+
+.tadmin-transaction-payment-mode {
+  width: 110px;
+  max-width: 110px;
+  white-space: nowrap;
+}
+
+.tadmin-transaction-payment-status {
+  width: 120px;
+  max-width: 120px;
+  white-space: nowrap;
+}
+
+.tadmin-transaction-status {
+  width: 110px;
+  max-width: 110px;
+  white-space: nowrap;
+}
+
+.tadmin-payment-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.tadmin-payment-cash {
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
+  color: white;
+}
+
+.tadmin-payment-upi {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+}
+
+.tadmin-payment-card {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: white;
+}
+
+.tadmin-status-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.tadmin-status-paid {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+}
+
+.tadmin-status-pending {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: white;
+}
+
+.tadmin-status-failed {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: white;
+}
+
+.tadmin-order-status-completed,
+.tadmin-order-status-served {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+}
+
+.tadmin-order-status-pending,
+.tadmin-order-status-confirmed,
+.tadmin-order-status-preparing {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: white;
+}
+
+.tadmin-order-status-cancelled {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: white;
+}
+
+.tadmin-transaction-row:hover .tadmin-payment-badge,
+.tadmin-transaction-row:hover .tadmin-status-badge {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.tadmin-specialty-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--primary-color);
+}
+
+.tadmin-specialty-item {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.6s ease-out backwards;
+}
+
+.tadmin-specialty-item:nth-child(1) { animation-delay: 0.5s; }
+.tadmin-specialty-item:nth-child(2) { animation-delay: 0.6s; }
+.tadmin-specialty-item:nth-child(3) { animation-delay: 0.7s; }
+
+.tadmin-specialty-item:first-child {
+  margin-top: 0;
+}
+
+.tadmin-specialty-item:hover {
+  background: var(--primary-light);
+  transform: translateX(8px);
+}
+
+.tadmin-specialty-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.tadmin-specialty-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--secondary-color), white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid white;
+}
+
+.tadmin-specialty-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  display: block !important;
+  border: 2px solid var(--primary-light);
+}
+
+.tadmin-specialty-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+  border-radius: 50%;
+}
+
+.tadmin-specialty-item:hover .tadmin-specialty-image {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 0 6px 16px rgba(107, 14, 155, 0.25);
+}
+
+.tadmin-specialty-emoji {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.tadmin-specialty-placeholder .tadmin-specialty-emoji {
+  font-size: 24px;
+}
+
+.tadmin-specialty-item:hover .tadmin-specialty-emoji {
+  transform: scale(1.2);
+}
+
+.tadmin-specialty-name {
+  flex: 1;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #1e293b;
+  transition: color 0.3s ease;
+}
+
+.tadmin-specialty-item:hover .tadmin-specialty-name {
+  color: var(--primary-color);
+}
+
+.tadmin-availability-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tadmin-availability-label {
+  font-size: 0.8125rem;
+  color: #64748b;
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.tadmin-progress-bar {
+  flex: 1;
+  height: 10px;
+  background: var(--secondary-color);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tadmin-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+  border-radius: 10px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.3);
+  animation: progressShimmer 2s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.tadmin-progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.tadmin-availability-percent {
+  font-size: 0.8125rem;
+  color: #64748b;
+  font-weight: 700;
+  min-width: 45px;
+  text-align: right;
+  transition: color 0.3s ease;
+}
+
+.tadmin-specialty-item:hover .tadmin-availability-percent {
+  color: var(--primary-color);
+}
+
+/* ============================================
+   CIRCULAR CHARTS - ANIMATED
+   ============================================ */
+.tadmin-circular-charts {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.tadmin-circular-chart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 120px;
+  animation: scaleIn 0.6s ease-out backwards;
+}
+
+.tadmin-circular-chart-item:nth-child(1) { animation-delay: 0.5s; }
+.tadmin-circular-chart-item:nth-child(2) { animation-delay: 0.6s; }
+.tadmin-circular-chart-item:nth-child(3) { animation-delay: 0.7s; }
+
+.tadmin-circular-chart {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  transition: all 0.3s ease;
+}
+
+.tadmin-circular-chart-item:hover .tadmin-circular-chart {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.tadmin-circular-chart svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 4px 12px rgba(107, 14, 155, 0.2));
+}
+
+.tadmin-circular-chart svg circle:last-child {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: drawCircle 2s ease-out forwards;
+}
+
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.tadmin-circular-chart-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(107, 14, 155, 0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 3px solid white;
+}
+
+.tadmin-circular-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  display: block !important;
+  border: 2px solid var(--primary-light);
+}
+
+.tadmin-circular-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+  border-radius: 50%;
+}
+
+.tadmin-circular-chart-item:hover .tadmin-circular-chart-center {
+  box-shadow: 0 6px 20px rgba(107, 14, 155, 0.3);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.tadmin-circular-emoji {
+  font-size: 32px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.tadmin-circular-placeholder .tadmin-circular-emoji {
+  font-size: 32px;
+}
+
+.tadmin-circular-chart-item:hover .tadmin-circular-emoji {
+  transform: scale(1.2) rotate(-10deg);
+}
+
+.tadmin-circular-label {
+  font-size: 0.8125rem;
+  color: #64748b;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.tadmin-circular-chart-item:hover .tadmin-circular-label {
+  color: var(--primary-color);
+}
+
+/* ============================================
+   PAYMENT METHODS DONUT CHART
+   ============================================ */
+.tadmin-payment-donut-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 20px 0;
+}
+
+.tadmin-donut-chart-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tadmin-donut-chart-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.tadmin-donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.tadmin-donut-center-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.tadmin-donut-center-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tadmin-payment-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.tadmin-legend-item-payment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tadmin-legend-item-payment:hover {
+  background: var(--primary-light);
+  transform: translateX(4px);
+}
+
+.tadmin-legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tadmin-legend-item-payment:hover .tadmin-legend-dot {
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tadmin-legend-label-payment {
+  flex: 1;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1e293b;
+  transition: color 0.3s ease;
+}
+
+.tadmin-legend-item-payment:hover .tadmin-legend-label-payment {
+  color: var(--primary-color);
+}
+
+.tadmin-legend-value-payment {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.tadmin-legend-item-payment:hover .tadmin-legend-value-payment {
+  color: var(--primary-color);
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply animations to cards */
+.tadmin-stat-card-clean {
+  animation: slideInUp 0.6s ease-out backwards;
+}
+
+.tadmin-stat-card-clean:nth-child(1) { animation-delay: 0.1s; }
+.tadmin-stat-card-clean:nth-child(2) { animation-delay: 0.2s; }
+.tadmin-stat-card-clean:nth-child(3) { animation-delay: 0.3s; }
+.tadmin-stat-card-clean:nth-child(4) { animation-delay: 0.4s; }
+
+.tadmin-chart-card {
+  animation: slideInLeft 0.6s ease-out backwards;
+  animation-delay: 0.2s;
+}
+
+.tadmin-transaction-card {
+  animation: slideInRight 0.6s ease-out backwards;
+  animation-delay: 0.3s;
+}
+
+.tadmin-specialty-card {
+  animation: slideInUp 0.6s ease-out backwards;
+  animation-delay: 0.4s;
+}
+
+/* ============================================
+   LOADING & ERROR STATES - ENHANCED
+   ============================================ */
+.tadmin-loading,
+.tadmin-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  margin: 20px;
+  padding: 48px;
+  border: 1px solid var(--secondary-dark);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.tadmin-spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid var(--secondary-color);
+  border-top-color: var(--primary-color);
+  border-right-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.2);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.tadmin-loading p {
+  font-size: 1.125rem;
+  color: #64748b;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.tadmin-error {
+  border: 2px solid rgba(239, 68, 68, 0.2);
+  background: linear-gradient(135deg, #fef2f2, white);
+}
+
+.tadmin-error-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.tadmin-error h3 {
+  color: #dc2626;
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
+}
+
+.tadmin-error p {
+  color: #64748b;
+  font-size: 1.0625rem;
+  margin-bottom: 24px;
+}
+
+.tadmin-retry-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Lato', sans-serif;
+  box-shadow: 0 4px 12px rgba(107, 14, 155, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.tadmin-retry-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.tadmin-retry-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.tadmin-retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 14, 155, 0.4);
+}
+
+.tadmin-retry-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   EMPTY STATES - ENHANCED
+   ============================================ */
+.tadmin-empty-chart,
+.tadmin-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.9375rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.tadmin-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.tadmin-empty-state p {
+  margin: 0;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Large Desktop (1400px and below) */
+@media (max-width: 1400px) {
+  .tadmin-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tadmin-main-grid > *:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .tadmin-circular-charts {
+    justify-content: flex-start;
+  }
+}
+
+/* Tablet Landscape (1024px and below) */
+@media (max-width: 1024px) {
+  .tadmin-wrapper-clean {
+    padding: 24px;
+  }
+
+  .tadmin-stats-row-clean {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* Second stats row (POS, Kiosk, Online) - keep 3 columns on tablet */
+  .tadmin-sales-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tadmin-main-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tadmin-main-grid > *:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .tadmin-stat-card-value {
+    font-size: 2rem;
+  }
+
+  .tadmin-chart-title {
+    font-size: 1.125rem;
+  }
+
+  .tadmin-transaction-table {
+    min-width: 600px;
+  }
+}
+
+/* Medium Tablet (900px and below) - Better layout for sales row */
+@media (max-width: 900px) {
+  /* Second stats row (POS, Kiosk, Online) - 2 columns on medium tablets */
+  .tadmin-sales-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet Portrait (768px and below) */
+@media (max-width: 768px) {
+  .tadmin-wrapper-clean {
+    padding: 16px;
+  }
+
+  .tadmin-stats-row-clean {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Second stats row (POS, Kiosk, Online) - stack on mobile */
+  .tadmin-sales-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tadmin-stat-card-clean {
+    padding: 20px;
+  }
+
+  .tadmin-stat-card-value {
+    font-size: 1.875rem;
+  }
+
+  .tadmin-stat-card-title {
+    font-size: 0.8125rem;
+  }
+
+  .tadmin-chart-card,
+  .tadmin-transaction-card,
+  .tadmin-specialty-card {
+    padding: 20px;
+  }
+
+  .tadmin-chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tadmin-chart-title {
+    font-size: 1.0625rem;
+  }
+
+  .tadmin-period-select {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .tadmin-bar-chart {
+    height: 150px;
+    gap: 6px;
+  }
+
+  .tadmin-line-chart-container {
+    height: 200px;
+    padding: 12px;
+  }
+
+  .tadmin-chart-labels-x {
+    padding: 0 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tadmin-chart-label-x {
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-chart-legend {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .tadmin-transaction-list {
+    gap: 10px;
+  }
+
+  .tadmin-transaction-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .tadmin-transaction-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .tadmin-transaction-name {
+    font-size: 0.875rem;
+  }
+
+  .tadmin-transaction-time {
+    font-size: 0.75rem;
+  }
+
+  .tadmin-transaction-amount {
+    font-size: 1rem;
+  }
+
+  .tadmin-transaction-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tadmin-transaction-table {
+    min-width: 700px;
+    font-size: 0.75rem;
+  }
+
+  .tadmin-transaction-thead th {
+    padding: 10px 8px;
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-transaction-row td {
+    padding: 10px 8px;
+    font-size: 0.75rem;
+  }
+
+  .tadmin-payment-badge,
+  .tadmin-status-badge {
+    padding: 4px 10px;
+    font-size: 0.625rem;
+  }
+
+  .tadmin-payment-donut-container {
+    gap: 24px;
+  }
+
+  .tadmin-donut-chart-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+
+  .tadmin-donut-center-value {
+    font-size: 1.25rem;
+  }
+
+  .tadmin-payment-legend {
+    gap: 12px;
+  }
+
+  .tadmin-legend-item-payment {
+    padding: 10px 12px;
+  }
+
+  .tadmin-legend-label-payment {
+    font-size: 0.875rem;
+  }
+
+  .tadmin-legend-value-payment {
+    font-size: 0.8125rem;
+  }
+
+  .tadmin-circular-charts {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .tadmin-specialty-header {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile Large (576px and below) */
+@media (max-width: 576px) {
+  .tadmin-wrapper-clean {
+    padding: 12px;
+  }
+
+  .tadmin-stats-row-clean {
+    gap: 12px;
+  }
+
+  .tadmin-stat-card-clean {
+    padding: 16px;
+  }
+
+  .tadmin-stat-card-header {
+    margin-bottom: 16px;
+  }
+
+  .tadmin-stat-card-value {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+
+  .tadmin-stat-card-title {
+    font-size: 0.75rem;
+  }
+
+  .tadmin-stat-card-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .tadmin-mini-chart {
+    width: 50px;
+    height: 28px;
+  }
+
+  .tadmin-trend-badge {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    margin-top: 8px;
+  }
+
+  .tadmin-view-more-btn {
+    padding: 8px 16px;
+    font-size: 0.8125rem;
+    margin-top: 8px;
+  }
+
+  .tadmin-chart-card,
+  .tadmin-transaction-card,
+  .tadmin-specialty-card {
+    padding: 16px;
+  }
+
+  .tadmin-chart-header {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .tadmin-chart-title {
+    font-size: 1rem;
+    padding-left: 8px;
+  }
+
+  .tadmin-chart-title::before {
+    width: 3px;
+    height: 20px;
+  }
+
+  .tadmin-period-select {
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+    padding-right: 36px;
+  }
+
+  .tadmin-bar-chart {
+    height: 120px;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .tadmin-bar-label {
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-line-chart-container {
+    height: 180px;
+    padding: 10px;
+    margin-top: 16px;
+  }
+
+  .tadmin-chart-labels-x {
+    margin-top: 12px;
+    padding: 0 8px;
+  }
+
+  .tadmin-chart-label-x {
+    font-size: 0.625rem;
+  }
+
+  .tadmin-chart-labels-y {
+    top: 10px;
+    bottom: 10px;
+    padding-right: 8px;
+  }
+
+  .tadmin-chart-label-y {
+    font-size: 0.625rem;
+  }
+
+  .tadmin-chart-legend {
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .tadmin-legend-item {
+    padding: 6px 12px;
+    gap: 8px;
+  }
+
+  .tadmin-legend-color {
+    width: 12px;
+    height: 12px;
+  }
+
+  .tadmin-legend-label {
+    font-size: 0.8125rem;
+  }
+
+  .tadmin-transaction-list {
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .tadmin-transaction-item {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .tadmin-transaction-image {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tadmin-transaction-emoji {
+    font-size: 22px;
+  }
+
+  .tadmin-transaction-name {
+    font-size: 0.8125rem;
+    margin-bottom: 4px;
+  }
+
+  .tadmin-transaction-time {
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-transaction-amount {
+    font-size: 0.9375rem;
+  }
+
+  .tadmin-transaction-table {
+    min-width: 600px;
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-transaction-thead th {
+    padding: 8px 6px;
+    font-size: 0.625rem;
+  }
+
+  .tadmin-transaction-row td {
+    padding: 8px 6px;
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-payment-badge,
+  .tadmin-status-badge {
+    padding: 3px 8px;
+    font-size: 0.5625rem;
+  }
+
+  .tadmin-payment-donut-container {
+    gap: 20px;
+    margin-top: 16px;
+    padding: 16px 0;
+  }
+
+  .tadmin-donut-chart-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+
+  .tadmin-donut-center-value {
+    font-size: 1.125rem;
+  }
+
+  .tadmin-donut-center-label {
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-payment-legend {
+    gap: 10px;
+    padding: 0 12px;
+  }
+
+  .tadmin-legend-item-payment {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .tadmin-legend-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .tadmin-legend-label-payment {
+    font-size: 0.8125rem;
+  }
+
+  .tadmin-legend-value-payment {
+    font-size: 0.75rem;
+  }
+
+  .tadmin-circular-charts {
+    gap: 12px;
+  }
+
+  .tadmin-circular-chart-item {
+    min-width: 90px;
+  }
+
+  .tadmin-circular-chart {
+    width: 90px;
+    height: 90px;
+  }
+
+  .tadmin-circular-chart-center {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tadmin-circular-emoji {
+    font-size: 28px;
+  }
+
+  .tadmin-circular-label {
+    font-size: 0.75rem;
+  }
+
+  .tadmin-specialty-item {
+    padding: 12px;
+    margin-top: 16px;
+  }
+
+  .tadmin-specialty-header {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .tadmin-specialty-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tadmin-specialty-emoji {
+    font-size: 20px;
+  }
+
+  .tadmin-specialty-name {
+    font-size: 0.875rem;
+  }
+
+  .tadmin-availability-label {
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+
+  .tadmin-availability-percent {
+    font-size: 0.75rem;
+    min-width: 40px;
+  }
+}
+
+/* Mobile Small (480px and below) */
+@media (max-width: 480px) {
+  .tadmin-wrapper-clean {
+    padding: 10px;
+  }
+
+  .tadmin-stats-row-clean {
+    gap: 10px;
+  }
+
+  .tadmin-stat-card-clean {
+    padding: 14px;
+  }
+
+  .tadmin-stat-card-value {
+    font-size: 1.625rem;
+  }
+
+  .tadmin-stat-card-title {
+    font-size: 0.6875rem;
+  }
+
+  .tadmin-chart-card,
+  .tadmin-transaction-card,
+  .tadmin-specialty-card {
+    padding: 14px;
+  }
+
+  .tadmin-chart-title {
+    font-size: 0.9375rem;
+  }
+
+  .tadmin-bar-chart {
+    height: 100px;
+  }
+
+  .tadmin-line-chart-container {
+    height: 160px;
+  }
+
+  .tadmin-transaction-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tadmin-transaction-emoji {
+    font-size: 20px;
+  }
+
+  .tadmin-transaction-name {
+    font-size: 0.75rem;
+  }
+
+  .tadmin-transaction-time {
+    font-size: 0.625rem;
+  }
+
+  .tadmin-transaction-amount {
+    font-size: 0.875rem;
+  }
+
+  .tadmin-transaction-table {
+    min-width: 550px;
+  }
+
+  .tadmin-donut-chart-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .tadmin-donut-center-value {
+    font-size: 1rem;
+  }
+
+  .tadmin-circular-chart {
+    width: 80px;
+    height: 80px;
+  }
+
+  .tadmin-circular-chart-center {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tadmin-circular-emoji {
+    font-size: 24px;
+  }
+}
+
+/* Payment breakdown in stat cards - responsive */
+@media (max-width: 768px) {
+  .tadmin-payment-breakdown {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+  }
+
+  .tadmin-payment-item {
+    font-size: 0.6875rem !important;
+    margin-bottom: 4px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tadmin-payment-breakdown {
+    margin-top: 8px !important;
+    padding-top: 8px !important;
+  }
+
+  .tadmin-payment-item {
+    font-size: 0.625rem !important;
+    margin-bottom: 3px !important;
+  }
+}

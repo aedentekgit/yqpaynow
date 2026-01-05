@@ -1,0 +1,253 @@
+/* TheaterUserManagement Component Styles - Extracted from inline styles */
+
+/* SVG Icon Sizes */
+.svg-icon-sm {
+  width: 20px;
+  height: 20px;
+}
+
+.svg-icon-md {
+  width: 24px;
+  height: 24px;
+}
+
+.svg-icon-lg {
+  width: 48px;
+  height: 48px;
+}
+
+/* SVG Icon Colors */
+.svg-icon-gray {
+  color: var(--text-gray);
+}
+
+.svg-icon-purple {
+  color: #8b5cf6;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  display: block;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #8b5cf6;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.toggle-switch input:disabled + .toggle-slider {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Helper Text */
+.helper-text {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.helper-text-small {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Info Box */
+.info-box {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* Delete Modal */
+.delete-modal {
+  max-width: 400px;
+}
+
+.delete-modal-header {
+  background-color: #10b981;
+  color: white;
+}
+
+.delete-modal-body {
+  text-align: center;
+  padding: 24px;
+}
+
+.delete-modal-icon {
+  font-size: 48px;
+  color: #10b981;
+  margin-bottom: 16px;
+}
+
+.delete-modal-message {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.delete-modal-actions {
+  justify-content: center;
+}
+
+.delete-modal-button {
+  min-width: 100px;
+}
+
+/* Table Center Alignment */
+.qr-management-table th {
+  text-align: center !important;
+}
+
+.qr-management-table td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Specific Column Alignments */
+.qr-management-table td:nth-child(1) { text-align: center !important; } /* S.No */
+.qr-management-table td:nth-child(2) { text-align: center !important; } /* Username */
+.qr-management-table td:nth-child(3) { text-align: center !important; } /* Access Status */
+.qr-management-table td:nth-child(4) { text-align: center !important; } /* Status */
+.qr-management-table td:nth-child(5) { text-align: center !important; } /* Action */
+
+/* Username cell styling */
+.username-cell,
+.name-cell {
+  text-align: center !important;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Theater table specific overrides */
+.theater-user-settings-content .theater-table .name-cell {
+  text-align: center !important;
+  padding: 16px 12px !important;
+}
+
+.theater-table .name-cell {
+  text-align: center !important;
+}
+
+/* Theater list table center alignment (for /theater-users route) */
+.theater-table {
+  text-align: center !important;
+}
+
+.theater-table th {
+  text-align: center !important;
+  /* ✅ FIX: Ensure table header text is always white to prevent color leakage */
+  color: white !important;
+}
+
+.theater-table td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Specific column alignments for theater list */
+.theater-table .sno-cell {
+  text-align: center !important;
+}
+
+.theater-table .photo-cell {
+  text-align: center !important;
+}
+
+.theater-table .name-cell {
+  text-align: center !important;
+}
+
+.theater-table .owner-cell {
+  text-align: center !important;
+}
+
+.theater-table .contact-cell {
+  text-align: center !important;
+}
+
+.theater-table .actions-cell {
+  text-align: center !important;
+}
+
+/* Theater name container - center the content */
+.theater-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.theater-name {
+  text-align: center;
+  font-weight: 600;
+}
+
+.theater-location {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Serial number cell */
+.serial-number {
+  text-align: center !important;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Status cell */
+.status-cell {
+  text-align: center !important;
+}
+
+/* Access status cell */
+.access-status-cell {
+  text-align: center !important;
+}
+
+/* Actions cell */
+.actions-cell,
+.actions {
+  text-align: center !important;
+}
+

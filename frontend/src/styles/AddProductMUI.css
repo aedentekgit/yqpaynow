@@ -1,0 +1,575 @@
+/* MUI Form Component Styles for Add Product Page */
+
+.mui-form-container {
+  width: 100%;
+}
+
+.mui-form-section {
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.mui-form-section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.5 !important;
+}
+
+.mui-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.mui-form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.mui-form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* MUI TextField Customization */
+.mui-form-group .MuiTextField-root,
+.mui-form-group .MuiFormControl-root {
+  width: 100%;
+  min-height: 56px;
+}
+
+/* Ensure consistent field height and alignment */
+.mui-form-group .MuiTextField-root .MuiOutlinedInput-root,
+.mui-form-group .MuiFormControl-root .MuiOutlinedInput-root {
+  min-height: 56px;
+}
+
+.mui-form-group .MuiInputLabel-root {
+  font-weight: 500;
+  color: #424242;
+  margin-bottom: 4px;
+  font-size: 14px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  position: absolute !important;
+  transform-origin: top left !important;
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms !important;
+}
+
+/* Ensure label shrinks when value is selected */
+.mui-form-group .MuiInputLabel-root.MuiInputLabel-shrink {
+  transform: translate(14px, -9px) scale(0.75) !important;
+  transform-origin: top left !important;
+}
+
+/* Ensure proper spacing when label is shrunk */
+.mui-form-group .MuiOutlinedInput-root .MuiInputLabel-root.MuiInputLabel-shrink {
+  background-color: #fff !important;
+  padding: 0 4px !important;
+  z-index: 1 !important;
+}
+
+.mui-form-group .MuiOutlinedInput-root {
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  padding-top: 0 !important;
+}
+
+/* Ensure proper padding for Select input when label is present */
+.mui-form-group .MuiOutlinedInput-root .MuiSelect-select {
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+  padding-left: 14px !important;
+  min-height: 1.4375em !important;
+  display: block !important;
+  align-items: center !important;
+  color: #1a1a1a !important;
+  word-spacing: 0.1em !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Placeholder color when no value selected */
+.mui-form-group .MuiOutlinedInput-root .MuiSelect-select:empty {
+  color: #9e9e9e !important;
+}
+
+.mui-form-group .MuiOutlinedInput-root:hover {
+  background-color: #fafafa;
+}
+
+.mui-form-group .MuiOutlinedInput-root.Mui-focused {
+  background-color: #fff;
+}
+
+.mui-form-group .MuiOutlinedInput-root.Mui-error {
+  border-color: #d32f2f;
+}
+
+.mui-form-group .MuiOutlinedInput-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #1a1a1a;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.5 !important;
+}
+
+.mui-form-group .MuiOutlinedInput-input:disabled {
+  background-color: #f5f5f5;
+  color: #9e9e9e;
+  cursor: not-allowed;
+}
+
+.mui-form-group .MuiFormHelperText-root {
+  margin-top: 4px;
+  margin-left: 0;
+  font-size: 12px;
+  line-height: 1.5 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.mui-form-group .MuiFormHelperText-root.Mui-error {
+  color: #d32f2f;
+}
+
+/* MUI Select Customization - Professional Look */
+.mui-form-group .MuiSelect-root {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.1em !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.mui-form-group .MuiSelect-select {
+  padding-right: 40px !important;
+  padding-left: 14px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #1a1a1a !important;
+  line-height: 1.6 !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.1em !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  display: block !important;
+}
+
+/* Placeholder/empty state styling */
+.mui-form-group .MuiSelect-select:not([value]) {
+  color: #9e9e9e !important;
+  font-weight: 400 !important;
+}
+
+.mui-form-group .MuiSelect-select[aria-disabled="false"] {
+  color: #1a1a1a !important;
+  font-weight: 500 !important;
+}
+
+.mui-form-group .MuiSelect-select.Mui-disabled {
+  color: #9e9e9e !important;
+  cursor: not-allowed !important;
+}
+
+/* Ensure selected value is visible and styled correctly */
+.mui-form-group .MuiOutlinedInput-root .MuiSelect-select {
+  color: #1a1a1a !important;
+  font-weight: 500 !important;
+}
+
+.mui-form-group .MuiOutlinedInput-root .MuiSelect-select[value=""] {
+  color: #9e9e9e !important;
+  font-weight: 400 !important;
+}
+
+.mui-form-group .MuiSelect-icon {
+  color: #666 !important;
+  right: 12px !important;
+  font-size: 20px !important;
+  transition: transform 0.2s ease-in-out !important;
+}
+
+.mui-form-group .MuiSelect-root[aria-expanded="true"] .MuiSelect-icon {
+  transform: rotate(180deg) !important;
+  color: #8B5CF6 !important;
+}
+
+.mui-form-group .MuiSelect-icon.Mui-disabled {
+  color: #bdbdbd !important;
+}
+
+/* Select hover and focus states */
+.mui-form-group .MuiOutlinedInput-root:hover .MuiSelect-icon {
+  color: #8B5CF6 !important;
+}
+
+.mui-form-group .MuiOutlinedInput-root.Mui-focused .MuiSelect-icon {
+  color: #8B5CF6 !important;
+}
+
+/* MUI Select Menu (Dropdown) Container - Marked Style */
+.MuiPaper-root.MuiMenu-paper {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid #e5e7eb !important;
+  border-top: 3px solid #6B0E9B !important;
+  margin-top: 4px !important;
+  max-height: 300px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 4px 0 !important;
+  background-color: #ffffff !important;
+}
+
+.MuiPaper-root.MuiMenu-paper .MuiList-root {
+  padding: 0 !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+}
+
+/* MUI MenuItem Customization - Professional Look with Marked Style */
+.MuiPaper-root .MuiMenuItem-root {
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  min-height: 40px !important;
+  color: #1a1a1a !important;
+  transition: all 0.15s ease-in-out !important;
+  border-bottom: 1px solid #f0f0f0 !important;
+  margin: 0 4px !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  background-color: #ffffff !important;
+  border-left: 2px solid transparent !important;
+  position: relative !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.1em !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.6 !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root:first-child {
+  margin-top: 4px !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root:last-child {
+  border-bottom: none !important;
+  margin-bottom: 4px !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root:hover {
+  background-color: rgba(107, 14, 155, 0.08) !important;
+  color: #6B0E9B !important;
+  font-weight: 600 !important;
+  border-left: 3px solid #6B0E9B !important;
+  transform: translateX(2px);
+  box-shadow: 0 2px 4px rgba(107, 14, 155, 0.1) !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root.Mui-selected {
+  background-color: rgba(107, 14, 155, 0.12) !important;
+  color: #6B0E9B !important;
+  font-weight: 600 !important;
+  border-left: 3px solid #6B0E9B !important;
+  box-shadow: 0 2px 6px rgba(107, 14, 155, 0.15) !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root.Mui-selected:hover {
+  background-color: rgba(107, 14, 155, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(107, 14, 155, 0.2) !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root em {
+  font-style: normal !important;
+  color: #9e9e9e !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.1em !important;
+  line-height: 1.6 !important;
+}
+
+/* Fix for MenuItem text content - prevent letter merging */
+.MuiPaper-root .MuiMenuItem-root > * {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.1em !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  line-height: 1.6 !important;
+}
+
+/* Ensure selected value in dropdown matches input field */
+.MuiPaper-root .MuiMenuItem-root.Mui-selected {
+  background-color: rgba(139, 92, 246, 0.08) !important;
+  color: #6B0E9B !important;
+  font-weight: 600 !important;
+}
+
+/* Disabled MenuItem styling */
+.MuiPaper-root .MuiMenuItem-root.Mui-disabled {
+  color: #9e9e9e !important;
+  font-style: italic !important;
+  opacity: 0.7 !important;
+}
+
+.MuiPaper-root .MuiMenuItem-root.Mui-disabled em {
+  color: #9e9e9e !important;
+  font-style: italic !important;
+}
+
+/* Textarea specific styles */
+.mui-form-group .MuiTextField-root textarea {
+  min-height: 60px;
+  max-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5 !important;
+  padding: 8px 12px !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Full width form group */
+.mui-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Error state enhancement */
+.mui-form-group.has-error .MuiOutlinedInput-root {
+  border-color: #d32f2f;
+}
+
+.mui-form-group.has-error .MuiOutlinedInput-root:hover {
+  border-color: #c62828;
+}
+
+/* Required field indicator */
+.mui-form-group .mui-required-indicator {
+  color: #d32f2f;
+  margin-left: 4px;
+}
+
+/* Loading state */
+.mui-form-group .MuiOutlinedInput-root.Mui-disabled {
+  background-color: #fafafa;
+  cursor: wait;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mui-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mui-form-section {
+    padding: 16px;
+  }
+  
+  .mui-form-section h2 {
+    font-size: 18px;
+  }
+}
+
+/* Focus and transition improvements */
+.mui-form-group .MuiOutlinedInput-root {
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.mui-form-group .MuiOutlinedInput-root:focus-within {
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Professional File Upload Styles */
+.mui-form-group .MuiButton-root {
+  text-transform: none;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  height: 40px;
+  min-width: 150px;
+  transition: all 0.2s ease-in-out;
+}
+
+.mui-form-group .MuiButton-root:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
+}
+
+.mui-form-group .MuiIconButton-root {
+  padding: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.mui-form-group .MuiIconButton-root:hover {
+  transform: scale(1.1);
+}
+
+/* File upload field styling when file is selected */
+.mui-form-group .MuiOutlinedInput-root[data-has-file="true"] {
+  background-color: #f0fdf4;
+  border: 2px solid #10b981;
+  min-height: 42px;
+}
+
+.mui-form-group .MuiOutlinedInput-root[data-has-file="true"]:hover {
+  border: 2px solid #10b981;
+}
+
+.mui-form-group .MuiOutlinedInput-root[data-has-file="true"].Mui-focused {
+  border: 2px solid #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Consistent sizing for file upload inputs */
+.mui-form-group .MuiOutlinedInput-root {
+  min-height: 42px;
+  font-size: 15px;
+}
+
+.mui-form-group .MuiInputBase-input {
+  font-size: 15px;
+  padding: 10px 14px;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.5 !important;
+}
+
+.mui-form-group .MuiInputLabel-root {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mui-form-group .MuiFormHelperText-root {
+  font-size: 13px;
+  margin-top: 6px;
+  margin-left: 0px;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1.5 !important;
+}
+
+/* Global fix for all text elements in the form - prevent letter merging */
+.mui-form-container,
+.mui-form-section,
+.mui-form-group {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Fix for all input text elements */
+.mui-form-group input,
+.mui-form-group textarea,
+.mui-form-group .MuiInputBase-input,
+.mui-form-group .MuiOutlinedInput-input {
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+}
+
+/* Fix for placeholder text */
+.mui-form-group input::placeholder,
+.mui-form-group textarea::placeholder {
+  letter-spacing: normal !important;
+  white-space: normal !important;
+  word-spacing: normal !important;
+  opacity: 0.6;
+}
+
+/* Fix for Select renderValue spans (custom rendered values) */
+.mui-form-group .MuiSelect-root span,
+.mui-form-group .MuiSelect-select span {
+  letter-spacing: 0.02em !important;
+  white-space: normal !important;
+  word-spacing: 0.1em !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  display: inline-block !important;
+  line-height: 1.6 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Better spacing for file upload components */
+.mui-form-group .MuiOutlinedInput-root .MuiInputAdornment-root {
+  margin-right: 8px;
+}
+
